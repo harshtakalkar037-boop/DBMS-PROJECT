@@ -46,7 +46,8 @@ export const env = {
   },
 
   bcryptRounds: int(process.env.BCRYPT_ROUNDS, 10),
-  corsOrigin: (process.env.CORS_ORIGIN ?? '*')
+  // Explicit origin allow-list. Set CORS_ORIGIN to comma-separated exact origins in deployment.
+  corsOrigin: (process.env.CORS_ORIGIN ?? 'https://dbms-project-snowy-three.vercel.app')
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean),
