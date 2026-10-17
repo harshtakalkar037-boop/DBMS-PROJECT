@@ -202,3 +202,33 @@ The pasted history does **not** show row counts for individual business tables, 
 - Avoid pasting credentials into shell commands; use `-p` to enter the password at the prompt.
 - The database creation and SQL import commands modify the target database. Do not rerun them against a shared or live database without checking the scripts and confirming the intended target.
 - For a repeatable academic demonstration, save sanitized command transcripts and the corresponding verification outputs, while keeping secrets and personal data out of Git.
+
+
+## 8. Follow-up verification: seeded role accounts
+
+A later terminal session connected directly to `university_erp` on MySQL server version `8.4.11`. The client reported connection ID `1948`. The following checks were run:
+
+```sql
+SELECT DATABASE();
+SHOW TABLES LIKE 'users';
+```
+
+The output confirmed the selected database was `university_erp` and that the `users` table exists. Both checks were repeated, with the same results.
+
+A read-only join then compared seven expected demo email/role combinations against `users`, `roles`, `students`, and `faculty`. The terminal returned seven rows, with the expected and actual role matching for every row:
+
+| Account role | Matched expected role | Active | First login pending | Related record |
+|---|---|---:|---:|---|
+| `ADMIN` | Yes | 1 | 0 | No student/faculty row expected |
+| `STUDENT` | Yes | 1 | 0 | Student record present; status `ACTIVE` |
+| `FACULTY` | Yes | 1 | 0 | Faculty record present; status `ACTIVE` |
+| `EXAM_CELL` | Yes | 1 | 0 | No student/faculty row expected |
+| `ACCOUNTANT` | Yes | 1 | 0 | No student/faculty row expected |
+| `HOSTEL_ADMIN` | Yes | 1 | 0 | No student/faculty row expected |
+| `HR` | Yes | 1 | 0 | No student/faculty row expected |
+
+In this output, `is_active = 1` indicates the account is active and `is_first_login = 0` indicates first login is not pending according to the database flags. The student and faculty records were also marked `ACTIVE`.
+
+**What this verifies:** the seven expected demo account rows existed at the time of this query, their stored role codes matched the expected role codes, and their displayed active/first-login flags had the values above.
+
+**What this does not verify:** this SQL query did not test passwords, issue an authentication token, or exercise each role's frontend permissions. Those require separate application-level login and authorization tests.
