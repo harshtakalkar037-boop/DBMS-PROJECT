@@ -6,18 +6,9 @@ import { AuthUser } from '../middleware/auth';
 import { signAccessToken, signRefreshToken, verifyRefreshToken } from '../middleware/auth';
 import { AppError } from '../utils/api';
 import { audit } from '../utils/audit';
+import { isSeededDemoEmail } from './demoAccountPolicy';
 
 export interface LoginContext { ip?: string | null; userAgent?: string | null }
-
-const SEEDED_DEMO_EMAILS = new Set([
-  'admin@pict.edu',
-  '2024etc1001@pict.edu',
-  'karan.shinde@pict.edu',
-  'examcell@pict.edu',
-  'accountant@pict.edu',
-  'hostel.admin@pict.edu',
-  'hr@pict.edu',
-]);
 
 function assertLinkedAccountIsUsable(user: repo.UserRecord): void {
   if (user.role_code === 'STUDENT') {
@@ -39,7 +30,7 @@ export function generateTemporaryPassword(): string {
 
 export async function login(email: string, password: string, ctx: LoginContext = {}) {
   const normalizedEmail = email.toLowerCase().trim();
-  if (env.nodeEnv === 'production' && SEEDED_DEMO_EMAILS.has(normalizedEmail)) {
+  if (env.nodeEnv === 'production' && isSeededDemoEmail(normalizedEmail) && !env.allowSeededDemoLogins) {
     throw AppError.unauthorized('Seeded demo accounts are disabled in production.');
   }
   const user = await repo.findUserByEmail(normalizedEmail);
@@ -74,6 +65,7 @@ export async function login(email: string, password: string, ctx: LoginContext =
     name: [user.s_first ?? user.f_first, user.s_last ?? user.f_last].filter(Boolean).join(' ')
       || user.roll_number || user.employee_code || user.email,
     mustChangePassword: Boolean(user.is_first_login),
+    isDemo: env.nodeEnv === 'production' && env.allowSeededDemoLogins && isSeededDemoEmail(user.email),
   };
 
   const accessToken = signAccessToken(authUser);
@@ -102,7 +94,7 @@ export async function refresh(token: string, ctx: LoginContext = {}) {
   }
   const user = await repo.findUserById(Number(payload.sub));
   if (!user || !user.is_active) throw AppError.unauthorized('Account no longer active');
-  if (env.nodeEnv === 'production' && SEEDED_DEMO_EMAILS.has(user.email.toLowerCase())) {
+  if (env.nodeEnv === 'production' && isSeededDemoEmail(user.email) && !env.allowSeededDemoLogins) {
     throw AppError.unauthorized('Seeded demo accounts are disabled in production.');
   }
   assertLinkedAccountIsUsable(user);
@@ -115,6 +107,7 @@ export async function refresh(token: string, ctx: LoginContext = {}) {
     studentId: user.student_id ?? undefined,
     facultyId: user.faculty_id ?? undefined,
     mustChangePassword: Boolean(user.is_first_login),
+    isDemo: env.nodeEnv === 'production' && env.allowSeededDemoLogins && isSeededDemoEmail(user.email),
   };
   const accessToken = signAccessToken(authUser);
   const refreshToken = signRefreshToken(authUser);
