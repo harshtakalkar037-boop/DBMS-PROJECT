@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import { env } from '../config/env';
 import { verifyAccessToken } from './auth';
 import { isSeededDemoEmail } from '../services/demoAccountPolicy';
 import { AppError } from '../utils/api';
@@ -9,8 +8,8 @@ const READ_ONLY_METHODS = new Set(['GET', 'HEAD', 'OPTIONS']);
 /**
  * Blocks mutations for signed demo sessions at the API boundary, regardless of
  * which route or role-specific controller is called. Logout remains available.
- * The feature is fail-closed: demo claims are honoured only while the explicit
- * server-side feature flag is enabled and the token email is allow-listed.
+ * The feature is fail-closed: only a valid signed demo claim plus the allow-list
+ * can trigger the guard; stale demo tokens remain read-only after flag changes.
  */
 export function enforceDemoReadOnly(req: Request, _res: Response, next: NextFunction): void {
   if (READ_ONLY_METHODS.has(req.method.toUpperCase())) return next();
