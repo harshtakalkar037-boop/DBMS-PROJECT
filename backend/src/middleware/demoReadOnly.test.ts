@@ -68,6 +68,33 @@ describe('enforceDemoReadOnly', () => {
       .expect(201);
   });
 
+
+  it.each([
+    'admin@pict.edu',
+    '2024etc1001@pict.edu',
+    'karan.shinde@pict.edu',
+    'examcell@pict.edu',
+    'accountant@pict.edu',
+    'hostel.admin@pict.edu',
+    'hr@pict.edu',
+  ])('blocks mutation methods for seeded demo account %s', async (email) => {
+    const app = appForTests();
+    app.put('/api/v1/students/:id', (_req, res) => res.status(200).json({ updated: true }));
+    app.patch('/api/v1/students/:id', (_req, res) => res.status(200).json({ updated: true }));
+    app.delete('/api/v1/students/:id', (_req, res) => res.status(200).json({ deleted: true }));
+    const auth = { Authorization: `Bearer ${token(email, true)}` };
+
+    await request(app).post('/api/v1/students').set(auth).send({}).expect(403);
+    await request(app).put('/api/v1/students/1').set(auth).send({}).expect(403);
+    await request(app).patch('/api/v1/students/1').set(auth).send({}).expect(403);
+    await request(app).delete('/api/v1/students/1').set(auth).expect(403);
+  });
+
+  it('allows HEAD and OPTIONS without treating them as mutations', async () => {
+    await request(appForTests()).head('/api/v1/students').expect(200);
+    await request(appForTests()).options('/api/v1/students').expect(204);
+  });
+
   it('does not treat an unlisted email with a demo claim as a seeded demo', async () => {
     await request(appForTests())
       .post('/api/v1/students')
