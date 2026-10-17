@@ -232,3 +232,33 @@ In this output, `is_active = 1` indicates the account is active and `is_first_lo
 **What this verifies:** the seven expected demo account rows existed at the time of this query, their stored role codes matched the expected role codes, and their displayed active/first-login flags had the values above.
 
 **What this does not verify:** this SQL query did not test passwords, issue an authentication token, or exercise each role's frontend permissions. Those require separate application-level login and authorization tests.
+
+
+## 9. Backend TLS configuration and build verification
+
+A later local backend session updated the database configuration to support optional CA-verified TLS for the MySQL connection pool.
+
+### Source changes recorded in the terminal
+
+- `backend/src/config/env.ts`: added `DB_SSL_CA` to the parsed database environment configuration.
+- `backend/src/config/database.ts`: configured the MySQL pool to use the CA certificate with `rejectUnauthorized: true` when `DB_SSL_CA` is provided; otherwise the optional `ssl` setting remains undefined.
+- Root `.gitignore`: added the pattern `**/.env*` to help prevent environment files from being committed.
+
+The local source changes passed both `npm run typecheck` and `npm run build` in the recorded session. The later dependency check also showed the requested TypeScript type packages installed, and `npm ci` followed by `npm run build` completed without a displayed build error.
+
+### Local production environment file
+
+The terminal shows a local `backend/.env.production` file was generated with restrictive file permissions. The script loaded a CA certificate from the user's Downloads folder, prompted for a new database password without echoing it, generated fresh JWT secrets, and set a placeholder value for `CORS_ORIGIN`. The environment file's contents and secrets are intentionally not reproduced here; the transcript does not show that file being committed.
+
+**Before using this environment file:** replace the `CORS_ORIGIN` placeholder with the exact deployed frontend origin, and ensure the deployed service has the matching database credentials, CA certificate, and JWT secrets configured in its private environment settings. Do not commit or publish `.env.production` or paste its contents into logs or chat.
+
+### Git history and dependency audit notice
+
+The terminal records these successful pushes to `main`:
+
+- `2a8f947` — `Configure secure Aiven database connection`
+- `f1c94e4` — `Fix missing backend TypeScript types`
+
+The transcript reports that npm found **5 vulnerabilities** during dependency installation/audit: 2 moderate, 1 high, and 2 critical. This log does not include the package names or a detailed audit report, so the underlying causes and available safe fixes are not established here. Do not run `npm audit fix --force` blindly; review `npm audit` and test any dependency changes before deploying.
+
+**Verification boundary:** the local typecheck/build output demonstrates that the local source compiled in that session. The transcript alone does not prove that Render was redeployed with the TLS changes, that the deployed service is using CA verification, or that a live application-to-database TLS handshake succeeded. Confirm those separately in the deployment logs and health checks.
