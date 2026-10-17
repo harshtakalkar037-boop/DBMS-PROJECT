@@ -48,7 +48,7 @@ export default function LoginPage() {
 
   const pickDemo = (account: DemoAccount) => {
     setEmail(account.email);
-    setPassword(account.password);
+    setPassword('');
     setDemoPicked(true);
     setError(null);
     requestAnimationFrame(() => emailRef.current?.focus());
