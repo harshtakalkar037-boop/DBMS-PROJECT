@@ -18,7 +18,6 @@ export interface DemoAccount {
   /** Human role name, e.g. "Examination Cell". */
   title: string;
   email: string;
-  password: string;
   /** Card body. */
   blurb: string;
   /** Short access-level summary. */
@@ -36,7 +35,6 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
     label: 'Admin',
     title: 'System Administrator',
     email: 'admin@pict.edu',
-    password: 'Admin@123',
     blurb: 'Manage the complete ERP — every module, every setting, the audit log.',
     access: 'Full access · all modules',
     icon: 'admin',
@@ -48,7 +46,6 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
     label: 'Student',
     title: 'Student',
     email: '2024ETC1001@pict.edu',
-    password: 'Student@123',
     blurb: 'View your academic journey, attendance, examinations and fees.',
     access: 'Own records only',
     icon: 'student',
@@ -60,7 +57,6 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
     label: 'Faculty',
     title: 'Faculty Member',
     email: 'karan.shinde@pict.edu',
-    password: 'Faculty@123',
     blurb: 'Manage classes, attendance, marks and academic activities.',
     access: 'Assigned classes & students',
     icon: 'faculty',
@@ -72,7 +68,6 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
     label: 'Exam Cell',
     title: 'Examination Cell',
     email: 'examcell@pict.edu',
-    password: 'Exam@123',
     blurb: 'Manage examinations, schedules, registrations and results.',
     access: 'Examinations & results',
     icon: 'exam',
@@ -84,7 +79,6 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
     label: 'Finance',
     title: 'Finance Office',
     email: 'accountant@pict.edu',
-    password: 'Account@123',
     blurb: 'Manage fees, payments, scholarships and financial reports.',
     access: 'Fees & finance',
     icon: 'finance',
@@ -96,7 +90,6 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
     label: 'Hostel',
     title: 'Hostel Administration',
     email: 'hostel.admin@pict.edu',
-    password: 'Hostel@123',
     blurb: 'Manage rooms, beds, applications and hostel allocations.',
     access: 'Hostel operations',
     icon: 'hostel',
@@ -108,7 +101,6 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
     label: 'HR',
     title: 'Human Resources',
     email: 'hr@pict.edu',
-    password: 'Hr@123',
     blurb: 'Manage faculty records, leave approvals and monthly payroll.',
     access: 'Faculty, leave & payroll',
     icon: 'hr',
