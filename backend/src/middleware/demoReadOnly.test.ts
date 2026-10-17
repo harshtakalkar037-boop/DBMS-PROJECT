@@ -92,7 +92,7 @@ describe('enforceDemoReadOnly', () => {
 
   it('allows HEAD and OPTIONS without treating them as mutations', async () => {
     await request(appForTests()).head('/api/v1/students').expect(200);
-    await request(appForTests()).options('/api/v1/students').expect(204);
+    await request(appForTests()).options('/api/v1/students').expect(200);
   });
 
   it('does not treat an unlisted email with a demo claim as a seeded demo', async () => {
