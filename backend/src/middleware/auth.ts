@@ -23,6 +23,8 @@ export interface AuthUser {
   facultyId?: number;
   name?: string;
   mustChangePassword?: boolean;
+  /** True only for explicitly enabled, server-issued demo sessions. */
+  isDemo?: boolean;
 }
 
 declare global {
@@ -42,6 +44,7 @@ export interface AccessTokenPayload {
   facultyId?: number;
   name?: string;
   mustChangePassword?: boolean;
+  isDemo?: boolean;
 }
 
 export function signAccessToken(user: AuthUser): string {
@@ -53,6 +56,7 @@ export function signAccessToken(user: AuthUser): string {
     ...(user.facultyId ? { facultyId: user.facultyId } : {}),
     ...(user.name ? { name: user.name } : {}),
     ...(user.mustChangePassword ? { mustChangePassword: true } : {}),
+    ...(user.isDemo ? { isDemo: true } : {}),
   };
   return jwt.sign(payload, env.jwt.secret, { expiresIn: env.jwt.expiresIn } as jwt.SignOptions);
 }
@@ -112,6 +116,7 @@ export async function authenticate(req: Request, _res: Response, next: NextFunct
       studentId: identity.student_id ?? undefined,
       facultyId: identity.faculty_id ?? undefined,
       mustChangePassword: Boolean(identity.is_first_login),
+      isDemo: payload.isDemo === true && env.allowSeededDemoLogins,
     };
     next();
   } catch (err) {
