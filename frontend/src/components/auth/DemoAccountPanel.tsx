@@ -11,7 +11,7 @@ export function DemoAccountPanel({ onPick, disabled }: { onPick: (account: DemoA
       <div className="mb-3">
         <h2 id="demo-accounts-heading" className="text-sm font-semibold text-slate-900">Demo accounts</h2>
         <p className="mt-1 text-xs leading-5 text-slate-500">
-          Local development only. Choose a role to fill the email and password, then press Login.
+          Local development only. Choose a role to fill the email, enter the password yourself, then press Login.
         </p>
       </div>
 

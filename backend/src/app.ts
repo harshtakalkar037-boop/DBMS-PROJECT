@@ -9,21 +9,24 @@ import { env } from './config/env';
 import routes from './routes';
 import { errorHandler, notFound } from './middleware/errorHandler';
 import { logger } from './utils/logger';
+import { enforceDemoReadOnly } from './middleware/demoReadOnly';
 
 export function createApp(): Application {
   const app = express();
 
   /* ------------------------------------------------------------ security */
 
-  // The preview environment serves the app through an https://*.e2b.app origin,
-  // so the allow-list is driven by CORS_ORIGIN and also accepts that wildcard.
+  // Allow only explicitly configured origins. Never reflect arbitrary origins when
+  // credentials are enabled. Local development origins are allowed only outside production.
+  const allowedOrigins = new Set(env.corsOrigin.filter((origin) => origin !== '*'));
+  if (env.nodeEnv !== 'production') {
+    allowedOrigins.add('http://localhost:5173');
+    allowedOrigins.add('http://localhost:3000');
+  }
   app.use(cors({
     origin: (origin, cb) => {
-      if (!origin) return cb(null, true);                     // curl / server-to-server
-      const allowed = env.corsOrigin.includes('*') || env.corsOrigin.includes(origin);
-      if (allowed) return cb(null, true);
-      if (/\.e2b\.app$/.test(origin)) return cb(null, true);   // sandboxed preview hosts
-      return cb(null, true);                                   // dev friendly: reflect back
+      if (!origin) return cb(null, true); // curl / server-to-server
+      return cb(null, allowedOrigins.has(origin));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
@@ -76,6 +79,8 @@ export function createApp(): Application {
     });
   });
 
+  // Enforce demo read-only policy before every API route, including role-specific writes.
+  app.use(env.apiPrefix, enforceDemoReadOnly);
   app.use(env.apiPrefix, routes);
 
   /* --------------------------------------------------------------- errors */
