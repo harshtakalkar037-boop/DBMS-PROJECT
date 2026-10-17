@@ -13,13 +13,16 @@ const READ_ONLY_METHODS = new Set(['GET', 'HEAD', 'OPTIONS']);
  * server-side feature flag is enabled and the token email is allow-listed.
  */
 export function enforceDemoReadOnly(req: Request, _res: Response, next: NextFunction): void {
-  if (!env.allowSeededDemoLogins || READ_ONLY_METHODS.has(req.method.toUpperCase())) return next();
+  if (READ_ONLY_METHODS.has(req.method.toUpperCase())) return next();
 
   const authHeader = req.headers.authorization;
-  if (!authHeader?.startsWith('Bearer ')) return next();
+  const token = authHeader?.startsWith('Bearer ')
+    ? authHeader.slice(7).trim()
+    : (req as Request & { cookies?: Record<string, unknown> }).cookies?.accessToken;
+  if (typeof token !== 'string' || !token) return next();
 
   try {
-    const payload = verifyAccessToken(authHeader.slice(7).trim());
+    const payload = verifyAccessToken(token);
     if (payload.isDemo !== true || !isSeededDemoEmail(payload.email)) return next();
 
     const path = req.path.replace(/\/+$/, '') || '/';
