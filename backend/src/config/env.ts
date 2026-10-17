@@ -33,6 +33,7 @@ export const env = {
      * Find the path with: mysql -u root -e "SHOW VARIABLES LIKE 'socket';"
      */
     socketPath: process.env.DB_SOCKET_PATH ?? '',
+    sslCa: process.env.DB_SSL_CA ?? '',
   },
 
   jwt: {

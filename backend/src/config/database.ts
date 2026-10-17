@@ -14,6 +14,9 @@ export const pool: Pool = mysql.createPool({
   ...(env.db.socketPath ? { socketPath: env.db.socketPath } : { host: env.db.host, port: env.db.port }),
   user: env.db.user,
   password: env.db.password,
+  ssl: env.db.sslCa
+    ? { ca: env.db.sslCa, rejectUnauthorized: true }
+    : undefined,
   database: env.db.database,
   waitForConnections: true,
   connectionLimit: env.db.connectionLimit,
