@@ -69,12 +69,12 @@ The repository contains frontend pages, backend API handlers and database object
 - Faculty records, teaching assignments, leave requests/balances and payroll generation/status workflows.
 - Notifications, audit records, role-oriented reports and CSV export.
 - Mock examination attempts, answer submission, review and leaderboard routes.
-- Student study-plan and risk-analysis screens. The default AI engine is a local rule-based implementation; an optional OpenAI-backed mode is enabled only when configured.
+- Student study-plan and risk-analysis screens. The default AI engine is a local rule-based implementation; optional OpenAI and Google Gemini modes are enabled only when explicitly configured.
 
 ### Optional integrations and scope boundaries
 
 - MongoDB is optional. When `MONGODB_URI` is configured, the backend can mirror audit events and AI conversation history; MySQL remains the relational system of record.
-- OpenAI is optional. When enabled, selected student context is sent to the configured OpenAI API; review the privacy implications before enabling this for any non-synthetic data.
+- OpenAI and Google Gemini are optional. When enabled, selected student context is sent to the selected provider; review its data-use terms and privacy implications before enabling this for any non-synthetic data.
 - No SMTP/email delivery or third-party payment-provider integration was found in the current source. Admission credentials are shown to the administrator in the application rather than emailed automatically.
 - Some business-rule claims in older narrative documents are not implemented as described. See [Known Limitations](#known-limitations-and-troubleshooting) before presenting those claims as working behavior.
 
@@ -126,7 +126,7 @@ The first-login redirect is currently a frontend behavior; see the security note
 | Frontend | React 18, TypeScript, Vite, Tailwind CSS, React Router, Axios, Framer Motion, Recharts, Lucide React, `date-fns` and `clsx`. `@tanstack/react-query` is listed as a dependency, but no current application import was found. |
 | Backend | Node.js (package engine `>=18`; Dockerfiles use Node 20), Express 4, TypeScript, `mysql2/promise`, `bcryptjs`, `jsonwebtoken`, Zod, Helmet, CORS, `express-rate-limit`, Morgan and `cookie-parser`. Vitest is used for backend unit tests. |
 | Primary database | MySQL 8-compatible SQL using InnoDB, foreign keys, constraints, indexes, stored procedures, functions, triggers and views. The local Compose database is MariaDB 11.8; hosted deployment is specified as Aiven MySQL. |
-| Optional services | MongoDB for audit/AI-history mirroring; OpenAI API for the opt-in LLM mode. Neither is required for the MySQL-backed ERP core. |
+| Optional services | MongoDB for audit/AI-history mirroring; OpenAI or Google Gemini API for the opt-in LLM mode. Neither is required for the MySQL-backed ERP core. |
 | Hosting targets | Vercel (frontend), Render (backend) and Aiven (MySQL), as supplied in the project brief. |
 
 ## System Architecture
@@ -141,7 +141,7 @@ flowchart LR
     Services --> Repositories[Repositories and mysql2 pool]
     Repositories -->|Parameterized values, SQL routines| DB[(MySQL database<br/>Aiven)]
     Services -. optional when configured .-> Mongo[(MongoDB audit / AI-history mirror)]
-    Services -. AI_MODE=llm and key configured .-> LLM[OpenAI API]
+    Services -. AI_MODE=llm and provider key configured .-> LLM[OpenAI or Gemini API]
 ```
 
 In local development, the browser still uses the `/api/v1` API path. The Vite development server proxies `/api` to `VITE_API_TARGET` (default `http://127.0.0.1:8080`). That Vite proxy is not a production Vercel proxy; deployment configuration is described in the [deployment guide](#deployment-guide).
