@@ -59,9 +59,18 @@ export const env = {
 
   ai: {
     mode: (process.env.AI_MODE ?? 'local') as 'local' | 'llm',
-    apiKey: process.env.OPENAI_API_KEY ?? '',
-    model: process.env.OPENAI_MODEL ?? 'gpt-4o-mini',
-    /** True only when the user explicitly enabled llm mode AND supplied a key. */
+    provider: (process.env.AI_PROVIDER ?? 'openai').toLowerCase() as 'openai' | 'gemini',
+    openAiApiKey: process.env.OPENAI_API_KEY ?? '',
+    openAiModel: process.env.OPENAI_MODEL ?? 'gpt-4o-mini',
+    geminiApiKey: process.env.GEMINI_API_KEY ?? '',
+    geminiModel: process.env.GEMINI_MODEL ?? 'gemini-2.5-flash',
+    get apiKey(): string {
+      return this.provider === 'gemini' ? this.geminiApiKey : this.openAiApiKey;
+    },
+    get model(): string {
+      return this.provider === 'gemini' ? this.geminiModel : this.openAiModel;
+    },
+    /** True only when the user explicitly enabled llm mode and supplied the selected provider's key. */
     get llmEnabled(): boolean {
       return this.mode === 'llm' && this.apiKey.length > 0;
     },
