@@ -10,6 +10,14 @@ This branch prepares the backend policy for a public, read-only demonstration. I
 - The API-wide `enforceDemoReadOnly` middleware blocks non-read HTTP methods for those demo tokens before any API route/controller executes. The logout endpoint is allowed so users can end sessions.
 - The frontend's local demo picker is still development-only. No production demo picker or public credential disclosure is introduced by this branch.
 
+## CORS deployment configuration
+
+- Set `CORS_ORIGIN` on the backend to the exact origin(s) that should call it, as a comma-separated list (scheme + hostname + optional port; no path).
+- For the current production frontend, include `https://dbms-project-snowy-three.vercel.app`.
+- Do not use `*` for a credentialed production frontend. The app ignores wildcard entries and denies browser origins that are not explicitly allow-listed.
+- Vercel preview URLs are different origins. Add only the specific preview origin needed for testing; do not allow all preview subdomains.
+- Requests without an Origin header (for example, server-to-server requests) are not blocked by CORS. Authentication and authorization remain mandatory.
+
 ## Do not enable on the existing shared database yet
 
 The repository has publicly visible seeded demo credential material in frontend source. Therefore, enabling `ALLOW_SEEDED_DEMO_LOGINS=true` against the current shared Aiven database would let anyone who knows those credentials read data allowed by each role. The flag must remain false until all of the following are complete:
