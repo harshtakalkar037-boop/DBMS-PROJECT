@@ -9,6 +9,7 @@ import { env } from './config/env';
 import routes from './routes';
 import { errorHandler, notFound } from './middleware/errorHandler';
 import { logger } from './utils/logger';
+import { enforceDemoReadOnly } from './middleware/demoReadOnly';
 
 export function createApp(): Application {
   const app = express();
@@ -76,6 +77,8 @@ export function createApp(): Application {
     });
   });
 
+  // Enforce demo read-only policy before every API route, including role-specific writes.
+  app.use(env.apiPrefix, enforceDemoReadOnly);
   app.use(env.apiPrefix, routes);
 
   /* --------------------------------------------------------------- errors */
