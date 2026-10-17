@@ -1,0 +1,14 @@
+PICT ERP viva preparation documents
+Generated 17 October 2026 from the checked-out source repository.
+
+PICT_ERP_Group_01_Student_Admission_Study_Guide.docx
+PICT_ERP_Group_02_Academic_Course_Study_Guide.docx
+PICT_ERP_Group_03_Attendance_Study_Guide.docx
+PICT_ERP_Group_04_Examination_Results_Study_Guide.docx
+PICT_ERP_Group_05_Fees_Finance_Study_Guide.docx
+PICT_ERP_Group_06_Hostel_Study_Guide.docx
+PICT_ERP_Group_07_Faculty_Leave_Payroll_Study_Guide.docx
+PICT_ERP_Complete_Project_Viva_Preparation_Guide.docx
+
+All student/faculty/transaction seed records are generated demo data.
+The complete-project guide calls out source/documentation discrepancies that should be resolved before claiming the affected behavior.

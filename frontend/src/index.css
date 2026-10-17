@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Design tokens
+   Written as raw RGB triples so Tailwind's `rgb(var(--x) / <alpha-value>)`
+   utilities can apply opacity modifiers normally.
+--------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    --c-canvas: 246 247 249; /* page background */
+    --c-surface: 255 255 255; /* cards, panels, sheets */
+    --c-surface-2: 248 250 252; /* subtle fills, table headers */
+    --c-surface-3: 241 245 249; /* hover fills */
+    --c-line: 226 232 240; /* hairline borders */
+    --c-line-strong: 203 213 225;
+    --c-ink: 15 23 42; /* primary text */
+    --c-ink-muted: 71 85 105; /* secondary text */
+    --c-ink-subtle: 148 163 184; /* placeholders, meta */
+    color-scheme: light;
+  }
+
+  .dark {
+    --c-canvas: 9 14 26;
+    --c-surface: 17 24 40;
+    --c-surface-2: 22 31 51;
+    --c-surface-3: 30 41 64;
+    --c-line: 38 51 76;
+    --c-line-strong: 55 71 102;
+    --c-ink: 232 238 248;
+    --c-ink-muted: 165 180 204;
+    --c-ink-subtle: 122 139 168;
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+  }
+
+  /* Visible, consistent focus ring everywhere. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500/70 ring-offset-2 ring-offset-canvas;
+  }
+
+  ::selection {
+    @apply bg-brand-600/20 text-ink;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full border-2 border-transparent bg-slate-300 bg-clip-content;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-slate-600;
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-500;
+  }
+}
+
+@layer components {
+  /* Surfaces ------------------------------------------------------------- */
+  .card {
+    @apply rounded-xl border border-line bg-surface text-ink shadow-sm;
+  }
+  .card-pad {
+    @apply p-4 sm:p-5;
+  }
+  .card-hover {
+    @apply transition duration-200 ease-premium hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-card-hover;
+  }
+  .panel {
+    @apply rounded-xl border border-line bg-surface-2;
+  }
+  .divide-line > * + * {
+    @apply border-t border-line;
+  }
+
+  /* Buttons -------------------------------------------------------------- */
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium
+           transition duration-150 ease-snappy
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-brand-700 text-white shadow-sm hover:bg-brand-800 active:bg-brand-900;
+  }
+  .btn-secondary {
+    @apply btn border border-line-strong bg-surface text-ink-muted hover:bg-surface-3 hover:text-ink;
+  }
+  .btn-ghost {
+    @apply btn text-ink-muted hover:bg-surface-3 hover:text-ink;
+  }
+  .btn-danger {
+    @apply btn bg-rose-600 text-white hover:bg-rose-700;
+  }
+  .btn-success {
+    @apply btn bg-emerald-600 text-white hover:bg-emerald-700;
+  }
+  .btn-accent {
+    @apply btn bg-accent-600 text-white hover:bg-accent-700;
+  }
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+  .btn-xs {
+    @apply px-2 py-1 text-[11px];
+  }
+
+  /* Form controls -------------------------------------------------------- */
+  .input {
+    @apply w-full rounded-lg border border-line-strong bg-surface px-3 py-2 text-sm text-ink shadow-sm transition
+           placeholder:text-ink-subtle
+           focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500
+           disabled:cursor-not-allowed disabled:bg-surface-2 disabled:text-ink-subtle;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink-muted;
+  }
+  .field {
+    @apply mb-3;
+  }
+  .hint {
+    @apply mt-1 text-xs text-ink-subtle;
+  }
+
+  /* Tables --------------------------------------------------------------- */
+  .table {
+    @apply min-w-full divide-y divide-line text-sm;
+  }
+  .table thead {
+    @apply bg-surface-2;
+  }
+  .table th {
+    @apply whitespace-nowrap px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wider text-ink-muted;
+  }
+  .table td {
+    @apply whitespace-nowrap px-3 py-2.5 text-ink;
+  }
+  .table tbody tr {
+    @apply border-b border-line transition-colors duration-150 hover:bg-brand-50/60;
+  }
+  .dark .table tbody tr:hover {
+    @apply bg-brand-900/30;
+  }
+  .table-zebra tbody tr:nth-child(even) {
+    @apply bg-surface-2/60;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold;
+  }
+  .link {
+    @apply text-brand-700 underline-offset-2 hover:underline dark:text-brand-300;
+  }
+
+  /* Skeletons ------------------------------------------------------------ */
+  .skeleton {
+    @apply relative overflow-hidden rounded bg-slate-200 dark:bg-slate-700/70;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background-image: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.45), transparent);
+  }
+  .dark .skeleton::after {
+    background-image: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.07), transparent);
+  }
+
+  .prose-erp h1 {
+    @apply mb-2 text-2xl font-semibold tracking-tight text-ink;
+  }
+}
+
+/* Keep the public sign-in experience light even when an authenticated user's
+   saved dashboard preference is dark. Tokens are scoped to this page only. */
+.login-page {
+  --c-canvas: 248 250 252;
+  --c-surface: 255 255 255;
+  --c-surface-2: 248 250 252;
+  --c-surface-3: 241 245 249;
+  --c-line: 226 232 240;
+  --c-line-strong: 203 213 225;
+  --c-ink: 15 23 42;
+  --c-ink-muted: 71 85 105;
+  --c-ink-subtle: 100 116 139;
+  color-scheme: light;
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities
+--------------------------------------------------------------------------- */
+/* Landing-page hero: flowing connection lines. Cheap on the compositor — only
+   stroke-dashoffset is animated. */
+@keyframes dash-flow {
+  to { stroke-dashoffset: -88; }
+}
+@keyframes dash-flow-slow {
+  to { stroke-dashoffset: -40; }
+}
+.animate-dash {
+  animation: dash-flow 2.4s linear infinite;
+}
+.animate-dash-slow {
+  animation: dash-flow-slow 3.6s linear infinite;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+}
+
+/* Recharts sometimes renders a focus outline around the whole chart wrapper. */
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
+}
+.recharts-cartesian-axis-tick text {
+  fill: rgb(var(--c-ink-muted));
+  font-size: 11px;
+}
+.recharts-cartesian-grid line {
+  stroke: rgb(var(--c-line));
+}
+
+/* ---------------------------------------------------------------------------
+   Accessibility: honour the OS "reduce motion" setting for every animation in
+   the app, including the CSS keyframes and Framer Motion transitions
+   (Motion.tsx reads the same media query in JS).
+--------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PICT University ERP</title>
+    <meta
+      name="description"
+      content="SCTR's Pune Institute of Computer Technology — University ERP: students, academics, attendance, examinations, fees, hostel and faculty operations."
+    />
+    <meta name="theme-color" content="#0b1b33" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3.5 41 9.6v15.1c0 9.4-6.6 16.6-17 19.8-10.4-3.2-17-10.4-17-19.8V9.6L24 3.5Z' fill='%232c64a8'/%3E%3Cg fill='white'%3E%3Crect x='14.4' y='16.5' width='4.1' height='15.6' rx='1.3'/%3E%3Cpath d='M19.9 16.5h5.1a5.25 5.25 0 0 1 0 10.5h-5.1V16.5Z'/%3E%3Cpath d='M24.6 30.6h4.3l4.7 1.5v-3.1c0-4-2.6-6.4-6.3-6.4h-2.7v8Z'/%3E%3C/g%3E%3C/svg%3E" />
+    <script>
+      // Paint the correct theme before React mounts so a dark-mode reload never
+      // flashes white. Mirrors ThemeProvider.applyClass().
+      (function () {
+        try {
+          var stored = localStorage.getItem('erp_theme');
+          var dark = stored === 'dark' || ((!stored || stored === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.classList.toggle('dark', dark);
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        } catch (e) {}
+      })();
+    </script>
+    <style>
+      /* Painted before React mounts so the first frame is never blank white. */
+      html, body, #root { height: 100%; margin: 0; }
+      body { background: #f6f7f9; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+      html.dark body { background: #090e1a; }
+      #boot { display:flex; height:100%; align-items:center; justify-content:center; color:#475569; gap:10px; font-size:14px; }
+      html.dark #boot { color:#a5b4cc; }
+      #boot .ring { width:26px; height:26px; border:3px solid #b4cdeb; border-top-color:#1c4e8a; border-radius:50%; animation: spin .8s linear infinite; }
+      html.dark #boot .ring { border-color:#1e2940; border-top-color:#85bedc; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) { #boot .ring { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <div id="root"><div id="boot"><div class="ring"></div><span>Loading PICT University ERP…</span></div></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
