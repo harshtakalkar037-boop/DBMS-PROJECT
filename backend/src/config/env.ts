@@ -17,6 +17,8 @@ export const env = {
   nodeEnv: process.env.NODE_ENV ?? 'development',
   port: int(process.env.PORT, 8080),
   apiPrefix: process.env.API_PREFIX ?? '/api/v1',
+  // Explicit opt-in for the college-project's seeded demo accounts.
+  allowSeededDemoLogins: bool(process.env.ALLOW_SEEDED_DEMO_LOGINS, false),
 
   db: {
     host: process.env.DB_HOST ?? '127.0.0.1',
