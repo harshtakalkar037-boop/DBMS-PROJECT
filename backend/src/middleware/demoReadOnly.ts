@@ -22,7 +22,7 @@ export function enforceDemoReadOnly(req: Request, _res: Response, next: NextFunc
     const payload = verifyAccessToken(authHeader.slice(7).trim());
     if (payload.isDemo !== true || !isSeededDemoEmail(payload.email)) return next();
 
-    const path = req.path.replace(/\\/+$/, '') || '/';
+    const path = req.path.replace(/\/+$/, '') || '/';
     if (req.method.toUpperCase() === 'POST' && path === '/auth/logout') return next();
 
     return next(AppError.forbidden('Demo sessions are read-only. Changes are disabled in the public demo.'));
