@@ -39,7 +39,7 @@ export function generateTemporaryPassword(): string {
 
 export async function login(email: string, password: string, ctx: LoginContext = {}) {
   const normalizedEmail = email.toLowerCase().trim();
-  if (env.nodeEnv === 'production' && SEEDED_DEMO_EMAILS.has(normalizedEmail)) {
+  if (env.nodeEnv === 'production' && SEEDED_DEMO_EMAILS.has(normalizedEmail) && !env.allowSeededDemoLogins) {
     throw AppError.unauthorized('Seeded demo accounts are disabled in production.');
   }
   const user = await repo.findUserByEmail(normalizedEmail);
@@ -102,7 +102,7 @@ export async function refresh(token: string, ctx: LoginContext = {}) {
   }
   const user = await repo.findUserById(Number(payload.sub));
   if (!user || !user.is_active) throw AppError.unauthorized('Account no longer active');
-  if (env.nodeEnv === 'production' && SEEDED_DEMO_EMAILS.has(user.email.toLowerCase())) {
+  if (env.nodeEnv === 'production' && SEEDED_DEMO_EMAILS.has(user.email.toLowerCase()) && !env.allowSeededDemoLogins) {
     throw AppError.unauthorized('Seeded demo accounts are disabled in production.');
   }
   assertLinkedAccountIsUsable(user);
