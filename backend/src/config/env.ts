@@ -15,6 +15,8 @@ const int = (v: string | undefined, fallback: number): number => {
 
 export const env = {
   nodeEnv: process.env.NODE_ENV ?? 'development',
+  /** Explicit opt-in; keep false until demo data is isolated and seeded credentials are rotated. */
+  allowSeededDemoLogins: bool(process.env.ALLOW_SEEDED_DEMO_LOGINS, false),
   port: int(process.env.PORT, 8080),
   apiPrefix: process.env.API_PREFIX ?? '/api/v1',
 
