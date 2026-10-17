@@ -94,6 +94,9 @@ export async function authenticate(req: Request, _res: Response, next: NextFunct
     if (!token) throw AppError.unauthorized('No authentication token was supplied');
 
     const payload = verifyAccessToken(token);
+    if (payload.isDemo === true && !env.allowSeededDemoLogins) {
+      throw AppError.unauthorized('Demo sessions are disabled. Please sign in again when demo access is available.');
+    }
     const userId = Number(payload.sub);
     if (!Number.isInteger(userId) || userId < 1) throw AppError.unauthorized('Invalid authentication token');
 
