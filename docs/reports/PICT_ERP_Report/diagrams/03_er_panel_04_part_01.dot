@@ -1,0 +1,6 @@
+digraph G { rankdir=LR; node [shape=box];
+"grades" [label="grades\nPK: grade_id"];
+"exams" [label="exams\nPK: exam_id"];
+"exams" -> "academic_years" [label="FK058 academic_year_id"];
+"exams" -> "semesters" [label="FK059 semester_id"];
+}

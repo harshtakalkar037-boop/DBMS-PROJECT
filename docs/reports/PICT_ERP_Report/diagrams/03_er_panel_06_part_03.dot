@@ -1,0 +1,9 @@
+digraph G { rankdir=LR; node [shape=box];
+"room_allocations" [label="room_allocations\nPK: allocation_id"];
+"room_allocations" -> "students" [label="FK108 student_id"];
+"room_allocations" -> "beds" [label="FK109 bed_id"];
+"room_allocations" -> "rooms" [label="FK110 room_id"];
+"room_allocations" -> "hostels" [label="FK111 hostel_id"];
+"room_allocations" -> "academic_years" [label="FK112 academic_year_id"];
+"room_allocations" -> "users" [label="FK113 allocated_by"];
+}

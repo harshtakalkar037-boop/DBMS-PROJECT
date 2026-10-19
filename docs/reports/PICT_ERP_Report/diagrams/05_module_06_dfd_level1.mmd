@@ -1,0 +1,32 @@
+flowchart TD
+  actor["M6 actors<br/>Authorized users / staff"]
+  p1["1.0 Maintain inventory /<br/>find vacancy"]
+  d1["D1: hostels,<br/>hostel_blocks,<br/>rooms,<br/>beds"]
+  p2["2.0 Submit /<br/>review application"]
+  d2["D2: hostel_applications"]
+  p3["3.0 Allocate bed /<br/>bill rent"]
+  d3["D3: room_allocations,<br/>hostel_fees"]
+  p4["4.0 Transfer or vacate"]
+  d4["D4: room_transfers,<br/>room_allocations"]
+  p5["5.0 Reconcile occupancy"]
+  d5["D5: beds,<br/>rooms,<br/>hostels"]
+  actor -->|"request / decision"| p1
+  p1 -->|"response / report"| actor
+  p1 -->|"validated writes / query"| d1
+  d1 -->|"stored context / rows"| p1
+  actor -->|"request / decision"| p2
+  p2 -->|"response / report"| actor
+  p2 -->|"validated writes / query"| d2
+  d2 -->|"stored context / rows"| p2
+  actor -->|"request / decision"| p3
+  p3 -->|"response / report"| actor
+  p3 -->|"validated writes / query"| d3
+  d3 -->|"stored context / rows"| p3
+  actor -->|"request / decision"| p4
+  p4 -->|"response / report"| actor
+  p4 -->|"validated writes / query"| d4
+  d4 -->|"stored context / rows"| p4
+  actor -->|"request / decision"| p5
+  p5 -->|"response / report"| actor
+  p5 -->|"validated writes / query"| d5
+  d5 -->|"stored context / rows"| p5

@@ -1,0 +1,10 @@
+digraph G { rankdir=LR; node [shape=box];
+"guardians" [label="guardians\nPK: guardian_id"];
+"guardians" -> "students" [label="FK016 student_id"];
+"admissions" [label="admissions\nPK: admission_id"];
+"admissions" -> "students" [label="FK017 student_id"];
+"admissions" -> "academic_years" [label="FK018 academic_year_id"];
+"admissions" -> "programs" [label="FK019 program_id"];
+"admissions" -> "categories" [label="FK020 category_id"];
+"admissions" -> "users" [label="FK021 reviewed_by"];
+}

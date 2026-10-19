@@ -1,0 +1,18 @@
+digraph G {
+graph [rankdir=LR, bgcolor="white", pad=0.15, nodesep=0.32, ranksep=0.65, fontname="Times New Roman", fontsize=13, label="Level 0 DFD — University ERP boundary", labelloc=t];
+node [fontname="Times New Roman", fontsize=12, shape=box, style="rounded,filled", color="#263b53", fillcolor="#edf2f7", margin="0.13,0.09"];
+edge [fontname="Times New Roman", fontsize=9, color="#52657a", arrowsize=0.65];
+"applicant" [label="Applicant", shape=box, fillcolor="#ffffff", style="filled"];
+"student" [label="Student", shape=box, fillcolor="#ffffff", style="filled"];
+"faculty" [label="Faculty", shape=box, fillcolor="#ffffff", style="filled"];
+"office" [label="ADMIN / EXAM_CELL / ACCOUNTANT\nHOSTEL_ADMIN / HR", shape=box, fillcolor="#ffffff", style="filled"];
+"erp" [label="0. University ERP\nSeven core modules + shared services", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"applicant" -> "erp" [label="application / tracking request"];
+"erp" -> "applicant" [label="application status"];
+"student" -> "erp" [label="own profile / enrollment / hostel / practice requests"];
+"erp" -> "student" [label="attendance / bills / results / allocation / notices"];
+"faculty" -> "erp" [label="teaching / marks / attendance / leave requests"];
+"erp" -> "faculty" [label="rosters / workload / leave / own payroll"];
+"office" -> "erp" [label="configuration / approvals / payment / publication"];
+"erp" -> "office" [label="operational records / reports / audit"];
+}

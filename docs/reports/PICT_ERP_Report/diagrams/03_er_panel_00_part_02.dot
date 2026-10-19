@@ -1,0 +1,11 @@
+digraph G { rankdir=LR; node [shape=box];
+"semesters" [label="semesters\nPK: semester_id"];
+"semesters" -> "academic_years" [label="FK003 academic_year_id"];
+"programs" [label="programs\nPK: program_id"];
+"programs" -> "departments" [label="FK004 department_id"];
+"batches" [label="batches\nPK: batch_id"];
+"batches" -> "programs" [label="FK005 program_id"];
+"batches" -> "academic_years" [label="FK006 academic_year_id"];
+"subjects" [label="subjects\nPK: subject_id"];
+"subjects" -> "departments" [label="FK007 department_id"];
+}

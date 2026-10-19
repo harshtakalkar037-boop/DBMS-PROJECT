@@ -1,0 +1,9 @@
+flowchart LR
+  sections["sections<br/>PK: section_id"]
+  sections -->|"FK026 program_id"| programs
+  sections -->|"FK027 batch_id"| batches
+  sections -->|"FK028 semester_id"| semesters
+  sections -->|"FK029 class_teacher_id"| faculty
+  program_subjects["program_subjects<br/>PK: program_subject_id"]
+  program_subjects -->|"FK030 program_id"| programs
+  program_subjects -->|"FK031 subject_id"| subjects

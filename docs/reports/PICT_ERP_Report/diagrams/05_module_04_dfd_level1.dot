@@ -1,0 +1,36 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad=0.15, nodesep=0.32, ranksep=0.65, fontname="Times New Roman", fontsize=13, label="Module 4 — Level 1 DFD", labelloc=t];
+node [fontname="Times New Roman", fontsize=12, shape=box, style="rounded,filled", color="#263b53", fillcolor="#edf2f7", margin="0.13,0.09"];
+edge [fontname="Times New Roman", fontsize=9, color="#52657a", arrowsize=0.65];
+"actor" [label="M4 actors\nAuthorized users / staff", shape=box, fillcolor="#ffffff", style="filled"];
+"p1" [label="1.0 Configure exam /\nschedule", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"d1" [label="D1: grades,\nexams,\nexam_schedules", shape=cylinder, fillcolor="#e9f2ed", style="rounded,filled"];
+"p2" [label="2.0 Register /\nissue hall-ticket data", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"d2" [label="D2: exam_registrations,\nattendance,\nenrollments", shape=cylinder, fillcolor="#e9f2ed", style="rounded,filled"];
+"p3" [label="3.0 Enter and derive marks", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"d3" [label="D3: marks", shape=cylinder, fillcolor="#e9f2ed", style="rounded,filled"];
+"p4" [label="4.0 Process /\npublish results", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"d4" [label="D4: results,\nexams,\nnotifications", shape=cylinder, fillcolor="#e9f2ed", style="rounded,filled"];
+"p5" [label="5.0 Practice MCQ adjunct", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"d5" [label="D5: mcq_questions,\nmock_exams,\nmock_exam_answers", shape=cylinder, fillcolor="#e9f2ed", style="rounded,filled"];
+"actor" -> "p1" [label="request / decision"];
+"p1" -> "actor" [label="response / report"];
+"p1" -> "d1" [label="validated writes / query"];
+"d1" -> "p1" [label="stored context / rows"];
+"actor" -> "p2" [label="request / decision"];
+"p2" -> "actor" [label="response / report"];
+"p2" -> "d2" [label="validated writes / query"];
+"d2" -> "p2" [label="stored context / rows"];
+"actor" -> "p3" [label="request / decision"];
+"p3" -> "actor" [label="response / report"];
+"p3" -> "d3" [label="validated writes / query"];
+"d3" -> "p3" [label="stored context / rows"];
+"actor" -> "p4" [label="request / decision"];
+"p4" -> "actor" [label="response / report"];
+"p4" -> "d4" [label="validated writes / query"];
+"d4" -> "p4" [label="stored context / rows"];
+"actor" -> "p5" [label="request / decision"];
+"p5" -> "actor" [label="response / report"];
+"p5" -> "d5" [label="validated writes / query"];
+"d5" -> "p5" [label="stored context / rows"];
+}

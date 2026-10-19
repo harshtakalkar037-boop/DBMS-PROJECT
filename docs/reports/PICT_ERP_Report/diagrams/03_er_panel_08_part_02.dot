@@ -1,0 +1,8 @@
+digraph G { rankdir=LR; node [shape=box];
+"ai_conversations" [label="ai_conversations\nPK: conversation_id"];
+"ai_conversations" -> "users" [label="FK136 user_id"];
+"study_plans" [label="study_plans\nPK: plan_id"];
+"study_plans" -> "students" [label="FK137 student_id"];
+"student_risk_scores" [label="student_risk_scores\nPK: risk_id"];
+"student_risk_scores" -> "students" [label="FK138 student_id"];
+}

@@ -1,0 +1,7 @@
+flowchart LR
+  payments["payments<br/>PK: payment_id"]
+  payments -->|"FK082 student_fee_id"| student_fees
+  payments -->|"FK083 student_id"| students
+  payments -->|"FK084 received_by"| users
+  scholarships["scholarships<br/>PK: scholarship_id"]
+  scholarships -->|"FK085 academic_year_id"| academic_years

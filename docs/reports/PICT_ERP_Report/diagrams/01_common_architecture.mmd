@@ -1,0 +1,12 @@
+flowchart TD
+  client["Browser: React 18 / TypeScript<br/>Vite 5 SPA"]
+  api["Express 4 /api/v1<br/>Authentication -> RBAC -> Zod / controller"]
+  service["Services -> repositories<br/>mysql2 parameter binding / callProc"]
+  db["InnoDB relational data<br/>61 tables; constraints; SQL programmability"]
+  extra["Optional: Mongo event mirror<br/>OpenAI / Gemini (local fallback)"]
+  client -->|"HTTP JSON; relative API paths"| api
+  api -->|"responses / validation errors"| client
+  api -->|"validated application operations"| service
+  service -->|"SQL / CALL"| db
+  db -->|"rows / OUT / SQL errors"| service
+  api -->|"optional, unverified integrations"| extra

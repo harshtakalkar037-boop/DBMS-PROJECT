@@ -1,0 +1,14 @@
+flowchart LR
+  applicant["Applicant"]
+  student["Student"]
+  faculty["Faculty"]
+  office["ADMIN / EXAM_CELL / ACCOUNTANT<br/>HOSTEL_ADMIN / HR"]
+  erp["0. University ERP<br/>Seven core modules + shared services"]
+  applicant -->|"application / tracking request"| erp
+  erp -->|"application status"| applicant
+  student -->|"own profile / enrollment / hostel / practice requests"| erp
+  erp -->|"attendance / bills / results / allocation / notices"| student
+  faculty -->|"teaching / marks / attendance / leave requests"| erp
+  erp -->|"rosters / workload / leave / own payroll"| faculty
+  office -->|"configuration / approvals / payment / publication"| erp
+  erp -->|"operational records / reports / audit"| office

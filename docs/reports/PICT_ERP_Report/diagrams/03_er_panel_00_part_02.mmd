@@ -1,0 +1,10 @@
+flowchart LR
+  semesters["semesters<br/>PK: semester_id"]
+  semesters -->|"FK003 academic_year_id"| academic_years
+  programs["programs<br/>PK: program_id"]
+  programs -->|"FK004 department_id"| departments
+  batches["batches<br/>PK: batch_id"]
+  batches -->|"FK005 program_id"| programs
+  batches -->|"FK006 academic_year_id"| academic_years
+  subjects["subjects<br/>PK: subject_id"]
+  subjects -->|"FK007 department_id"| departments

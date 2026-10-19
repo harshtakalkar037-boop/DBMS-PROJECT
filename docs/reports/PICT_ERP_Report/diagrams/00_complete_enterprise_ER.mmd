@@ -1,0 +1,939 @@
+erDiagram
+  %% Source: b3b56e06cfa8df6ef3765380d0a14ba75b05dc22; FK identifiers map to relationship inventory.
+  roles {
+    TINYINT_UNSIGNED role_id PK
+    VARCHAR_30 role_code
+    VARCHAR_60 role_name
+    VARCHAR_255 description
+    TIMESTAMP created_at
+  }
+  users {
+    INT_UNSIGNED user_id PK
+    TINYINT_UNSIGNED role_id FK
+    VARCHAR_150 email
+    VARCHAR_255 password_hash
+    VARCHAR_20 phone
+    TINYINT_1 is_active
+    TINYINT_1 is_first_login
+    DATETIME last_login_at
+    TINYINT_UNSIGNED failed_attempts
+    DATETIME locked_until
+    VARCHAR_512 refresh_token
+    VARCHAR_255 password_reset_token
+    TIMESTAMP created_at
+    TIMESTAMP updated_at
+  }
+  departments {
+    INT_UNSIGNED department_id PK
+    VARCHAR_20 department_code
+    VARCHAR_120 name
+    VARCHAR_40 short_name
+    INT_UNSIGNED hod_faculty_id FK
+    VARCHAR_150 email
+    VARCHAR_20 phone
+    SMALLINT_UNSIGNED established_year
+    ENUM__ACTIVE___INACTIVE status
+    TIMESTAMP created_at
+    TIMESTAMP updated_at
+  }
+  categories {
+    TINYINT_UNSIGNED category_id PK
+    VARCHAR_10 category_code
+    VARCHAR_60 name
+    VARCHAR_255 description
+  }
+  academic_years {
+    SMALLINT_UNSIGNED academic_year_id PK
+    VARCHAR_20 year_label
+    DATE start_date
+    DATE end_date
+    TINYINT_1 is_current
+    ENUM__ACTIVE___CLOSED___UPCOMING status
+  }
+  semesters {
+    SMALLINT_UNSIGNED semester_id PK
+    SMALLINT_UNSIGNED academic_year_id FK
+    TINYINT_UNSIGNED semester_no
+    VARCHAR_40 name
+    DATE start_date
+    DATE end_date
+    TINYINT_1 is_current
+    TINYINT_1 result_published
+  }
+  programs {
+    SMALLINT_UNSIGNED program_id PK
+    VARCHAR_20 program_code
+    VARCHAR_150 name
+    VARCHAR_40 short_name
+    ENUM__DIPLOMA___UG___PG___PHD level
+    INT_UNSIGNED department_id FK
+    TINYINT_UNSIGNED duration_years
+    TINYINT_UNSIGNED total_semesters
+    SMALLINT_UNSIGNED total_credits
+    SMALLINT_UNSIGNED intake
+    ENUM__ACTIVE___INACTIVE___CLOSED status
+    TIMESTAMP created_at
+    TIMESTAMP updated_at
+  }
+  batches {
+    SMALLINT_UNSIGNED batch_id PK
+    VARCHAR_20 batch_code
+    SMALLINT_UNSIGNED program_id FK
+    SMALLINT_UNSIGNED academic_year_id FK
+    SMALLINT_UNSIGNED start_year
+    SMALLINT_UNSIGNED end_year
+    TINYINT_UNSIGNED current_semester_no
+    SMALLINT_UNSIGNED strength
+    ENUM__ACTIVE___GRADUATED___INACTIVE status
+  }
+  subjects {
+    SMALLINT_UNSIGNED subject_id PK
+    VARCHAR_20 subject_code
+    VARCHAR_150 name
+    VARCHAR_40 short_name
+    TINYINT_UNSIGNED credits
+    ENUM__THEORY___PRACTICAL___ELECTIVE___PROJECT___SEMINAR subject_type
+    INT_UNSIGNED department_id FK
+    TINYINT_UNSIGNED lecture_hours
+    TINYINT_UNSIGNED tutorial_hours
+    TINYINT_UNSIGNED practical_hours
+    TINYINT_1 is_elective
+    ENUM__ACTIVE___INACTIVE status
+    TIMESTAMP created_at
+  }
+  system_settings {
+    VARCHAR_60 setting_key PK
+    VARCHAR_255 setting_value
+    VARCHAR_255 description
+    TIMESTAMP updated_at
+  }
+  notifications {
+    INT_UNSIGNED notification_id PK
+    INT_UNSIGNED user_id FK
+    VARCHAR_160 title
+    VARCHAR_500 message
+    ENUM__ATTENDANCE_WARNING___EXAM_REGISTRATION___EXAM_SCHEDULE___RESULT_PUBLISHED______________________FEE_DUE___FEE_OVERDUE___HOSTEL_ALLOCATION___LEAVE_APPROVAL___PAYROLL_GENERATED______________________ANNOUNCEMENT___ADMISSION___GENERAL type
+    ENUM__INFO___SUCCESS___WARNING___ERROR severity
+    VARCHAR_60 entity
+    INT_UNSIGNED entity_id
+    VARCHAR_255 link
+    TINYINT_1 is_read
+    DATETIME read_at
+    TIMESTAMP created_at
+  }
+  audit_logs {
+    BIGINT_UNSIGNED log_id PK
+    INT_UNSIGNED user_id FK
+    ENUM__LOGIN___LOGOUT___LOGIN_FAILED___CREATE___UPDATE___DELETE___PAYMENT_________________________FEE_CHANGE___MARKS_UPDATE___ATTENDANCE_UPDATE___HOSTEL_ALLOCATION_________________________EXAM_REGISTRATION___RESULT_PUBLISHED___LEAVE_ACTION___PAYROLL_RUN_________________________APPROVE___REJECT___SYSTEM action
+    VARCHAR_60 entity
+    INT_UNSIGNED entity_id
+    VARCHAR_500 description
+    JSON old_value
+    JSON new_value
+    VARCHAR_45 ip_address
+    VARCHAR_255 user_agent
+    TIMESTAMP created_at
+  }
+  students {
+    INT_UNSIGNED student_id PK
+    INT_UNSIGNED user_id FK
+    VARCHAR_20 roll_number
+    VARCHAR_30 registration_number
+    VARCHAR_80 first_name
+    VARCHAR_80 middle_name
+    VARCHAR_80 last_name
+    VARCHAR_150 email
+    VARCHAR_20 phone
+    DATE date_of_birth
+    ENUM__MALE___FEMALE___OTHER gender
+    ENUM__A____A____B____B____AB____AB____O____O blood_group
+    VARCHAR_50 nationality
+    TINYINT_UNSIGNED category_id FK
+    INT_UNSIGNED department_id FK
+    SMALLINT_UNSIGNED program_id FK
+    SMALLINT_UNSIGNED batch_id FK
+    SMALLINT_UNSIGNED admission_year
+    DATE admission_date
+    TINYINT_UNSIGNED current_semester_no
+    ENUM__ACTIVE___INACTIVE___GRADUATED___SUSPENDED___ALUMNI status
+    VARCHAR_255 photo_url
+    VARCHAR_20 emergency_contact
+    TIMESTAMP created_at
+    TIMESTAMP updated_at
+  }
+  addresses {
+    INT_UNSIGNED address_id PK
+    INT_UNSIGNED student_id FK
+    ENUM__PERMANENT___CORRESPONDENCE___HOSTEL address_type
+    VARCHAR_160 line1
+    VARCHAR_160 line2
+    VARCHAR_80 city
+    VARCHAR_80 district
+    VARCHAR_80 state
+    VARCHAR_10 pincode
+    VARCHAR_60 country
+    TINYINT_1 is_primary
+    TIMESTAMP created_at
+    TIMESTAMP updated_at
+  }
+  guardians {
+    INT_UNSIGNED guardian_id PK
+    INT_UNSIGNED student_id FK
+    VARCHAR_120 name
+    ENUM__FATHER___MOTHER___GUARDIAN___SPOUSE___SIBLING relation
+    VARCHAR_20 phone
+    VARCHAR_150 email
+    VARCHAR_80 occupation
+    DECIMAL_12_2 annual_income
+    TINYINT_1 is_primary
+    TIMESTAMP created_at
+    TIMESTAMP updated_at
+  }
+  admissions {
+    INT_UNSIGNED admission_id PK
+    VARCHAR_30 application_no
+    INT_UNSIGNED student_id FK
+    SMALLINT_UNSIGNED academic_year_id FK
+    SMALLINT_UNSIGNED program_id FK
+    TINYINT_UNSIGNED category_id FK
+    VARCHAR_80 first_name
+    VARCHAR_80 last_name
+    VARCHAR_150 email
+    VARCHAR_20 phone
+    DATE date_of_birth
+    ENUM__MALE___FEMALE___OTHER gender
+    VARCHAR_120 guardian_name
+    VARCHAR_20 guardian_phone
+    VARCHAR_160 previous_school
+    VARCHAR_80 qualification
+    DECIMAL_5_2 marks_10
+    DECIMAL_5_2 marks_12
+    DECIMAL_6_2 entrance_score
+    VARCHAR_160 address_line1
+    VARCHAR_80 city
+    VARCHAR_80 state
+    VARCHAR_10 pincode
+    DATE application_date
+    ENUM__APPLIED___UNDER_REVIEW___APPROVED___REJECTED___WAITLISTED status
+    INT_UNSIGNED reviewed_by FK
+    DATETIME reviewed_at
+    VARCHAR_500 remarks
+    TIMESTAMP created_at
+    TIMESTAMP updated_at
+  }
+  student_documents {
+    INT_UNSIGNED document_id PK
+    INT_UNSIGNED student_id FK
+    ENUM__PHOTO___AADHAR___PAN___BIRTH_CERTIFICATE___MARKSHEET_10___MARKSHEET_12__________________________TRANSFER_CERTIFICATE___CASTE_CERTIFICATE___INCOME_CERTIFICATE___OTHER doc_type
+    VARCHAR_255 file_name
+    VARCHAR_255 file_path
+    VARCHAR_100 mime_type
+    INT_UNSIGNED size_bytes
+    TINYINT_1 is_verified
+    INT_UNSIGNED verified_by FK
+    DATETIME verified_at
+    TIMESTAMP uploaded_at
+  }
+  student_status_history {
+    INT_UNSIGNED history_id PK
+    INT_UNSIGNED student_id FK
+    VARCHAR_30 old_status
+    VARCHAR_30 new_status
+    VARCHAR_255 reason
+    INT_UNSIGNED changed_by FK
+    TIMESTAMP changed_at
+  }
+  sections {
+    SMALLINT_UNSIGNED section_id PK
+    VARCHAR_10 section_code
+    SMALLINT_UNSIGNED program_id FK
+    SMALLINT_UNSIGNED batch_id FK
+    SMALLINT_UNSIGNED semester_id FK
+    SMALLINT_UNSIGNED capacity
+    VARCHAR_20 room_number
+    INT_UNSIGNED class_teacher_id FK
+    ENUM__ACTIVE___INACTIVE status
+  }
+  program_subjects {
+    SMALLINT_UNSIGNED program_subject_id PK
+    SMALLINT_UNSIGNED program_id FK
+    SMALLINT_UNSIGNED subject_id FK
+    TINYINT_UNSIGNED semester_no
+    TINYINT_1 is_elective
+  }
+  course_offerings {
+    INT_UNSIGNED offering_id PK
+    SMALLINT_UNSIGNED subject_id FK
+    SMALLINT_UNSIGNED semester_id FK
+    SMALLINT_UNSIGNED academic_year_id FK
+    SMALLINT_UNSIGNED program_id FK
+    SMALLINT_UNSIGNED section_id FK
+    INT_UNSIGNED faculty_id FK
+    SMALLINT_UNSIGNED capacity
+    SMALLINT_UNSIGNED enrolled_count
+    ENUM__REGULAR___ELECTIVE___BACKLOG___AUDIT offering_type
+    ENUM__OPEN___CLOSED___CANCELLED___COMPLETED status
+    TIMESTAMP created_at
+  }
+  enrollments {
+    INT_UNSIGNED enrollment_id PK
+    INT_UNSIGNED student_id FK
+    INT_UNSIGNED offering_id FK
+    DATE enrolled_on
+    INT_UNSIGNED enrolled_by FK
+    VARCHAR_4 grade
+    DECIMAL_4_2 grade_points
+    ENUM__ENROLLED___COMPLETED___DROPPED___FAILED___PASSED status
+    TIMESTAMP created_at
+    TIMESTAMP updated_at
+  }
+  faculty_subjects {
+    INT_UNSIGNED allocation_id PK
+    INT_UNSIGNED faculty_id FK
+    SMALLINT_UNSIGNED subject_id FK
+    SMALLINT_UNSIGNED academic_year_id FK
+    SMALLINT_UNSIGNED semester_id FK
+    TINYINT_1 is_primary
+    DATE assigned_on
+  }
+  timetable {
+    SMALLINT_UNSIGNED timetable_id PK
+    INT_UNSIGNED offering_id FK
+    SMALLINT_UNSIGNED section_id FK
+    INT_UNSIGNED faculty_id FK
+    ENUM__MONDAY___TUESDAY___WEDNESDAY___THURSDAY___FRIDAY___SATURDAY___SUNDAY day_of_week
+    TIME start_time
+    TIME end_time
+    VARCHAR_20 room_number
+    VARCHAR_20 slot_label
+    TINYINT_1 is_active
+  }
+  academic_calendar {
+    INT_UNSIGNED event_id PK
+    SMALLINT_UNSIGNED academic_year_id FK
+    SMALLINT_UNSIGNED semester_id FK
+    VARCHAR_150 title
+    VARCHAR_500 description
+    ENUM__EXAM___HOLIDAY___FEST___WORKSHOP___SEMINAR___RESULT___FEE_DUE___OTHER event_type
+    DATE event_date
+    DATE end_date
+    TINYINT_1 is_holiday
+    TIMESTAMP created_at
+  }
+  class_sessions {
+    INT_UNSIGNED session_id PK
+    INT_UNSIGNED offering_id FK
+    INT_UNSIGNED faculty_id FK
+    SMALLINT_UNSIGNED semester_id FK
+    DATE session_date
+    TINYINT_UNSIGNED session_no
+    VARCHAR_255 topic
+    VARCHAR_20 room_number
+    TIME start_time
+    TIME end_time
+    ENUM__SCHEDULED___COMPLETED___CANCELLED status
+    TIMESTAMP created_at
+  }
+  attendance {
+    INT_UNSIGNED attendance_id PK
+    INT_UNSIGNED session_id FK
+    INT_UNSIGNED student_id FK
+    INT_UNSIGNED offering_id FK
+    SMALLINT_UNSIGNED semester_id FK
+    ENUM__PRESENT___ABSENT___LATE___EXCUSED status
+    VARCHAR_255 remarks
+    INT_UNSIGNED marked_by FK
+    TIMESTAMP marked_at
+  }
+  grades {
+    TINYINT_UNSIGNED grade_id PK
+    VARCHAR_4 grade_code
+    VARCHAR_20 grade_label
+    DECIMAL_5_2 min_percentage
+    DECIMAL_5_2 max_percentage
+    DECIMAL_4_2 grade_points
+    TINYINT_1 is_pass
+  }
+  exams {
+    SMALLINT_UNSIGNED exam_id PK
+    VARCHAR_20 exam_code
+    VARCHAR_120 name
+    ENUM__INTERNAL___MIDTERM___ENDSEM___PRACTICAL___VIVA___QUIZ___MOCK exam_type
+    SMALLINT_UNSIGNED academic_year_id FK
+    SMALLINT_UNSIGNED semester_id FK
+    DATE start_date
+    DATE end_date
+    DATE registration_start
+    DATE registration_end
+    TINYINT_1 result_published
+    DATETIME published_on
+    DECIMAL_5_2 min_attendance_required
+    ENUM__DRAFT___SCHEDULED___REGISTRATION_OPEN___ONGOING___COMPLETED___PUBLISHED___CANCELLED status
+    TIMESTAMP created_at
+  }
+  exam_schedules {
+    INT_UNSIGNED schedule_id PK
+    SMALLINT_UNSIGNED exam_id FK
+    SMALLINT_UNSIGNED subject_id FK
+    SMALLINT_UNSIGNED program_id FK
+    DATE exam_date
+    TIME start_time
+    TIME end_time
+    VARCHAR_20 room_number
+    SMALLINT_UNSIGNED max_marks
+    SMALLINT_UNSIGNED min_marks
+    INT_UNSIGNED invigilator_id FK
+  }
+  exam_registrations {
+    INT_UNSIGNED registration_id PK
+    SMALLINT_UNSIGNED exam_id FK
+    INT_UNSIGNED student_id FK
+    INT_UNSIGNED offering_id FK
+    INT_UNSIGNED schedule_id FK
+    DATETIME registered_on
+    INT_UNSIGNED registered_by FK
+    DECIMAL_5_2 attendance_percentage
+    TINYINT_1 is_eligible
+    VARCHAR_255 eligibility_reason
+    TINYINT_1 exemption_granted
+    INT_UNSIGNED exemption_by
+    VARCHAR_255 exemption_reason
+    VARCHAR_30 hall_ticket_no
+    DATETIME hall_ticket_issued_at
+    ENUM__REGISTERED___VERIFIED___REJECTED___CANCELLED___ABSENT___APPEARED status
+  }
+  marks {
+    INT_UNSIGNED mark_id PK
+    INT_UNSIGNED registration_id FK
+    DECIMAL_6_2 marks_obtained
+    SMALLINT_UNSIGNED max_marks
+    DECIMAL_5_2 percentage
+    VARCHAR_4 grade
+    DECIMAL_4_2 grade_points
+    TINYINT_1 is_absent
+    TINYINT_1 is_pass
+    INT_UNSIGNED entered_by FK
+    DATETIME entered_on
+    TIMESTAMP updated_at
+    VARCHAR_255 remarks
+  }
+  results {
+    INT_UNSIGNED result_id PK
+    INT_UNSIGNED student_id FK
+    SMALLINT_UNSIGNED semester_id FK
+    SMALLINT_UNSIGNED exam_id FK
+    DECIMAL_4_2 sgpa
+    DECIMAL_4_2 cgpa
+    SMALLINT_UNSIGNED total_credits
+    SMALLINT_UNSIGNED earned_credits
+    TINYINT_UNSIGNED backlog_count
+    ENUM__PASS___FAIL___PROMOTED___WITHHELD result_status
+    VARCHAR_255 remarks
+    DATETIME published_on
+    INT_UNSIGNED published_by FK
+    TIMESTAMP created_at
+  }
+  fee_structures {
+    SMALLINT_UNSIGNED fee_structure_id PK
+    VARCHAR_30 fee_code
+    SMALLINT_UNSIGNED program_id FK
+    TINYINT_UNSIGNED semester_no
+    SMALLINT_UNSIGNED academic_year_id FK
+    TINYINT_UNSIGNED category_id FK
+    DECIMAL_10_2 tuition_fee
+    DECIMAL_10_2 hostel_fee
+    DECIMAL_10_2 exam_fee
+    DECIMAL_10_2 library_fee
+    DECIMAL_10_2 lab_fee
+    DECIMAL_10_2 development_fee
+    DECIMAL_10_2 other_fee
+    DECIMAL_8_2 late_fee_per_day
+    SMALLINT_UNSIGNED grace_days
+    DATE due_date
+    ENUM__ACTIVE___INACTIVE status
+    TIMESTAMP created_at
+  }
+  student_fees {
+    INT_UNSIGNED student_fee_id PK
+    INT_UNSIGNED student_id FK
+    SMALLINT_UNSIGNED fee_structure_id FK
+    SMALLINT_UNSIGNED semester_id FK
+    SMALLINT_UNSIGNED academic_year_id FK
+    DECIMAL_10_2 total_amount
+    DECIMAL_10_2 scholarship_amount
+    DECIMAL_10_2 discount_amount
+    DECIMAL_10_2 fine_amount
+    DECIMAL_10_2 paid_amount
+    DECIMAL_10_2 due_amount
+    ENUM__PENDING___PARTIAL___PAID___OVERDUE___REFUNDED status
+    DATE due_date
+    DATETIME paid_on
+    VARCHAR_255 remarks
+    TIMESTAMP created_at
+    TIMESTAMP updated_at
+  }
+  payments {
+    INT_UNSIGNED payment_id PK
+    VARCHAR_30 receipt_no
+    VARCHAR_60 transaction_id
+    INT_UNSIGNED student_fee_id FK
+    INT_UNSIGNED student_id FK
+    DECIMAL_10_2 amount
+    ENUM__CASH___CARD___UPI___NETBANKING___CHEQUE___DD___ONLINE___SCHOLARSHIP payment_mode
+    DATETIME payment_date
+    ENUM__SUCCESS___PENDING___FAILED___REFUNDED status
+    VARCHAR_60 reference_no
+    INT_UNSIGNED received_by FK
+    VARCHAR_255 remarks
+    TIMESTAMP created_at
+  }
+  scholarships {
+    SMALLINT_UNSIGNED scholarship_id PK
+    VARCHAR_20 scholarship_code
+    VARCHAR_150 name
+    VARCHAR_120 provider
+    ENUM__MERIT___NEED___SPORTS___GOVERNMENT___MINORITY___OTHER scholarship_type
+    DECIMAL_10_2 amount
+    TINYINT_1 is_percentage
+    VARCHAR_500 criteria
+    SMALLINT_UNSIGNED max_beneficiaries
+    SMALLINT_UNSIGNED academic_year_id FK
+    ENUM__ACTIVE___INACTIVE status
+  }
+  student_scholarships {
+    INT_UNSIGNED student_scholarship_id PK
+    INT_UNSIGNED student_id FK
+    SMALLINT_UNSIGNED scholarship_id FK
+    SMALLINT_UNSIGNED academic_year_id FK
+    DECIMAL_10_2 amount
+    DATE sanctioned_on
+    INT_UNSIGNED sanctioned_by FK
+    ENUM__APPLIED___APPROVED___REJECTED___CREDITED status
+    VARCHAR_255 remarks
+  }
+  fines {
+    INT_UNSIGNED fine_id PK
+    INT_UNSIGNED student_id FK
+    INT_UNSIGNED student_fee_id FK
+    VARCHAR_255 reason
+    ENUM__LATE_FEE___LIBRARY___HOSTEL_DAMAGE___DISCIPLINE___EXAM_MALPRACTICE___OTHER fine_type
+    DECIMAL_10_2 amount
+    DATE imposed_on
+    INT_UNSIGNED imposed_by FK
+    ENUM__PENDING___PAID___WAIVED status
+    VARCHAR_255 remarks
+  }
+  refunds {
+    INT_UNSIGNED refund_id PK
+    INT_UNSIGNED payment_id FK
+    INT_UNSIGNED student_id FK
+    DECIMAL_10_2 amount
+    VARCHAR_255 reason
+    ENUM__CASH___UPI___NETBANKING___CHEQUE refund_mode
+    DATETIME refund_date
+    ENUM__INITIATED___PROCESSED___REJECTED status
+    INT_UNSIGNED processed_by FK
+    VARCHAR_255 remarks
+  }
+  transactions {
+    BIGINT_UNSIGNED transaction_id PK
+    INT_UNSIGNED student_fee_id FK
+    INT_UNSIGNED payment_id FK
+    INT_UNSIGNED student_id FK
+    ENUM__DEBIT___CREDIT txn_type
+    DECIMAL_10_2 amount
+    DECIMAL_10_2 balance_after
+    VARCHAR_255 description
+    TIMESTAMP created_at
+  }
+  hostels {
+    SMALLINT_UNSIGNED hostel_id PK
+    VARCHAR_20 hostel_code
+    VARCHAR_120 name
+    ENUM__BOYS___GIRLS___CO_ED hostel_type
+    INT_UNSIGNED warden_faculty_id FK
+    VARCHAR_255 address
+    VARCHAR_20 contact_no
+    SMALLINT_UNSIGNED total_rooms
+    SMALLINT_UNSIGNED total_beds
+    SMALLINT_UNSIGNED occupied_beds
+    DECIMAL_10_2 rent_per_bed
+    ENUM__ACTIVE___MAINTENANCE___CLOSED status
+    TIMESTAMP created_at
+  }
+  hostel_blocks {
+    SMALLINT_UNSIGNED block_id PK
+    SMALLINT_UNSIGNED hostel_id FK
+    VARCHAR_10 block_code
+    VARCHAR_80 name
+    TINYINT_UNSIGNED floors
+    ENUM__ACTIVE___MAINTENANCE___CLOSED status
+  }
+  rooms {
+    INT_UNSIGNED room_id PK
+    SMALLINT_UNSIGNED hostel_id FK
+    SMALLINT_UNSIGNED block_id FK
+    VARCHAR_10 room_number
+    TINYINT_UNSIGNED floor
+    ENUM__SINGLE___DOUBLE___TRIPLE___SHARED room_type
+    TINYINT_UNSIGNED capacity
+    TINYINT_UNSIGNED occupied_count
+    DECIMAL_10_2 rent_per_bed
+    ENUM__AVAILABLE___FULL___MAINTENANCE___RESERVED status
+  }
+  beds {
+    INT_UNSIGNED bed_id PK
+    INT_UNSIGNED room_id FK
+    VARCHAR_10 bed_code
+    ENUM__AVAILABLE___OCCUPIED___RESERVED___MAINTENANCE status
+    VARCHAR_255 remarks
+  }
+  hostel_applications {
+    INT_UNSIGNED application_id PK
+    VARCHAR_30 application_no
+    INT_UNSIGNED student_id FK
+    SMALLINT_UNSIGNED hostel_id FK
+    SMALLINT_UNSIGNED academic_year_id FK
+    ENUM__SINGLE___DOUBLE___TRIPLE___SHARED room_type_pref
+    DATE applied_on
+    ENUM__APPLIED___APPROVED___REJECTED___WAITLISTED___CANCELLED status
+    INT_UNSIGNED reviewed_by FK
+    DATETIME reviewed_on
+    VARCHAR_255 remarks
+  }
+  room_allocations {
+    INT_UNSIGNED allocation_id PK
+    INT_UNSIGNED student_id FK
+    INT_UNSIGNED bed_id FK
+    INT_UNSIGNED room_id FK
+    SMALLINT_UNSIGNED hostel_id FK
+    SMALLINT_UNSIGNED academic_year_id FK
+    DATE allocated_on
+    INT_UNSIGNED allocated_by FK
+    DATE vacated_on
+    DECIMAL_10_2 rent_amount
+    ENUM__ACTIVE___VACATED___TRANSFERRED status
+    VARCHAR_255 remarks
+    VARCHAR_32 active_bed_year
+  }
+  room_transfers {
+    INT_UNSIGNED transfer_id PK
+    INT_UNSIGNED student_id FK
+    INT_UNSIGNED from_bed_id FK
+    INT_UNSIGNED to_bed_id FK
+    VARCHAR_255 reason
+    DATETIME transferred_on
+    INT_UNSIGNED approved_by FK
+  }
+  hostel_fees {
+    INT_UNSIGNED hostel_fee_id PK
+    INT_UNSIGNED allocation_id FK
+    INT_UNSIGNED student_id FK
+    SMALLINT_UNSIGNED academic_year_id FK
+    DECIMAL_10_2 amount
+    DECIMAL_10_2 paid_amount
+    DATE due_date
+    ENUM__PENDING___PARTIAL___PAID___OVERDUE status
+    TIMESTAMP created_at
+  }
+  designations {
+    SMALLINT_UNSIGNED designation_id PK
+    VARCHAR_20 designation_code
+    VARCHAR_80 title
+    VARCHAR_20 grade
+    DECIMAL_12_2 min_basic_pay
+    DECIMAL_12_2 max_basic_pay
+    TINYINT_UNSIGNED teaching_hours_per_week
+  }
+  faculty {
+    INT_UNSIGNED faculty_id PK
+    INT_UNSIGNED user_id FK
+    VARCHAR_20 employee_code
+    VARCHAR_80 first_name
+    VARCHAR_80 last_name
+    VARCHAR_150 email
+    VARCHAR_20 phone
+    DATE date_of_birth
+    ENUM__MALE___FEMALE___OTHER gender
+    SMALLINT_UNSIGNED designation_id FK
+    INT_UNSIGNED department_id FK
+    DATE joining_date
+    ENUM__REGULAR___CONTRACT___VISITING___ADJUNCT employment_type
+    VARCHAR_150 qualification
+    VARCHAR_150 specialization
+    TINYINT_UNSIGNED experience_years
+    DECIMAL_12_2 basic_salary
+    DECIMAL_12_2 hra
+    DECIMAL_12_2 da
+    DECIMAL_12_2 ta
+    DECIMAL_12_2 special_allowance
+    DECIMAL_5_2 pf_percent
+    VARCHAR_30 bank_account
+    ENUM__ACTIVE___ON_LEAVE___RESIGNED___RETIRED___SUSPENDED status
+    TIMESTAMP created_at
+    TIMESTAMP updated_at
+  }
+  faculty_leaves {
+    INT_UNSIGNED leave_id PK
+    INT_UNSIGNED faculty_id FK
+    ENUM__CASUAL___SICK___EARNED___MATERNITY___PATERNITY___UNPAID___ON_DUTY leave_type
+    DATE start_date
+    DATE end_date
+    TINYINT_UNSIGNED days
+    VARCHAR_500 reason
+    DATE applied_on
+    ENUM__PENDING___APPROVED___REJECTED___CANCELLED status
+    INT_UNSIGNED approved_by FK
+    DATETIME approved_on
+    VARCHAR_255 remarks
+  }
+  leave_balances {
+    INT_UNSIGNED balance_id PK
+    INT_UNSIGNED faculty_id FK
+    SMALLINT_UNSIGNED academic_year_id FK
+    ENUM__CASUAL___SICK___EARNED___MATERNITY___PATERNITY___UNPAID___ON_DUTY leave_type
+    TINYINT_UNSIGNED allotted
+    TINYINT_UNSIGNED used
+  }
+  payrolls {
+    INT_UNSIGNED payroll_id PK
+    INT_UNSIGNED faculty_id FK
+    TINYINT_UNSIGNED pay_month
+    SMALLINT_UNSIGNED pay_year
+    DECIMAL_12_2 basic
+    DECIMAL_12_2 hra
+    DECIMAL_12_2 da
+    DECIMAL_12_2 ta
+    DECIMAL_12_2 special_allowance
+    DECIMAL_12_2 gross_salary
+    DECIMAL_12_2 pf_deduction
+    DECIMAL_12_2 professional_tax
+    DECIMAL_12_2 income_tax
+    TINYINT_UNSIGNED lop_days
+    DECIMAL_12_2 lop_amount
+    DECIMAL_12_2 other_deduction
+    DECIMAL_12_2 net_salary
+    TINYINT_UNSIGNED working_days
+    ENUM__DRAFT___GENERATED___APPROVED___PAID status
+    DATETIME generated_on
+    DATE paid_on
+    VARCHAR_255 remarks
+  }
+  payroll_components {
+    INT_UNSIGNED component_id PK
+    INT_UNSIGNED payroll_id FK
+    ENUM__EARNING___DEDUCTION component_type
+    VARCHAR_80 name
+    DECIMAL_12_2 amount
+  }
+  mcq_questions {
+    INT_UNSIGNED question_id PK
+    SMALLINT_UNSIGNED subject_id FK
+    ENUM__EASY___MEDIUM___HARD difficulty
+    VARCHAR_500 question_text
+    VARCHAR_255 option_a
+    VARCHAR_255 option_b
+    VARCHAR_255 option_c
+    VARCHAR_255 option_d
+    ENUM__A___B___C___D correct_option
+    TINYINT_UNSIGNED marks
+    VARCHAR_500 explanation
+    VARCHAR_100 topic
+    INT_UNSIGNED created_by FK
+    ENUM__ACTIVE___INACTIVE status
+    TIMESTAMP created_at
+  }
+  mock_exams {
+    INT_UNSIGNED mock_exam_id PK
+    INT_UNSIGNED student_id FK
+    SMALLINT_UNSIGNED subject_id FK
+    ENUM__EASY___MEDIUM___HARD___MIXED difficulty
+    SMALLINT_UNSIGNED total_questions
+    SMALLINT_UNSIGNED duration_minutes
+    DATETIME started_at
+    DATETIME expires_at
+    DATETIME submitted_at
+    DECIMAL_6_2 score
+    DECIMAL_6_2 max_score
+    DECIMAL_5_2 percentage
+    SMALLINT_UNSIGNED correct_count
+    ENUM__IN_PROGRESS___SUBMITTED___EXPIRED status
+  }
+  mock_exam_answers {
+    INT_UNSIGNED answer_id PK
+    INT_UNSIGNED mock_exam_id FK
+    INT_UNSIGNED question_id FK
+    ENUM__A___B___C___D selected_option
+    TINYINT_1 is_correct
+    DECIMAL_5_2 marks_awarded
+    DATETIME answered_at
+  }
+  ai_conversations {
+    INT_UNSIGNED conversation_id PK
+    INT_UNSIGNED user_id FK
+    VARCHAR_64 session_id
+    ENUM__USER___ASSISTANT role
+    TEXT message
+    ENUM__LOCAL_ENGINE___LLM source
+    TIMESTAMP created_at
+  }
+  study_plans {
+    INT_UNSIGNED plan_id PK
+    INT_UNSIGNED student_id FK
+    DATETIME generated_on
+    ENUM__LOCAL_ENGINE___LLM source
+    JSON input_snapshot
+    JSON plan_json
+    DATE valid_until
+  }
+  student_risk_scores {
+    INT_UNSIGNED risk_id PK
+    INT_UNSIGNED student_id FK
+    DATE computed_on
+    DECIMAL_5_2 risk_score
+    ENUM__LOW___MEDIUM___HIGH___CRITICAL risk_level
+    DECIMAL_5_2 attendance_pct
+    DECIMAL_5_2 avg_marks
+    DECIMAL_4_2 cgpa
+    DECIMAL_10_2 pending_fees
+    TINYINT_UNSIGNED backlog_count
+    JSON factors
+  }
+  roles ||--o{ users : "FK001 role_id"
+  faculty |o--o{ departments : "FK002 hod_faculty_id"
+  academic_years ||--o{ semesters : "FK003 academic_year_id"
+  departments ||--o{ programs : "FK004 department_id"
+  programs ||--o{ batches : "FK005 program_id"
+  academic_years ||--o{ batches : "FK006 academic_year_id"
+  departments ||--o{ subjects : "FK007 department_id"
+  users |o--o{ notifications : "FK008 user_id"
+  users |o--o{ audit_logs : "FK009 user_id"
+  users ||--o| students : "FK010 user_id"
+  categories ||--o{ students : "FK011 category_id"
+  departments ||--o{ students : "FK012 department_id"
+  programs ||--o{ students : "FK013 program_id"
+  batches ||--o{ students : "FK014 batch_id"
+  students ||--o{ addresses : "FK015 student_id"
+  students ||--o{ guardians : "FK016 student_id"
+  students |o--o| admissions : "FK017 student_id"
+  academic_years ||--o{ admissions : "FK018 academic_year_id"
+  programs ||--o{ admissions : "FK019 program_id"
+  categories ||--o{ admissions : "FK020 category_id"
+  users |o--o{ admissions : "FK021 reviewed_by"
+  students ||--o{ student_documents : "FK022 student_id"
+  users |o--o{ student_documents : "FK023 verified_by"
+  students ||--o{ student_status_history : "FK024 student_id"
+  users |o--o{ student_status_history : "FK025 changed_by"
+  programs ||--o{ sections : "FK026 program_id"
+  batches ||--o{ sections : "FK027 batch_id"
+  semesters |o--o{ sections : "FK028 semester_id"
+  faculty |o--o{ sections : "FK029 class_teacher_id"
+  programs ||--o{ program_subjects : "FK030 program_id"
+  subjects ||--o{ program_subjects : "FK031 subject_id"
+  subjects ||--o{ course_offerings : "FK032 subject_id"
+  semesters ||--o{ course_offerings : "FK033 semester_id"
+  academic_years ||--o{ course_offerings : "FK034 academic_year_id"
+  programs ||--o{ course_offerings : "FK035 program_id"
+  sections |o--o{ course_offerings : "FK036 section_id"
+  faculty |o--o{ course_offerings : "FK037 faculty_id"
+  students ||--o{ enrollments : "FK038 student_id"
+  course_offerings ||--o{ enrollments : "FK039 offering_id"
+  users |o--o{ enrollments : "FK040 enrolled_by"
+  subjects ||--o{ faculty_subjects : "FK041 subject_id"
+  academic_years ||--o{ faculty_subjects : "FK042 academic_year_id"
+  semesters |o--o{ faculty_subjects : "FK043 semester_id"
+  faculty ||--o{ faculty_subjects : "FK044 faculty_id"
+  course_offerings ||--o{ timetable : "FK045 offering_id"
+  sections ||--o{ timetable : "FK046 section_id"
+  faculty ||--o{ timetable : "FK047 faculty_id"
+  academic_years ||--o{ academic_calendar : "FK048 academic_year_id"
+  semesters |o--o{ academic_calendar : "FK049 semester_id"
+  course_offerings ||--o{ class_sessions : "FK050 offering_id"
+  semesters ||--o{ class_sessions : "FK051 semester_id"
+  faculty ||--o{ class_sessions : "FK052 faculty_id"
+  class_sessions ||--o{ attendance : "FK053 session_id"
+  students ||--o{ attendance : "FK054 student_id"
+  course_offerings ||--o{ attendance : "FK055 offering_id"
+  semesters ||--o{ attendance : "FK056 semester_id"
+  users |o--o{ attendance : "FK057 marked_by"
+  academic_years ||--o{ exams : "FK058 academic_year_id"
+  semesters ||--o{ exams : "FK059 semester_id"
+  exams ||--o{ exam_schedules : "FK060 exam_id"
+  subjects ||--o{ exam_schedules : "FK061 subject_id"
+  programs ||--o{ exam_schedules : "FK062 program_id"
+  faculty |o--o{ exam_schedules : "FK063 invigilator_id"
+  exams ||--o{ exam_registrations : "FK064 exam_id"
+  students ||--o{ exam_registrations : "FK065 student_id"
+  course_offerings ||--o{ exam_registrations : "FK066 offering_id"
+  exam_schedules |o--o{ exam_registrations : "FK067 schedule_id"
+  users |o--o{ exam_registrations : "FK068 registered_by"
+  exam_registrations ||--o| marks : "FK069 registration_id"
+  users |o--o{ marks : "FK070 entered_by"
+  students ||--o{ results : "FK071 student_id"
+  semesters ||--o{ results : "FK072 semester_id"
+  exams |o--o{ results : "FK073 exam_id"
+  users |o--o{ results : "FK074 published_by"
+  programs ||--o{ fee_structures : "FK075 program_id"
+  academic_years ||--o{ fee_structures : "FK076 academic_year_id"
+  categories |o--o{ fee_structures : "FK077 category_id"
+  students ||--o{ student_fees : "FK078 student_id"
+  fee_structures ||--o{ student_fees : "FK079 fee_structure_id"
+  semesters ||--o{ student_fees : "FK080 semester_id"
+  academic_years ||--o{ student_fees : "FK081 academic_year_id"
+  student_fees ||--o{ payments : "FK082 student_fee_id"
+  students ||--o{ payments : "FK083 student_id"
+  users |o--o{ payments : "FK084 received_by"
+  academic_years ||--o{ scholarships : "FK085 academic_year_id"
+  students ||--o{ student_scholarships : "FK086 student_id"
+  scholarships ||--o{ student_scholarships : "FK087 scholarship_id"
+  academic_years ||--o{ student_scholarships : "FK088 academic_year_id"
+  users |o--o{ student_scholarships : "FK089 sanctioned_by"
+  students ||--o{ fines : "FK090 student_id"
+  student_fees |o--o{ fines : "FK091 student_fee_id"
+  users |o--o{ fines : "FK092 imposed_by"
+  payments ||--o{ refunds : "FK093 payment_id"
+  students ||--o{ refunds : "FK094 student_id"
+  users |o--o{ refunds : "FK095 processed_by"
+  student_fees ||--o{ transactions : "FK096 student_fee_id"
+  payments |o--o{ transactions : "FK097 payment_id"
+  students ||--o{ transactions : "FK098 student_id"
+  faculty |o--o{ hostels : "FK099 warden_faculty_id"
+  hostels ||--o{ hostel_blocks : "FK100 hostel_id"
+  hostels ||--o{ rooms : "FK101 hostel_id"
+  hostel_blocks ||--o{ rooms : "FK102 block_id"
+  rooms ||--o{ beds : "FK103 room_id"
+  students ||--o{ hostel_applications : "FK104 student_id"
+  hostels ||--o{ hostel_applications : "FK105 hostel_id"
+  academic_years ||--o{ hostel_applications : "FK106 academic_year_id"
+  users |o--o{ hostel_applications : "FK107 reviewed_by"
+  students ||--o{ room_allocations : "FK108 student_id"
+  beds ||--o{ room_allocations : "FK109 bed_id"
+  rooms ||--o{ room_allocations : "FK110 room_id"
+  hostels ||--o{ room_allocations : "FK111 hostel_id"
+  academic_years ||--o{ room_allocations : "FK112 academic_year_id"
+  users |o--o{ room_allocations : "FK113 allocated_by"
+  students ||--o{ room_transfers : "FK114 student_id"
+  beds ||--o{ room_transfers : "FK115 from_bed_id"
+  beds ||--o{ room_transfers : "FK116 to_bed_id"
+  users |o--o{ room_transfers : "FK117 approved_by"
+  room_allocations ||--o| hostel_fees : "FK118 allocation_id"
+  students ||--o{ hostel_fees : "FK119 student_id"
+  academic_years ||--o{ hostel_fees : "FK120 academic_year_id"
+  users ||--o| faculty : "FK121 user_id"
+  designations ||--o{ faculty : "FK122 designation_id"
+  departments ||--o{ faculty : "FK123 department_id"
+  faculty ||--o{ faculty_leaves : "FK124 faculty_id"
+  users |o--o{ faculty_leaves : "FK125 approved_by"
+  faculty ||--o{ leave_balances : "FK126 faculty_id"
+  academic_years ||--o{ leave_balances : "FK127 academic_year_id"
+  faculty ||--o{ payrolls : "FK128 faculty_id"
+  payrolls ||--o{ payroll_components : "FK129 payroll_id"
+  subjects ||--o{ mcq_questions : "FK130 subject_id"
+  users |o--o{ mcq_questions : "FK131 created_by"
+  students ||--o{ mock_exams : "FK132 student_id"
+  subjects ||--o{ mock_exams : "FK133 subject_id"
+  mock_exams ||--o{ mock_exam_answers : "FK134 mock_exam_id"
+  mcq_questions ||--o{ mock_exam_answers : "FK135 question_id"
+  users ||--o{ ai_conversations : "FK136 user_id"
+  students ||--o{ study_plans : "FK137 student_id"
+  students ||--o{ student_risk_scores : "FK138 student_id"

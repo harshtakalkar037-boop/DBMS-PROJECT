@@ -1,0 +1,14 @@
+flowchart TD
+  s1["1. Validate decision and begin transaction"]
+  s2["2. Lock application; reject missing or<br/>already reviewed state"]
+  s3["3. For rejection: update application and<br/>audit, then commit"]
+  s4["4. For approval: validate supplied hash,<br/>program, active batch and STUDENT role"]
+  s5["5. Create users, students and guardians;<br/>link approved application"]
+  s6["6. Write audit / notification; commit;<br/>rollback and resignal SQL exceptions"]
+  err["SQL exception<br/>ROLLBACK / error outcome"]
+  s1 -->|"control / data"| s2
+  s2 -->|"control / data"| s3
+  s3 -->|"control / data"| s4
+  s4 -->|"control / data"| s5
+  s5 -->|"control / data"| s6
+  s2 -->|"invalid context / SQL failure"| err

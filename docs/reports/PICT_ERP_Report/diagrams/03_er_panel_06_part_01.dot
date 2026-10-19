@@ -1,0 +1,11 @@
+digraph G { rankdir=LR; node [shape=box];
+"hostels" [label="hostels\nPK: hostel_id"];
+"hostels" -> "faculty" [label="FK099 warden_faculty_id"];
+"hostel_blocks" [label="hostel_blocks\nPK: block_id"];
+"hostel_blocks" -> "hostels" [label="FK100 hostel_id"];
+"rooms" [label="rooms\nPK: room_id"];
+"rooms" -> "hostels" [label="FK101 hostel_id"];
+"rooms" -> "hostel_blocks" [label="FK102 block_id"];
+"beds" [label="beds\nPK: bed_id"];
+"beds" -> "rooms" [label="FK103 room_id"];
+}

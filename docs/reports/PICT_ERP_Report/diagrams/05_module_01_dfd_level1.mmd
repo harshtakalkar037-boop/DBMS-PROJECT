@@ -1,0 +1,26 @@
+flowchart TD
+  actor["M1 actors<br/>Applicant / student / staff"]
+  p1["1.0 Submit /<br/>track application"]
+  d1["D1: admissions"]
+  p2["2.0 Review /<br/>approve or reject"]
+  d2["D2: admissions,<br/>users,<br/>students,<br/>guardians"]
+  p3["3.0 Maintain profile /<br/>contacts"]
+  d3["D3: students,<br/>addresses,<br/>guardians,<br/>student_documents"]
+  p4["4.0 Record status and notifications"]
+  d4["D4: student_status_history,<br/>audit_logs,<br/>notifications"]
+  actor -->|"request / decision"| p1
+  p1 -->|"response / report"| actor
+  p1 -->|"validated writes / query"| d1
+  d1 -->|"stored context / rows"| p1
+  actor -->|"request / decision"| p2
+  p2 -->|"response / report"| actor
+  p2 -->|"validated writes / query"| d2
+  d2 -->|"stored context / rows"| p2
+  actor -->|"request / decision"| p3
+  p3 -->|"response / report"| actor
+  p3 -->|"validated writes / query"| d3
+  d3 -->|"stored context / rows"| p3
+  actor -->|"request / decision"| p4
+  p4 -->|"response / report"| actor
+  p4 -->|"validated writes / query"| d4
+  d4 -->|"stored context / rows"| p4

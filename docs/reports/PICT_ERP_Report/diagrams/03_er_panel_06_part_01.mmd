@@ -1,0 +1,10 @@
+flowchart LR
+  hostels["hostels<br/>PK: hostel_id"]
+  hostels -->|"FK099 warden_faculty_id"| faculty
+  hostel_blocks["hostel_blocks<br/>PK: block_id"]
+  hostel_blocks -->|"FK100 hostel_id"| hostels
+  rooms["rooms<br/>PK: room_id"]
+  rooms -->|"FK101 hostel_id"| hostels
+  rooms -->|"FK102 block_id"| hostel_blocks
+  beds["beds<br/>PK: bed_id"]
+  beds -->|"FK103 room_id"| rooms

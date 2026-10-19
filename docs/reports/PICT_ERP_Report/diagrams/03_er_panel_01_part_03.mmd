@@ -1,0 +1,7 @@
+flowchart LR
+  student_documents["student_documents<br/>PK: document_id"]
+  student_documents -->|"FK022 student_id"| students
+  student_documents -->|"FK023 verified_by"| users
+  student_status_history["student_status_history<br/>PK: history_id"]
+  student_status_history -->|"FK024 student_id"| students
+  student_status_history -->|"FK025 changed_by"| users

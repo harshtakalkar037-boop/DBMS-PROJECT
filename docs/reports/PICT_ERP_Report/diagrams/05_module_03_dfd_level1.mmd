@@ -1,0 +1,26 @@
+flowchart TD
+  actor["M3 actors<br/>Authorized users / staff"]
+  p1["1.0 Create session /<br/>fetch roster"]
+  d1["D1: class_sessions,<br/>enrollments"]
+  p2["2.0 Mark /<br/>bulk upsert attendance"]
+  d2["D2: attendance"]
+  p3["3.0 Calculate percentages /<br/>reports"]
+  d3["D3: attendance,<br/>class_sessions"]
+  p4["4.0 Warn and support exam eligibility"]
+  d4["D4: notifications,<br/>exam_registrations"]
+  actor -->|"request / decision"| p1
+  p1 -->|"response / report"| actor
+  p1 -->|"validated writes / query"| d1
+  d1 -->|"stored context / rows"| p1
+  actor -->|"request / decision"| p2
+  p2 -->|"response / report"| actor
+  p2 -->|"validated writes / query"| d2
+  d2 -->|"stored context / rows"| p2
+  actor -->|"request / decision"| p3
+  p3 -->|"response / report"| actor
+  p3 -->|"validated writes / query"| d3
+  d3 -->|"stored context / rows"| p3
+  actor -->|"request / decision"| p4
+  p4 -->|"response / report"| actor
+  p4 -->|"validated writes / query"| d4
+  d4 -->|"stored context / rows"| p4

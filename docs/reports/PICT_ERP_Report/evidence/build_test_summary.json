@@ -1,0 +1,84 @@
+{
+  "repository_commit": "b3b56e06cfa8df6ef3765380d0a14ba75b05dc22",
+  "date": "2026-10-19",
+  "cases": [
+    {
+      "id": "EXEC-01",
+      "module": 0,
+      "objective": "npm run typecheck in backend",
+      "preconditions": "Pinned clean repository; npm ci --ignore-scripts --no-audit --no-fund completed; Node 20.20.2, npm 10.8.2, TypeScript 5.9.3. No DB/API required.",
+      "input": "cwd=backend; npm run typecheck",
+      "expected": "TypeScript compiler exits 0.",
+      "actual": "Exit 0; tsc --noEmit completed.",
+      "status": "PASS (compiler only)",
+      "evidence": "evidence/backend_typecheck.log",
+      "exit_code": 0,
+      "execution_date": "2026-10-19"
+    },
+    {
+      "id": "EXEC-02",
+      "module": 0,
+      "objective": "npm run build in backend",
+      "preconditions": "Pinned clean repository; npm ci --ignore-scripts --no-audit --no-fund completed; Node 20.20.2, npm 10.8.2, TypeScript 5.9.3. No DB/API required.",
+      "input": "cwd=backend; npm run build",
+      "expected": "Production TypeScript compilation exits 0.",
+      "actual": "Exit 0; tsc -p tsconfig.json completed.",
+      "status": "PASS (build only)",
+      "evidence": "evidence/backend_build.log",
+      "exit_code": 0,
+      "execution_date": "2026-10-19"
+    },
+    {
+      "id": "EXEC-03",
+      "module": 0,
+      "objective": "npm run typecheck in frontend",
+      "preconditions": "Pinned clean repository; npm ci --ignore-scripts --no-audit --no-fund completed; Node 20.20.2, npm 10.8.2, TypeScript 5.9.3. No DB/API required.",
+      "input": "cwd=frontend; npm run typecheck",
+      "expected": "TypeScript compiler exits 0.",
+      "actual": "Exit 0; tsc --noEmit completed.",
+      "status": "PASS (compiler only)",
+      "evidence": "evidence/frontend_typecheck.log",
+      "exit_code": 0,
+      "execution_date": "2026-10-19"
+    },
+    {
+      "id": "EXEC-04",
+      "module": 0,
+      "objective": "npm run build in frontend",
+      "preconditions": "Pinned clean repository; npm ci --ignore-scripts --no-audit --no-fund completed; Node 20.20.2, npm 10.8.2, TypeScript 5.9.3. No DB/API required.",
+      "input": "cwd=frontend; npm run build",
+      "expected": "Vite production bundling exits 0.",
+      "actual": "Exit 0; production assets generated. Not a browser/E2E test.",
+      "status": "PASS (build only)",
+      "evidence": "evidence/frontend_build.log",
+      "exit_code": 0,
+      "execution_date": "2026-10-19"
+    },
+    {
+      "id": "EXEC-05",
+      "module": 0,
+      "objective": "npm test in backend",
+      "preconditions": "Pinned clean repository; npm ci --ignore-scripts --no-audit --no-fund completed; Node 20.20.2, npm 10.8.2, TypeScript 5.9.3. No DB/API required.",
+      "input": "cwd=backend; npm test",
+      "expected": "Discover and execute repository unit tests.",
+      "actual": "Exit 1; No test files found. No business-rule assertions ran.",
+      "status": "NOT PASSED \u2014 NO TEST FILES",
+      "evidence": "evidence/backend_vitest.log",
+      "exit_code": 1,
+      "execution_date": "2026-10-19"
+    }
+  ],
+  "notes": [
+    "Only compiler/build commands pass; npm test exits1 with no test files.",
+    "Dependency install logs are separate. No live SQL/API/E2E/deployment execution evidence."
+  ],
+  "logs": {
+    "backend_build.log": "0d61e6a07a182d9aa469469e34c8a05d911416c424ddc23b0a4864dde8ce1c31",
+    "backend_dependency_install.log": "01abf677fd569ae27ccfc8a9da15ef5eda9e5170af59308ee1a33abb0bae6438",
+    "backend_typecheck.log": "3622b216029cef6682d30a632b58a93eb47f2caf1dfd13889839a0f1573d985b",
+    "backend_vitest.log": "aeedec424f85f72b0c3bdb3cfca1e4dce1667cbfcebe2584023f50a5e3b47563",
+    "frontend_build.log": "d54391297c4bb23b4f93f9f170a90698c6158e16a688d0b312e508e9a490c7f8",
+    "frontend_dependency_install.log": "4e3badd8ea1a9a806e30f69cf227b6c1bd37b5b90e114b33f517a0c9b55cbd76",
+    "frontend_typecheck.log": "f4e2e0beaf13397d99faaad9af87e09382d9c8e9d5a183892e8f684780872342"
+  }
+}

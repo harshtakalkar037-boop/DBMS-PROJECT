@@ -1,0 +1,7 @@
+flowchart LR
+  ai_conversations["ai_conversations<br/>PK: conversation_id"]
+  ai_conversations -->|"FK136 user_id"| users
+  study_plans["study_plans<br/>PK: plan_id"]
+  study_plans -->|"FK137 student_id"| students
+  student_risk_scores["student_risk_scores<br/>PK: risk_id"]
+  student_risk_scores -->|"FK138 student_id"| students

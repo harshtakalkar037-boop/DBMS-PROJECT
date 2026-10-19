@@ -1,0 +1,26 @@
+flowchart TD
+  actor["M2 actors<br/>Authorized users / staff"]
+  p1["1.0 Maintain academic masters"]
+  d1["D1: subjects,<br/>sections,<br/>program_subjects"]
+  p2["2.0 Create offerings /<br/>assign faculty"]
+  d2["D2: course_offerings,<br/>faculty_subjects"]
+  p3["3.0 Enroll /<br/>bulk enroll students"]
+  d3["D3: enrollments,<br/>course_offerings"]
+  p4["4.0 Schedule teaching and calendar"]
+  d4["D4: timetable,<br/>academic_calendar,<br/>class_sessions"]
+  actor -->|"request / decision"| p1
+  p1 -->|"response / report"| actor
+  p1 -->|"validated writes / query"| d1
+  d1 -->|"stored context / rows"| p1
+  actor -->|"request / decision"| p2
+  p2 -->|"response / report"| actor
+  p2 -->|"validated writes / query"| d2
+  d2 -->|"stored context / rows"| p2
+  actor -->|"request / decision"| p3
+  p3 -->|"response / report"| actor
+  p3 -->|"validated writes / query"| d3
+  d3 -->|"stored context / rows"| p3
+  actor -->|"request / decision"| p4
+  p4 -->|"response / report"| actor
+  p4 -->|"validated writes / query"| d4
+  d4 -->|"stored context / rows"| p4

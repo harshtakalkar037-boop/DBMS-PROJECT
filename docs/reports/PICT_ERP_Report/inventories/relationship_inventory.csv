@@ -1,0 +1,139 @@
+id,module,table,columns,child_types,ref_table,ref_columns,parent_types,parent_per_child,children_per_parent,actions,type_alignment,file,line
+FK001,0,users,role_id,TINYINT UNSIGNED,roles,role_id,TINYINT UNSIGNED,1,0..N,ON DELETE/UPDATE RESTRICT (implicit),MATCH (static DDL),database/01_schema.sql,63
+FK002,0,departments,hod_faculty_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/03_constraints.sql,24
+FK003,0,semesters,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/01_schema.sql,134
+FK004,0,programs,department_id,INT UNSIGNED,departments,department_id,INT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/01_schema.sql,155
+FK005,0,batches,program_id,SMALLINT UNSIGNED,programs,program_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/01_schema.sql,180
+FK006,0,batches,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/01_schema.sql,180
+FK007,0,subjects,department_id,INT UNSIGNED,departments,department_id,INT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/01_schema.sql,203
+FK008,0,notifications,user_id,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/01_schema.sql,240
+FK009,0,audit_logs,user_id,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/01_schema.sql,265
+FK010,1,students,user_id,INT UNSIGNED,users,user_id,INT UNSIGNED,1,0..1,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,28
+FK011,1,students,category_id,TINYINT UNSIGNED,categories,category_id,TINYINT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/02_tables.sql,28
+FK012,1,students,department_id,INT UNSIGNED,departments,department_id,INT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/02_tables.sql,28
+FK013,1,students,program_id,SMALLINT UNSIGNED,programs,program_id,SMALLINT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/02_tables.sql,28
+FK014,1,students,batch_id,SMALLINT UNSIGNED,batches,batch_id,SMALLINT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/02_tables.sql,28
+FK015,1,addresses,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,84
+FK016,1,guardians,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,109
+FK017,1,admissions,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,0..1,0..1,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,132
+FK018,1,admissions,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/02_tables.sql,132
+FK019,1,admissions,program_id,SMALLINT UNSIGNED,programs,program_id,SMALLINT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/02_tables.sql,132
+FK020,1,admissions,category_id,TINYINT UNSIGNED,categories,category_id,TINYINT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/02_tables.sql,132
+FK021,1,admissions,reviewed_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,132
+FK022,1,student_documents,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,187
+FK023,1,student_documents,verified_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,187
+FK024,1,student_status_history,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,212
+FK025,1,student_status_history,changed_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,212
+FK026,2,sections,program_id,SMALLINT UNSIGNED,programs,program_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,236
+FK027,2,sections,batch_id,SMALLINT UNSIGNED,batches,batch_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,236
+FK028,2,sections,semester_id,SMALLINT UNSIGNED,semesters,semester_id,SMALLINT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,236
+FK029,2,sections,class_teacher_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/03_constraints.sql,29
+FK030,2,program_subjects,program_id,SMALLINT UNSIGNED,programs,program_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,261
+FK031,2,program_subjects,subject_id,SMALLINT UNSIGNED,subjects,subject_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,261
+FK032,2,course_offerings,subject_id,SMALLINT UNSIGNED,subjects,subject_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,280
+FK033,2,course_offerings,semester_id,SMALLINT UNSIGNED,semesters,semester_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,280
+FK034,2,course_offerings,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,280
+FK035,2,course_offerings,program_id,SMALLINT UNSIGNED,programs,program_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,280
+FK036,2,course_offerings,section_id,SMALLINT UNSIGNED,sections,section_id,SMALLINT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,280
+FK037,2,course_offerings,faculty_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/03_constraints.sql,34
+FK038,2,enrollments,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,315
+FK039,2,enrollments,offering_id,INT UNSIGNED,course_offerings,offering_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,315
+FK040,2,enrollments,enrolled_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,315
+FK041,2,faculty_subjects,subject_id,SMALLINT UNSIGNED,subjects,subject_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,342
+FK042,2,faculty_subjects,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,342
+FK043,2,faculty_subjects,semester_id,SMALLINT UNSIGNED,semesters,semester_id,SMALLINT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,342
+FK044,2,faculty_subjects,faculty_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/03_constraints.sql,39
+FK045,2,timetable,offering_id,INT UNSIGNED,course_offerings,offering_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,364
+FK046,2,timetable,section_id,SMALLINT UNSIGNED,sections,section_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,364
+FK047,2,timetable,faculty_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/03_constraints.sql,44
+FK048,2,academic_calendar,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,390
+FK049,2,academic_calendar,semester_id,SMALLINT UNSIGNED,semesters,semester_id,SMALLINT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,390
+FK050,2,class_sessions,offering_id,INT UNSIGNED,course_offerings,offering_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,414
+FK051,2,class_sessions,semester_id,SMALLINT UNSIGNED,semesters,semester_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,414
+FK052,2,class_sessions,faculty_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/03_constraints.sql,49
+FK053,3,attendance,session_id,INT UNSIGNED,class_sessions,session_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,445
+FK054,3,attendance,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,445
+FK055,3,attendance,offering_id,INT UNSIGNED,course_offerings,offering_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,445
+FK056,3,attendance,semester_id,SMALLINT UNSIGNED,semesters,semester_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,445
+FK057,3,attendance,marked_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,445
+FK058,4,exams,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,498
+FK059,4,exams,semester_id,SMALLINT UNSIGNED,semesters,semester_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,498
+FK060,4,exam_schedules,exam_id,SMALLINT UNSIGNED,exams,exam_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,529
+FK061,4,exam_schedules,subject_id,SMALLINT UNSIGNED,subjects,subject_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,529
+FK062,4,exam_schedules,program_id,SMALLINT UNSIGNED,programs,program_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,529
+FK063,4,exam_schedules,invigilator_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/03_constraints.sql,57
+FK064,4,exam_registrations,exam_id,SMALLINT UNSIGNED,exams,exam_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,558
+FK065,4,exam_registrations,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,558
+FK066,4,exam_registrations,offering_id,INT UNSIGNED,course_offerings,offering_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,558
+FK067,4,exam_registrations,schedule_id,INT UNSIGNED,exam_schedules,schedule_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,558
+FK068,4,exam_registrations,registered_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,558
+FK069,4,marks,registration_id,INT UNSIGNED,exam_registrations,registration_id,INT UNSIGNED,1,0..1,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,596
+FK070,4,marks,entered_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,596
+FK071,4,results,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,623
+FK072,4,results,semester_id,SMALLINT UNSIGNED,semesters,semester_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,623
+FK073,4,results,exam_id,SMALLINT UNSIGNED,exams,exam_id,SMALLINT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,623
+FK074,4,results,published_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,623
+FK075,5,fee_structures,program_id,SMALLINT UNSIGNED,programs,program_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,663
+FK076,5,fee_structures,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,663
+FK077,5,fee_structures,category_id,TINYINT UNSIGNED,categories,category_id,TINYINT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,663
+FK078,5,student_fees,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,700
+FK079,5,student_fees,fee_structure_id,SMALLINT UNSIGNED,fee_structures,fee_structure_id,SMALLINT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/02_tables.sql,700
+FK080,5,student_fees,semester_id,SMALLINT UNSIGNED,semesters,semester_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,700
+FK081,5,student_fees,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,700
+FK082,5,payments,student_fee_id,INT UNSIGNED,student_fees,student_fee_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,740
+FK083,5,payments,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,740
+FK084,5,payments,received_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,740
+FK085,5,scholarships,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,772
+FK086,5,student_scholarships,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,791
+FK087,5,student_scholarships,scholarship_id,SMALLINT UNSIGNED,scholarships,scholarship_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,791
+FK088,5,student_scholarships,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,791
+FK089,5,student_scholarships,sanctioned_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,791
+FK090,5,fines,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,818
+FK091,5,fines,student_fee_id,INT UNSIGNED,student_fees,student_fee_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,818
+FK092,5,fines,imposed_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,818
+FK093,5,refunds,payment_id,INT UNSIGNED,payments,payment_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,843
+FK094,5,refunds,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,843
+FK095,5,refunds,processed_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,843
+FK096,5,transactions,student_fee_id,INT UNSIGNED,student_fees,student_fee_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,868
+FK097,5,transactions,payment_id,INT UNSIGNED,payments,payment_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,868
+FK098,5,transactions,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,868
+FK099,6,hostels,warden_faculty_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/03_constraints.sql,62
+FK100,6,hostel_blocks,hostel_id,SMALLINT UNSIGNED,hostels,hostel_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,916
+FK101,6,rooms,hostel_id,SMALLINT UNSIGNED,hostels,hostel_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,929
+FK102,6,rooms,block_id,SMALLINT UNSIGNED,hostel_blocks,block_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,929
+FK103,6,beds,room_id,INT UNSIGNED,rooms,room_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,953
+FK104,6,hostel_applications,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,967
+FK105,6,hostel_applications,hostel_id,SMALLINT UNSIGNED,hostels,hostel_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,967
+FK106,6,hostel_applications,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,967
+FK107,6,hostel_applications,reviewed_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,967
+FK108,6,room_allocations,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,993
+FK109,6,room_allocations,bed_id,INT UNSIGNED,beds,bed_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,993
+FK110,6,room_allocations,room_id,INT UNSIGNED,rooms,room_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,993
+FK111,6,room_allocations,hostel_id,SMALLINT UNSIGNED,hostels,hostel_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,993
+FK112,6,room_allocations,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,993
+FK113,6,room_allocations,allocated_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,993
+FK114,6,room_transfers,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1036
+FK115,6,room_transfers,from_bed_id,INT UNSIGNED,beds,bed_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1036
+FK116,6,room_transfers,to_bed_id,INT UNSIGNED,beds,bed_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1036
+FK117,6,room_transfers,approved_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,1036
+FK118,6,hostel_fees,allocation_id,INT UNSIGNED,room_allocations,allocation_id,INT UNSIGNED,1,0..1,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1057
+FK119,6,hostel_fees,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1057
+FK120,6,hostel_fees,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1057
+FK121,7,faculty,user_id,INT UNSIGNED,users,user_id,INT UNSIGNED,1,0..1,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1098
+FK122,7,faculty,designation_id,SMALLINT UNSIGNED,designations,designation_id,SMALLINT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/02_tables.sql,1098
+FK123,7,faculty,department_id,INT UNSIGNED,departments,department_id,INT UNSIGNED,1,0..N,ON DELETE RESTRICT,MATCH (static DDL),database/02_tables.sql,1098
+FK124,7,faculty_leaves,faculty_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1144
+FK125,7,faculty_leaves,approved_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,1144
+FK126,7,leave_balances,faculty_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1168
+FK127,7,leave_balances,academic_year_id,SMALLINT UNSIGNED,academic_years,academic_year_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1168
+FK128,7,payrolls,faculty_id,INT UNSIGNED,faculty,faculty_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1184
+FK129,7,payroll_components,payroll_id,INT UNSIGNED,payrolls,payroll_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1216
+FK130,8,mcq_questions,subject_id,SMALLINT UNSIGNED,subjects,subject_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1233
+FK131,8,mcq_questions,created_by,INT UNSIGNED,users,user_id,INT UNSIGNED,0..1,0..N,ON DELETE SET NULL,MATCH (static DDL),database/02_tables.sql,1233
+FK132,8,mock_exams,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1257
+FK133,8,mock_exams,subject_id,SMALLINT UNSIGNED,subjects,subject_id,SMALLINT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1257
+FK134,8,mock_exam_answers,mock_exam_id,INT UNSIGNED,mock_exams,mock_exam_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1280
+FK135,8,mock_exam_answers,question_id,INT UNSIGNED,mcq_questions,question_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1280
+FK136,8,ai_conversations,user_id,INT UNSIGNED,users,user_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1296
+FK137,8,study_plans,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1310
+FK138,8,student_risk_scores,student_id,INT UNSIGNED,students,student_id,INT UNSIGNED,1,0..N,ON DELETE CASCADE,MATCH (static DDL),database/02_tables.sql,1324

@@ -1,0 +1,961 @@
+[
+  {
+    "file": "00_Master_ERP_Project_Report.docx",
+    "tables": [
+      "roles",
+      "users",
+      "departments",
+      "categories",
+      "academic_years",
+      "semesters",
+      "programs",
+      "batches",
+      "subjects",
+      "system_settings",
+      "notifications",
+      "audit_logs",
+      "students",
+      "addresses",
+      "guardians",
+      "admissions",
+      "student_documents",
+      "student_status_history",
+      "sections",
+      "program_subjects",
+      "course_offerings",
+      "enrollments",
+      "faculty_subjects",
+      "timetable",
+      "academic_calendar",
+      "class_sessions",
+      "attendance",
+      "grades",
+      "exams",
+      "exam_schedules",
+      "exam_registrations",
+      "marks",
+      "results",
+      "fee_structures",
+      "student_fees",
+      "payments",
+      "scholarships",
+      "student_scholarships",
+      "fines",
+      "refunds",
+      "transactions",
+      "hostels",
+      "hostel_blocks",
+      "rooms",
+      "beds",
+      "hostel_applications",
+      "room_allocations",
+      "room_transfers",
+      "hostel_fees",
+      "designations",
+      "faculty",
+      "faculty_leaves",
+      "leave_balances",
+      "payrolls",
+      "payroll_components",
+      "mcq_questions",
+      "mock_exams",
+      "mock_exam_answers",
+      "ai_conversations",
+      "study_plans",
+      "student_risk_scores"
+    ],
+    "objects": [
+      "sp_approve_admission",
+      "trg_students_bi_validate",
+      "trg_students_bu_validate",
+      "trg_students_au_status_history",
+      "trg_admissions_bi_validate",
+      "v_student_full_profile",
+      "sp_bulk_enroll_students",
+      "trg_enrollments_bi_guard",
+      "trg_enrollments_ai_count",
+      "trg_enrollments_ad_count",
+      "trg_timetable_bi_conflict",
+      "sp_mark_attendance_bulk",
+      "trg_attendance_bi_guard",
+      "fn_calculate_attendance_percentage",
+      "fn_calculate_semester_attendance",
+      "v_student_attendance_summary",
+      "v_student_attendance_overall",
+      "v_monthly_attendance",
+      "sp_register_student_for_exam",
+      "sp_enter_marks",
+      "sp_process_semester_results",
+      "sp_publish_exam_results",
+      "trg_exam_reg_bi_eligibility",
+      "trg_exam_reg_ai_audit",
+      "trg_marks_bi_derive",
+      "trg_marks_bu_derive",
+      "trg_marks_au_audit",
+      "fn_grade_points",
+      "fn_grade_code",
+      "fn_calculate_sgpa",
+      "fn_calculate_student_cgpa",
+      "fn_student_backlog_count",
+      "fn_student_earned_credits",
+      "v_student_academic_summary",
+      "v_exam_result_summary",
+      "v_subject_failure_rate",
+      "v_exam_eligibility",
+      "v_student_result_history",
+      "v_student_rankings",
+      "v_exam_hall_ticket",
+      "sp_generate_semester_fees",
+      "sp_process_fee_payment",
+      "sp_apply_late_fees",
+      "trg_student_fees_ai_audit",
+      "trg_student_fees_bu_audit",
+      "trg_payment_ai",
+      "trg_payment_au",
+      "fn_calculate_late_fee",
+      "fn_student_outstanding_dues",
+      "v_student_fee_status",
+      "v_fee_collection_summary",
+      "v_daily_fee_collection",
+      "sp_allocate_hostel_bed",
+      "sp_vacate_hostel_bed",
+      "sp_transfer_room",
+      "trg_allocation_ai",
+      "trg_allocation_au",
+      "trg_allocation_ad",
+      "trg_allocation_bi_duplicate",
+      "trg_rooms_bu_capacity",
+      "trg_beds_bu_guard",
+      "fn_hostel_available_beds",
+      "v_hostel_occupancy",
+      "v_room_vacancy",
+      "sp_generate_monthly_payroll",
+      "sp_approve_leave",
+      "trg_faculty_bi_validate",
+      "trg_faculty_leaves_bu_guard",
+      "trg_faculty_leaves_bi_guard",
+      "trg_payrolls_bu_guard",
+      "fn_calculate_faculty_leave_balance",
+      "fn_calculate_net_salary",
+      "v_faculty_workload",
+      "v_faculty_payroll_summary",
+      "sp_push_notification",
+      "sp_compute_student_risk",
+      "v_department_performance",
+      "v_student_risk_dashboard"
+    ],
+    "tests": [
+      "M1-01",
+      "M1-02",
+      "M1-03",
+      "M1-04",
+      "M1-05",
+      "M1-06",
+      "M1-07",
+      "M2-01",
+      "M2-02",
+      "M2-03",
+      "M2-04",
+      "M2-05",
+      "M2-06",
+      "M2-07",
+      "M3-01",
+      "M3-02",
+      "M3-03",
+      "M3-04",
+      "M3-05",
+      "M3-06",
+      "M3-07",
+      "M4-01",
+      "M4-02",
+      "M4-03",
+      "M4-04",
+      "M4-05",
+      "M4-06",
+      "M4-07",
+      "M5-01",
+      "M5-02",
+      "M5-03",
+      "M5-04",
+      "M5-05",
+      "M5-06",
+      "M5-07",
+      "M6-01",
+      "M6-02",
+      "M6-03",
+      "M6-04",
+      "M6-05",
+      "M6-06",
+      "M6-07",
+      "M7-01",
+      "M7-02",
+      "M7-03",
+      "M7-04",
+      "M7-05",
+      "M7-06",
+      "M7-07",
+      "INT-01",
+      "INT-02",
+      "INT-03",
+      "INT-04",
+      "INT-05",
+      "INT-06",
+      "INT-07",
+      "INT-08",
+      "INT-09",
+      "INT-10",
+      "EXEC-01",
+      "EXEC-02",
+      "EXEC-03",
+      "EXEC-04",
+      "EXEC-05"
+    ],
+    "figures": [
+      {
+        "number": "1.1",
+        "asset": "01_common_architecture",
+        "caption": "Common application architecture"
+      },
+      {
+        "number": "1.2",
+        "asset": "02_enterprise_overview",
+        "caption": "Enterprise module and shared-data overview"
+      },
+      {
+        "number": "1.3",
+        "asset": "03_er_panel_00_part_01",
+        "caption": "Shared masters \u2014 relational ER sheet 1/3"
+      },
+      {
+        "number": "1.4",
+        "asset": "03_er_panel_00_part_02",
+        "caption": "Shared masters \u2014 relational ER sheet 2/3"
+      },
+      {
+        "number": "1.5",
+        "asset": "03_er_panel_00_part_03",
+        "caption": "Shared masters \u2014 relational ER sheet 3/3"
+      },
+      {
+        "number": "1.6",
+        "asset": "03_er_panel_01_part_01",
+        "caption": "Module 1 \u2014 relational ER sheet 1/3"
+      },
+      {
+        "number": "1.7",
+        "asset": "03_er_panel_01_part_02",
+        "caption": "Module 1 \u2014 relational ER sheet 2/3"
+      },
+      {
+        "number": "1.8",
+        "asset": "03_er_panel_01_part_03",
+        "caption": "Module 1 \u2014 relational ER sheet 3/3"
+      },
+      {
+        "number": "1.9",
+        "asset": "03_er_panel_02_part_01",
+        "caption": "Module 2 \u2014 relational ER sheet 1/5"
+      },
+      {
+        "number": "1.10",
+        "asset": "03_er_panel_02_part_02",
+        "caption": "Module 2 \u2014 relational ER sheet 2/5"
+      },
+      {
+        "number": "1.11",
+        "asset": "03_er_panel_02_part_03",
+        "caption": "Module 2 \u2014 relational ER sheet 3/5"
+      },
+      {
+        "number": "1.12",
+        "asset": "03_er_panel_02_part_04",
+        "caption": "Module 2 \u2014 relational ER sheet 4/5"
+      },
+      {
+        "number": "1.13",
+        "asset": "03_er_panel_02_part_05",
+        "caption": "Module 2 \u2014 relational ER sheet 5/5"
+      },
+      {
+        "number": "1.14",
+        "asset": "03_er_panel_03_part_01",
+        "caption": "Module 3 \u2014 relational ER sheet 1/1"
+      },
+      {
+        "number": "1.15",
+        "asset": "03_er_panel_04_part_01",
+        "caption": "Module 4 \u2014 relational ER sheet 1/4"
+      },
+      {
+        "number": "1.16",
+        "asset": "03_er_panel_04_part_02",
+        "caption": "Module 4 \u2014 relational ER sheet 2/4"
+      },
+      {
+        "number": "1.17",
+        "asset": "03_er_panel_04_part_03",
+        "caption": "Module 4 \u2014 relational ER sheet 3/4"
+      },
+      {
+        "number": "1.18",
+        "asset": "03_er_panel_04_part_04",
+        "caption": "Module 4 \u2014 relational ER sheet 4/4"
+      },
+      {
+        "number": "1.19",
+        "asset": "03_er_panel_05_part_01",
+        "caption": "Module 5 \u2014 relational ER sheet 1/4"
+      },
+      {
+        "number": "1.20",
+        "asset": "03_er_panel_05_part_02",
+        "caption": "Module 5 \u2014 relational ER sheet 2/4"
+      },
+      {
+        "number": "1.21",
+        "asset": "03_er_panel_05_part_03",
+        "caption": "Module 5 \u2014 relational ER sheet 3/4"
+      },
+      {
+        "number": "1.22",
+        "asset": "03_er_panel_05_part_04",
+        "caption": "Module 5 \u2014 relational ER sheet 4/4"
+      },
+      {
+        "number": "1.23",
+        "asset": "03_er_panel_06_part_01",
+        "caption": "Module 6 \u2014 relational ER sheet 1/4"
+      },
+      {
+        "number": "1.24",
+        "asset": "03_er_panel_06_part_02",
+        "caption": "Module 6 \u2014 relational ER sheet 2/4"
+      },
+      {
+        "number": "1.25",
+        "asset": "03_er_panel_06_part_03",
+        "caption": "Module 6 \u2014 relational ER sheet 3/4"
+      },
+      {
+        "number": "1.26",
+        "asset": "03_er_panel_06_part_04",
+        "caption": "Module 6 \u2014 relational ER sheet 4/4"
+      },
+      {
+        "number": "1.27",
+        "asset": "03_er_panel_07_part_01",
+        "caption": "Module 7 \u2014 relational ER sheet 1/2"
+      },
+      {
+        "number": "1.28",
+        "asset": "03_er_panel_07_part_02",
+        "caption": "Module 7 \u2014 relational ER sheet 2/2"
+      },
+      {
+        "number": "1.29",
+        "asset": "03_er_panel_08_part_01",
+        "caption": "Cross-cutting adjuncts \u2014 relational ER sheet 1/2"
+      },
+      {
+        "number": "1.30",
+        "asset": "03_er_panel_08_part_02",
+        "caption": "Cross-cutting adjuncts \u2014 relational ER sheet 2/2"
+      },
+      {
+        "number": "1.31",
+        "asset": "04_context_dfd_level0",
+        "caption": "ERP system context (Level 0 DFD)"
+      },
+      {
+        "number": "2.1",
+        "asset": "05_module_01_dfd_level1",
+        "caption": "Student and Admission Management \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.2",
+        "asset": "06_module_01_procedure_workflow",
+        "caption": "sp_approve_admission \u2014 workflow supplement"
+      },
+      {
+        "number": "2.3",
+        "asset": "05_module_02_dfd_level1",
+        "caption": "Academic and Course Management \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.4",
+        "asset": "06_module_02_procedure_workflow",
+        "caption": "sp_bulk_enroll_students \u2014 workflow supplement"
+      },
+      {
+        "number": "2.5",
+        "asset": "05_module_03_dfd_level1",
+        "caption": "Attendance Management \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.6",
+        "asset": "06_module_03_procedure_workflow",
+        "caption": "sp_mark_attendance_bulk \u2014 workflow supplement"
+      },
+      {
+        "number": "2.7",
+        "asset": "05_module_04_dfd_level1",
+        "caption": "Examination and Results \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.8",
+        "asset": "06_module_04_procedure_workflow",
+        "caption": "sp_register_student_for_exam \u2014 workflow supplement"
+      },
+      {
+        "number": "2.9",
+        "asset": "05_module_05_dfd_level1",
+        "caption": "Fees and Payments \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.10",
+        "asset": "06_module_05_procedure_workflow",
+        "caption": "sp_process_fee_payment \u2014 workflow supplement"
+      },
+      {
+        "number": "2.11",
+        "asset": "05_module_06_dfd_level1",
+        "caption": "Hostel Management \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.12",
+        "asset": "06_module_06_procedure_workflow",
+        "caption": "sp_allocate_hostel_bed \u2014 workflow supplement"
+      },
+      {
+        "number": "2.13",
+        "asset": "05_module_07_dfd_level1",
+        "caption": "Faculty, HR and Payroll \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.14",
+        "asset": "06_module_07_procedure_workflow",
+        "caption": "sp_generate_monthly_payroll \u2014 workflow supplement"
+      }
+    ],
+    "abstract_words": 152
+  },
+  {
+    "file": "01_Module_Report_Student_and_Admission_Management.docx",
+    "tables": [
+      "students",
+      "addresses",
+      "guardians",
+      "admissions",
+      "student_documents",
+      "student_status_history"
+    ],
+    "objects": [
+      "sp_approve_admission",
+      "trg_students_bi_validate",
+      "trg_students_bu_validate",
+      "trg_students_au_status_history",
+      "trg_admissions_bi_validate",
+      "v_student_full_profile"
+    ],
+    "tests": [
+      "M1-01",
+      "M1-02",
+      "M1-03",
+      "M1-04",
+      "M1-05",
+      "M1-06",
+      "M1-07",
+      "EXEC-01",
+      "EXEC-02",
+      "EXEC-03",
+      "EXEC-04",
+      "EXEC-05"
+    ],
+    "figures": [
+      {
+        "number": "2.1",
+        "asset": "01_common_architecture",
+        "caption": "Common stack used by this module"
+      },
+      {
+        "number": "2.2",
+        "asset": "05_module_01_dfd_level1",
+        "caption": "Student and Admission Management \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.3",
+        "asset": "06_module_01_procedure_workflow",
+        "caption": "sp_approve_admission \u2014 transaction/workflow supplement"
+      },
+      {
+        "number": "2.4",
+        "asset": "03_er_panel_01_part_01",
+        "caption": "Module 1 \u2014 relational ER sheet 1/3"
+      },
+      {
+        "number": "2.5",
+        "asset": "03_er_panel_01_part_02",
+        "caption": "Module 1 \u2014 relational ER sheet 2/3"
+      },
+      {
+        "number": "2.6",
+        "asset": "03_er_panel_01_part_03",
+        "caption": "Module 1 \u2014 relational ER sheet 3/3"
+      }
+    ],
+    "abstract_words": 151
+  },
+  {
+    "file": "02_Module_Report_Academic_and_Course_Management.docx",
+    "tables": [
+      "sections",
+      "program_subjects",
+      "course_offerings",
+      "enrollments",
+      "faculty_subjects",
+      "timetable",
+      "academic_calendar",
+      "class_sessions",
+      "departments",
+      "programs",
+      "batches",
+      "academic_years",
+      "semesters",
+      "subjects"
+    ],
+    "objects": [
+      "sp_bulk_enroll_students",
+      "trg_enrollments_bi_guard",
+      "trg_enrollments_ai_count",
+      "trg_enrollments_ad_count",
+      "trg_timetable_bi_conflict",
+      "fn_calculate_attendance_percentage",
+      "v_faculty_workload"
+    ],
+    "tests": [
+      "M2-01",
+      "M2-02",
+      "M2-03",
+      "M2-04",
+      "M2-05",
+      "M2-06",
+      "M2-07",
+      "EXEC-01",
+      "EXEC-02",
+      "EXEC-03",
+      "EXEC-04",
+      "EXEC-05"
+    ],
+    "figures": [
+      {
+        "number": "2.1",
+        "asset": "01_common_architecture",
+        "caption": "Common stack used by this module"
+      },
+      {
+        "number": "2.2",
+        "asset": "05_module_02_dfd_level1",
+        "caption": "Academic and Course Management \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.3",
+        "asset": "06_module_02_procedure_workflow",
+        "caption": "sp_bulk_enroll_students \u2014 transaction/workflow supplement"
+      },
+      {
+        "number": "2.4",
+        "asset": "03_er_panel_02_part_01",
+        "caption": "Module 2 \u2014 relational ER sheet 1/5"
+      },
+      {
+        "number": "2.5",
+        "asset": "03_er_panel_02_part_02",
+        "caption": "Module 2 \u2014 relational ER sheet 2/5"
+      },
+      {
+        "number": "2.6",
+        "asset": "03_er_panel_02_part_03",
+        "caption": "Module 2 \u2014 relational ER sheet 3/5"
+      },
+      {
+        "number": "2.7",
+        "asset": "03_er_panel_02_part_04",
+        "caption": "Module 2 \u2014 relational ER sheet 4/5"
+      },
+      {
+        "number": "2.8",
+        "asset": "03_er_panel_02_part_05",
+        "caption": "Module 2 \u2014 relational ER sheet 5/5"
+      }
+    ],
+    "abstract_words": 151
+  },
+  {
+    "file": "03_Module_Report_Attendance_Management.docx",
+    "tables": [
+      "attendance",
+      "class_sessions"
+    ],
+    "objects": [
+      "sp_mark_attendance_bulk",
+      "trg_attendance_bi_guard",
+      "fn_calculate_attendance_percentage",
+      "fn_calculate_semester_attendance",
+      "v_student_attendance_summary",
+      "v_student_attendance_overall",
+      "v_monthly_attendance"
+    ],
+    "tests": [
+      "M3-01",
+      "M3-02",
+      "M3-03",
+      "M3-04",
+      "M3-05",
+      "M3-06",
+      "M3-07",
+      "EXEC-01",
+      "EXEC-02",
+      "EXEC-03",
+      "EXEC-04",
+      "EXEC-05"
+    ],
+    "figures": [
+      {
+        "number": "2.1",
+        "asset": "01_common_architecture",
+        "caption": "Common stack used by this module"
+      },
+      {
+        "number": "2.2",
+        "asset": "05_module_03_dfd_level1",
+        "caption": "Attendance Management \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.3",
+        "asset": "06_module_03_procedure_workflow",
+        "caption": "sp_mark_attendance_bulk \u2014 transaction/workflow supplement"
+      },
+      {
+        "number": "2.4",
+        "asset": "03_er_panel_03_part_01",
+        "caption": "Module 3 \u2014 relational ER sheet 1/1"
+      }
+    ],
+    "abstract_words": 149
+  },
+  {
+    "file": "04_Module_Report_Examination_and_Results.docx",
+    "tables": [
+      "grades",
+      "exams",
+      "exam_schedules",
+      "exam_registrations",
+      "marks",
+      "results",
+      "mcq_questions",
+      "mock_exams",
+      "mock_exam_answers"
+    ],
+    "objects": [
+      "sp_register_student_for_exam",
+      "sp_enter_marks",
+      "sp_process_semester_results",
+      "sp_publish_exam_results",
+      "trg_exam_reg_bi_eligibility",
+      "trg_exam_reg_ai_audit",
+      "trg_marks_bi_derive",
+      "trg_marks_bu_derive",
+      "trg_marks_au_audit",
+      "fn_grade_points",
+      "fn_grade_code",
+      "fn_calculate_sgpa",
+      "fn_calculate_student_cgpa",
+      "fn_student_backlog_count",
+      "fn_student_earned_credits",
+      "fn_calculate_attendance_percentage",
+      "fn_student_outstanding_dues",
+      "v_student_academic_summary",
+      "v_exam_result_summary",
+      "v_subject_failure_rate",
+      "v_exam_eligibility",
+      "v_student_result_history",
+      "v_student_rankings",
+      "v_exam_hall_ticket"
+    ],
+    "tests": [
+      "M4-01",
+      "M4-02",
+      "M4-03",
+      "M4-04",
+      "M4-05",
+      "M4-06",
+      "M4-07",
+      "EXEC-01",
+      "EXEC-02",
+      "EXEC-03",
+      "EXEC-04",
+      "EXEC-05"
+    ],
+    "figures": [
+      {
+        "number": "2.1",
+        "asset": "01_common_architecture",
+        "caption": "Common stack used by this module"
+      },
+      {
+        "number": "2.2",
+        "asset": "05_module_04_dfd_level1",
+        "caption": "Examination and Results \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.3",
+        "asset": "06_module_04_procedure_workflow",
+        "caption": "sp_register_student_for_exam \u2014 transaction/workflow supplement"
+      },
+      {
+        "number": "2.4",
+        "asset": "03_er_panel_04_part_01",
+        "caption": "Module 4 \u2014 relational ER sheet 1/4"
+      },
+      {
+        "number": "2.5",
+        "asset": "03_er_panel_04_part_02",
+        "caption": "Module 4 \u2014 relational ER sheet 2/4"
+      },
+      {
+        "number": "2.6",
+        "asset": "03_er_panel_04_part_03",
+        "caption": "Module 4 \u2014 relational ER sheet 3/4"
+      },
+      {
+        "number": "2.7",
+        "asset": "03_er_panel_04_part_04",
+        "caption": "Module 4 \u2014 relational ER sheet 4/4"
+      }
+    ],
+    "abstract_words": 150
+  },
+  {
+    "file": "05_Module_Report_Fees_and_Payments.docx",
+    "tables": [
+      "fee_structures",
+      "student_fees",
+      "payments",
+      "scholarships",
+      "student_scholarships",
+      "fines",
+      "refunds",
+      "transactions"
+    ],
+    "objects": [
+      "sp_generate_semester_fees",
+      "sp_process_fee_payment",
+      "sp_apply_late_fees",
+      "trg_student_fees_ai_audit",
+      "trg_student_fees_bu_audit",
+      "trg_payment_ai",
+      "trg_payment_au",
+      "fn_calculate_late_fee",
+      "fn_student_outstanding_dues",
+      "v_student_fee_status",
+      "v_fee_collection_summary",
+      "v_daily_fee_collection"
+    ],
+    "tests": [
+      "M5-01",
+      "M5-02",
+      "M5-03",
+      "M5-04",
+      "M5-05",
+      "M5-06",
+      "M5-07",
+      "EXEC-01",
+      "EXEC-02",
+      "EXEC-03",
+      "EXEC-04",
+      "EXEC-05"
+    ],
+    "figures": [
+      {
+        "number": "2.1",
+        "asset": "01_common_architecture",
+        "caption": "Common stack used by this module"
+      },
+      {
+        "number": "2.2",
+        "asset": "05_module_05_dfd_level1",
+        "caption": "Fees and Payments \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.3",
+        "asset": "06_module_05_procedure_workflow",
+        "caption": "sp_process_fee_payment \u2014 transaction/workflow supplement"
+      },
+      {
+        "number": "2.4",
+        "asset": "03_er_panel_05_part_01",
+        "caption": "Module 5 \u2014 relational ER sheet 1/4"
+      },
+      {
+        "number": "2.5",
+        "asset": "03_er_panel_05_part_02",
+        "caption": "Module 5 \u2014 relational ER sheet 2/4"
+      },
+      {
+        "number": "2.6",
+        "asset": "03_er_panel_05_part_03",
+        "caption": "Module 5 \u2014 relational ER sheet 3/4"
+      },
+      {
+        "number": "2.7",
+        "asset": "03_er_panel_05_part_04",
+        "caption": "Module 5 \u2014 relational ER sheet 4/4"
+      }
+    ],
+    "abstract_words": 150
+  },
+  {
+    "file": "06_Module_Report_Hostel_Management.docx",
+    "tables": [
+      "hostels",
+      "hostel_blocks",
+      "rooms",
+      "beds",
+      "hostel_applications",
+      "room_allocations",
+      "room_transfers",
+      "hostel_fees"
+    ],
+    "objects": [
+      "sp_allocate_hostel_bed",
+      "sp_vacate_hostel_bed",
+      "sp_transfer_room",
+      "trg_allocation_ai",
+      "trg_allocation_au",
+      "trg_allocation_ad",
+      "trg_allocation_bi_duplicate",
+      "trg_rooms_bu_capacity",
+      "trg_beds_bu_guard",
+      "fn_hostel_available_beds",
+      "v_hostel_occupancy",
+      "v_room_vacancy"
+    ],
+    "tests": [
+      "M6-01",
+      "M6-02",
+      "M6-03",
+      "M6-04",
+      "M6-05",
+      "M6-06",
+      "M6-07",
+      "EXEC-01",
+      "EXEC-02",
+      "EXEC-03",
+      "EXEC-04",
+      "EXEC-05"
+    ],
+    "figures": [
+      {
+        "number": "2.1",
+        "asset": "01_common_architecture",
+        "caption": "Common stack used by this module"
+      },
+      {
+        "number": "2.2",
+        "asset": "05_module_06_dfd_level1",
+        "caption": "Hostel Management \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.3",
+        "asset": "06_module_06_procedure_workflow",
+        "caption": "sp_allocate_hostel_bed \u2014 transaction/workflow supplement"
+      },
+      {
+        "number": "2.4",
+        "asset": "03_er_panel_06_part_01",
+        "caption": "Module 6 \u2014 relational ER sheet 1/4"
+      },
+      {
+        "number": "2.5",
+        "asset": "03_er_panel_06_part_02",
+        "caption": "Module 6 \u2014 relational ER sheet 2/4"
+      },
+      {
+        "number": "2.6",
+        "asset": "03_er_panel_06_part_03",
+        "caption": "Module 6 \u2014 relational ER sheet 3/4"
+      },
+      {
+        "number": "2.7",
+        "asset": "03_er_panel_06_part_04",
+        "caption": "Module 6 \u2014 relational ER sheet 4/4"
+      }
+    ],
+    "abstract_words": 149
+  },
+  {
+    "file": "07_Module_Report_Faculty_HR_and_Payroll.docx",
+    "tables": [
+      "designations",
+      "faculty",
+      "faculty_leaves",
+      "leave_balances",
+      "payrolls",
+      "payroll_components"
+    ],
+    "objects": [
+      "sp_generate_monthly_payroll",
+      "sp_approve_leave",
+      "trg_faculty_bi_validate",
+      "trg_faculty_leaves_bu_guard",
+      "trg_faculty_leaves_bi_guard",
+      "trg_payrolls_bu_guard",
+      "fn_calculate_faculty_leave_balance",
+      "fn_calculate_net_salary",
+      "v_faculty_workload",
+      "v_faculty_payroll_summary"
+    ],
+    "tests": [
+      "M7-01",
+      "M7-02",
+      "M7-03",
+      "M7-04",
+      "M7-05",
+      "M7-06",
+      "M7-07",
+      "EXEC-01",
+      "EXEC-02",
+      "EXEC-03",
+      "EXEC-04",
+      "EXEC-05"
+    ],
+    "figures": [
+      {
+        "number": "2.1",
+        "asset": "01_common_architecture",
+        "caption": "Common stack used by this module"
+      },
+      {
+        "number": "2.2",
+        "asset": "05_module_07_dfd_level1",
+        "caption": "Faculty, HR and Payroll \u2014 Level 1 DFD"
+      },
+      {
+        "number": "2.3",
+        "asset": "06_module_07_procedure_workflow",
+        "caption": "sp_generate_monthly_payroll \u2014 transaction/workflow supplement"
+      },
+      {
+        "number": "2.4",
+        "asset": "03_er_panel_07_part_01",
+        "caption": "Module 7 \u2014 relational ER sheet 1/2"
+      },
+      {
+        "number": "2.5",
+        "asset": "03_er_panel_07_part_02",
+        "caption": "Module 7 \u2014 relational ER sheet 2/2"
+      }
+    ],
+    "abstract_words": 151
+  }
+]

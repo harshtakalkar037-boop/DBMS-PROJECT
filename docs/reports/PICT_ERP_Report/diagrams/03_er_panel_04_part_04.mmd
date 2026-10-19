@@ -1,0 +1,6 @@
+flowchart LR
+  results["results<br/>PK: result_id"]
+  results -->|"FK071 student_id"| students
+  results -->|"FK072 semester_id"| semesters
+  results -->|"FK073 exam_id"| exams
+  results -->|"FK074 published_by"| users

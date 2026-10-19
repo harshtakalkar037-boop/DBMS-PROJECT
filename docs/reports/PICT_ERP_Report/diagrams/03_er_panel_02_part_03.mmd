@@ -1,0 +1,10 @@
+flowchart LR
+  enrollments["enrollments<br/>PK: enrollment_id"]
+  enrollments -->|"FK038 student_id"| students
+  enrollments -->|"FK039 offering_id"| course_offerings
+  enrollments -->|"FK040 enrolled_by"| users
+  faculty_subjects["faculty_subjects<br/>PK: allocation_id"]
+  faculty_subjects -->|"FK041 subject_id"| subjects
+  faculty_subjects -->|"FK042 academic_year_id"| academic_years
+  faculty_subjects -->|"FK043 semester_id"| semesters
+  faculty_subjects -->|"FK044 faculty_id"| faculty

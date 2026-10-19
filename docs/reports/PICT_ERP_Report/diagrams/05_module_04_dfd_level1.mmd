@@ -1,0 +1,32 @@
+flowchart TD
+  actor["M4 actors<br/>Authorized users / staff"]
+  p1["1.0 Configure exam /<br/>schedule"]
+  d1["D1: grades,<br/>exams,<br/>exam_schedules"]
+  p2["2.0 Register /<br/>issue hall-ticket data"]
+  d2["D2: exam_registrations,<br/>attendance,<br/>enrollments"]
+  p3["3.0 Enter and derive marks"]
+  d3["D3: marks"]
+  p4["4.0 Process /<br/>publish results"]
+  d4["D4: results,<br/>exams,<br/>notifications"]
+  p5["5.0 Practice MCQ adjunct"]
+  d5["D5: mcq_questions,<br/>mock_exams,<br/>mock_exam_answers"]
+  actor -->|"request / decision"| p1
+  p1 -->|"response / report"| actor
+  p1 -->|"validated writes / query"| d1
+  d1 -->|"stored context / rows"| p1
+  actor -->|"request / decision"| p2
+  p2 -->|"response / report"| actor
+  p2 -->|"validated writes / query"| d2
+  d2 -->|"stored context / rows"| p2
+  actor -->|"request / decision"| p3
+  p3 -->|"response / report"| actor
+  p3 -->|"validated writes / query"| d3
+  d3 -->|"stored context / rows"| p3
+  actor -->|"request / decision"| p4
+  p4 -->|"response / report"| actor
+  p4 -->|"validated writes / query"| d4
+  d4 -->|"stored context / rows"| p4
+  actor -->|"request / decision"| p5
+  p5 -->|"response / report"| actor
+  p5 -->|"validated writes / query"| d5
+  d5 -->|"stored context / rows"| p5

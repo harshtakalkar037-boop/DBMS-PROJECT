@@ -1,0 +1,14 @@
+flowchart TD
+  s1["1. Read bill and validate positive amount /<br/>remaining dues before transaction"]
+  s2["2. Start transaction; construct provisional<br/>receipt sequence"]
+  s3["3. Insert SUCCESS payment"]
+  s4["4. Payment insert trigger updates bill and<br/>ledger"]
+  s5["5. Update receipt using actual payment ID;<br/>write audit"]
+  s6["6. Commit and return receipt / new balance;<br/>rollback on SQL exception"]
+  err["SQL exception<br/>ROLLBACK / error outcome"]
+  s1 -->|"control / data"| s2
+  s2 -->|"control / data"| s3
+  s3 -->|"control / data"| s4
+  s4 -->|"control / data"| s5
+  s5 -->|"control / data"| s6
+  s2 -->|"invalid context / SQL failure"| err

@@ -1,0 +1,9 @@
+digraph G { rankdir=LR; node [shape=box];
+"leave_balances" [label="leave_balances\nPK: balance_id"];
+"leave_balances" -> "faculty" [label="FK126 faculty_id"];
+"leave_balances" -> "academic_years" [label="FK127 academic_year_id"];
+"payrolls" [label="payrolls\nPK: payroll_id"];
+"payrolls" -> "faculty" [label="FK128 faculty_id"];
+"payroll_components" [label="payroll_components\nPK: component_id"];
+"payroll_components" -> "payrolls" [label="FK129 payroll_id"];
+}

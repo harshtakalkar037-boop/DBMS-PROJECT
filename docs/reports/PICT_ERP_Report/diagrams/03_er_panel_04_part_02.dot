@@ -1,0 +1,7 @@
+digraph G { rankdir=LR; node [shape=box];
+"exam_schedules" [label="exam_schedules\nPK: schedule_id"];
+"exam_schedules" -> "exams" [label="FK060 exam_id"];
+"exam_schedules" -> "subjects" [label="FK061 subject_id"];
+"exam_schedules" -> "programs" [label="FK062 program_id"];
+"exam_schedules" -> "faculty" [label="FK063 invigilator_id"];
+}

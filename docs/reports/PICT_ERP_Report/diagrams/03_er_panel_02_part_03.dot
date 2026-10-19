@@ -1,0 +1,11 @@
+digraph G { rankdir=LR; node [shape=box];
+"enrollments" [label="enrollments\nPK: enrollment_id"];
+"enrollments" -> "students" [label="FK038 student_id"];
+"enrollments" -> "course_offerings" [label="FK039 offering_id"];
+"enrollments" -> "users" [label="FK040 enrolled_by"];
+"faculty_subjects" [label="faculty_subjects\nPK: allocation_id"];
+"faculty_subjects" -> "subjects" [label="FK041 subject_id"];
+"faculty_subjects" -> "academic_years" [label="FK042 academic_year_id"];
+"faculty_subjects" -> "semesters" [label="FK043 semester_id"];
+"faculty_subjects" -> "faculty" [label="FK044 faculty_id"];
+}

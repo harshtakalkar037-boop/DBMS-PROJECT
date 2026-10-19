@@ -1,0 +1,8 @@
+flowchart LR
+  leave_balances["leave_balances<br/>PK: balance_id"]
+  leave_balances -->|"FK126 faculty_id"| faculty
+  leave_balances -->|"FK127 academic_year_id"| academic_years
+  payrolls["payrolls<br/>PK: payroll_id"]
+  payrolls -->|"FK128 faculty_id"| faculty
+  payroll_components["payroll_components<br/>PK: component_id"]
+  payroll_components -->|"FK129 payroll_id"| payrolls

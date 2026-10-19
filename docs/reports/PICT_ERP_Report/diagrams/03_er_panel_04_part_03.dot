@@ -1,0 +1,11 @@
+digraph G { rankdir=LR; node [shape=box];
+"exam_registrations" [label="exam_registrations\nPK: registration_id"];
+"exam_registrations" -> "exams" [label="FK064 exam_id"];
+"exam_registrations" -> "students" [label="FK065 student_id"];
+"exam_registrations" -> "course_offerings" [label="FK066 offering_id"];
+"exam_registrations" -> "exam_schedules" [label="FK067 schedule_id"];
+"exam_registrations" -> "users" [label="FK068 registered_by"];
+"marks" [label="marks\nPK: mark_id"];
+"marks" -> "exam_registrations" [label="FK069 registration_id"];
+"marks" -> "users" [label="FK070 entered_by"];
+}

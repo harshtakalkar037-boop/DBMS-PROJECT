@@ -1,0 +1,8 @@
+flowchart LR
+  course_offerings["course_offerings<br/>PK: offering_id"]
+  course_offerings -->|"FK032 subject_id"| subjects
+  course_offerings -->|"FK033 semester_id"| semesters
+  course_offerings -->|"FK034 academic_year_id"| academic_years
+  course_offerings -->|"FK035 program_id"| programs
+  course_offerings -->|"FK036 section_id"| sections
+  course_offerings -->|"FK037 faculty_id"| faculty

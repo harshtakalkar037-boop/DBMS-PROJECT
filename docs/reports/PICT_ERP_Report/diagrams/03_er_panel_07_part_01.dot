@@ -1,0 +1,10 @@
+digraph G { rankdir=LR; node [shape=box];
+"designations" [label="designations\nPK: designation_id"];
+"faculty" [label="faculty\nPK: faculty_id"];
+"faculty" -> "users" [label="FK121 user_id"];
+"faculty" -> "designations" [label="FK122 designation_id"];
+"faculty" -> "departments" [label="FK123 department_id"];
+"faculty_leaves" [label="faculty_leaves\nPK: leave_id"];
+"faculty_leaves" -> "faculty" [label="FK124 faculty_id"];
+"faculty_leaves" -> "users" [label="FK125 approved_by"];
+}

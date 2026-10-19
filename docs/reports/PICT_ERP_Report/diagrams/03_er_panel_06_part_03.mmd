@@ -1,0 +1,8 @@
+flowchart LR
+  room_allocations["room_allocations<br/>PK: allocation_id"]
+  room_allocations -->|"FK108 student_id"| students
+  room_allocations -->|"FK109 bed_id"| beds
+  room_allocations -->|"FK110 room_id"| rooms
+  room_allocations -->|"FK111 hostel_id"| hostels
+  room_allocations -->|"FK112 academic_year_id"| academic_years
+  room_allocations -->|"FK113 allocated_by"| users

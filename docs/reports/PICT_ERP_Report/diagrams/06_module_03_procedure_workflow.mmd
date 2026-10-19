@@ -1,0 +1,14 @@
+flowchart TD
+  s1["1. Validate shared status and look up<br/>session teaching context"]
+  s2["2. Begin transaction; parse comma-separated<br/>student IDs"]
+  s3["3. Insert/update each student using the one<br/>supplied status"]
+  s4["4. Run applicable constraints and insert<br/>guards"]
+  s5["5. Write attendance audit; return row<br/>count; commit"]
+  s6["6. Rollback and resignal on SQL exception"]
+  err["SQL exception<br/>ROLLBACK / error outcome"]
+  s1 -->|"control / data"| s2
+  s2 -->|"control / data"| s3
+  s3 -->|"control / data"| s4
+  s4 -->|"control / data"| s5
+  s5 -->|"control / data"| s6
+  s2 -->|"invalid context / SQL failure"| err

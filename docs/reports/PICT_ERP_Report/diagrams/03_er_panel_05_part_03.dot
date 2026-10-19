@@ -1,0 +1,11 @@
+digraph G { rankdir=LR; node [shape=box];
+"student_scholarships" [label="student_scholarships\nPK: student_scholarship_id"];
+"student_scholarships" -> "students" [label="FK086 student_id"];
+"student_scholarships" -> "scholarships" [label="FK087 scholarship_id"];
+"student_scholarships" -> "academic_years" [label="FK088 academic_year_id"];
+"student_scholarships" -> "users" [label="FK089 sanctioned_by"];
+"fines" [label="fines\nPK: fine_id"];
+"fines" -> "students" [label="FK090 student_id"];
+"fines" -> "student_fees" [label="FK091 student_fee_id"];
+"fines" -> "users" [label="FK092 imposed_by"];
+}

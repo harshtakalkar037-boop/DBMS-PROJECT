@@ -1,0 +1,7 @@
+digraph G { rankdir=LR; node [shape=box];
+"hostel_applications" [label="hostel_applications\nPK: application_id"];
+"hostel_applications" -> "students" [label="FK104 student_id"];
+"hostel_applications" -> "hostels" [label="FK105 hostel_id"];
+"hostel_applications" -> "academic_years" [label="FK106 academic_year_id"];
+"hostel_applications" -> "users" [label="FK107 reviewed_by"];
+}

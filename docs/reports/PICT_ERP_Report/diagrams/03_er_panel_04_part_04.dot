@@ -1,0 +1,7 @@
+digraph G { rankdir=LR; node [shape=box];
+"results" [label="results\nPK: result_id"];
+"results" -> "students" [label="FK071 student_id"];
+"results" -> "semesters" [label="FK072 semester_id"];
+"results" -> "exams" [label="FK073 exam_id"];
+"results" -> "users" [label="FK074 published_by"];
+}

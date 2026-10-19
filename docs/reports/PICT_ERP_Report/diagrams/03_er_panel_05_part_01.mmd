@@ -1,0 +1,10 @@
+flowchart LR
+  fee_structures["fee_structures<br/>PK: fee_structure_id"]
+  fee_structures -->|"FK075 program_id"| programs
+  fee_structures -->|"FK076 academic_year_id"| academic_years
+  fee_structures -->|"FK077 category_id"| categories
+  student_fees["student_fees<br/>PK: student_fee_id"]
+  student_fees -->|"FK078 student_id"| students
+  student_fees -->|"FK079 fee_structure_id"| fee_structures
+  student_fees -->|"FK080 semester_id"| semesters
+  student_fees -->|"FK081 academic_year_id"| academic_years

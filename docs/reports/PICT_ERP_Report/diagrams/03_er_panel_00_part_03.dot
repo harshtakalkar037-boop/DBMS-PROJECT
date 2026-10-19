@@ -1,0 +1,7 @@
+digraph G { rankdir=LR; node [shape=box];
+"system_settings" [label="system_settings\nPK: setting_key"];
+"notifications" [label="notifications\nPK: notification_id"];
+"notifications" -> "users" [label="FK008 user_id"];
+"audit_logs" [label="audit_logs\nPK: log_id"];
+"audit_logs" -> "users" [label="FK009 user_id"];
+}

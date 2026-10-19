@@ -1,0 +1,8 @@
+digraph G { rankdir=LR; node [shape=box];
+"attendance" [label="attendance\nPK: attendance_id"];
+"attendance" -> "class_sessions" [label="FK053 session_id"];
+"attendance" -> "students" [label="FK054 student_id"];
+"attendance" -> "course_offerings" [label="FK055 offering_id"];
+"attendance" -> "semesters" [label="FK056 semester_id"];
+"attendance" -> "users" [label="FK057 marked_by"];
+}

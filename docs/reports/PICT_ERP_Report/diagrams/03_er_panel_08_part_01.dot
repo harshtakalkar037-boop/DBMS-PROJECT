@@ -1,0 +1,11 @@
+digraph G { rankdir=LR; node [shape=box];
+"mcq_questions" [label="mcq_questions\nPK: question_id"];
+"mcq_questions" -> "subjects" [label="FK130 subject_id"];
+"mcq_questions" -> "users" [label="FK131 created_by"];
+"mock_exams" [label="mock_exams\nPK: mock_exam_id"];
+"mock_exams" -> "students" [label="FK132 student_id"];
+"mock_exams" -> "subjects" [label="FK133 subject_id"];
+"mock_exam_answers" [label="mock_exam_answers\nPK: answer_id"];
+"mock_exam_answers" -> "mock_exams" [label="FK134 mock_exam_id"];
+"mock_exam_answers" -> "mcq_questions" [label="FK135 question_id"];
+}

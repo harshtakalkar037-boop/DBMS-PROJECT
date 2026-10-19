@@ -1,0 +1,9 @@
+flowchart LR
+  refunds["refunds<br/>PK: refund_id"]
+  refunds -->|"FK093 payment_id"| payments
+  refunds -->|"FK094 student_id"| students
+  refunds -->|"FK095 processed_by"| users
+  transactions["transactions<br/>PK: transaction_id"]
+  transactions -->|"FK096 student_fee_id"| student_fees
+  transactions -->|"FK097 payment_id"| payments
+  transactions -->|"FK098 student_id"| students

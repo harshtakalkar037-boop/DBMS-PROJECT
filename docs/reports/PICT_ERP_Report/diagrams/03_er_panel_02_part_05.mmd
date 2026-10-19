@@ -1,0 +1,5 @@
+flowchart LR
+  class_sessions["class_sessions<br/>PK: session_id"]
+  class_sessions -->|"FK050 offering_id"| course_offerings
+  class_sessions -->|"FK051 semester_id"| semesters
+  class_sessions -->|"FK052 faculty_id"| faculty

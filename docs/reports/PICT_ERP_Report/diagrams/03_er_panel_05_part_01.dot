@@ -1,0 +1,11 @@
+digraph G { rankdir=LR; node [shape=box];
+"fee_structures" [label="fee_structures\nPK: fee_structure_id"];
+"fee_structures" -> "programs" [label="FK075 program_id"];
+"fee_structures" -> "academic_years" [label="FK076 academic_year_id"];
+"fee_structures" -> "categories" [label="FK077 category_id"];
+"student_fees" [label="student_fees\nPK: student_fee_id"];
+"student_fees" -> "students" [label="FK078 student_id"];
+"student_fees" -> "fee_structures" [label="FK079 fee_structure_id"];
+"student_fees" -> "semesters" [label="FK080 semester_id"];
+"student_fees" -> "academic_years" [label="FK081 academic_year_id"];
+}

@@ -1,0 +1,10 @@
+digraph G { rankdir=LR; node [shape=box];
+"refunds" [label="refunds\nPK: refund_id"];
+"refunds" -> "payments" [label="FK093 payment_id"];
+"refunds" -> "students" [label="FK094 student_id"];
+"refunds" -> "users" [label="FK095 processed_by"];
+"transactions" [label="transactions\nPK: transaction_id"];
+"transactions" -> "student_fees" [label="FK096 student_fee_id"];
+"transactions" -> "payments" [label="FK097 payment_id"];
+"transactions" -> "students" [label="FK098 student_id"];
+}

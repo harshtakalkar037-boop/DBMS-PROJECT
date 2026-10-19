@@ -1,0 +1,10 @@
+flowchart LR
+  mcq_questions["mcq_questions<br/>PK: question_id"]
+  mcq_questions -->|"FK130 subject_id"| subjects
+  mcq_questions -->|"FK131 created_by"| users
+  mock_exams["mock_exams<br/>PK: mock_exam_id"]
+  mock_exams -->|"FK132 student_id"| students
+  mock_exams -->|"FK133 subject_id"| subjects
+  mock_exam_answers["mock_exam_answers<br/>PK: answer_id"]
+  mock_exam_answers -->|"FK134 mock_exam_id"| mock_exams
+  mock_exam_answers -->|"FK135 question_id"| mcq_questions

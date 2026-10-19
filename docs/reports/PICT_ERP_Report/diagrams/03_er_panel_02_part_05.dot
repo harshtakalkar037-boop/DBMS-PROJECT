@@ -1,0 +1,6 @@
+digraph G { rankdir=LR; node [shape=box];
+"class_sessions" [label="class_sessions\nPK: session_id"];
+"class_sessions" -> "course_offerings" [label="FK050 offering_id"];
+"class_sessions" -> "semesters" [label="FK051 semester_id"];
+"class_sessions" -> "faculty" [label="FK052 faculty_id"];
+}

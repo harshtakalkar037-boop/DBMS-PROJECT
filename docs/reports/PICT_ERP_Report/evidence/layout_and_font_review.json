@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-19",
+  "reports": [
+    {
+      "file": "00_Master_ERP_Project_Report.docx",
+      "abstract_words": 152,
+      "dictionary_tables": 61,
+      "dictionary_columns": 677,
+      "objects": 78,
+      "figures": 45,
+      "render_pages": 516,
+      "chapter1_physical_page": 17,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "01_Module_Report_Student_and_Admission_Management.docx",
+      "abstract_words": 151,
+      "dictionary_tables": 6,
+      "dictionary_columns": 97,
+      "objects": 6,
+      "figures": 6,
+      "render_pages": 79,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "02_Module_Report_Academic_and_Course_Management.docx",
+      "abstract_words": 151,
+      "dictionary_tables": 14,
+      "dictionary_columns": 135,
+      "objects": 7,
+      "figures": 8,
+      "render_pages": 96,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "03_Module_Report_Attendance_Management.docx",
+      "abstract_words": 149,
+      "dictionary_tables": 2,
+      "dictionary_columns": 21,
+      "objects": 7,
+      "figures": 4,
+      "render_pages": 60,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "04_Module_Report_Examination_and_Results.docx",
+      "abstract_words": 150,
+      "dictionary_tables": 9,
+      "dictionary_columns": 112,
+      "objects": 24,
+      "figures": 7,
+      "render_pages": 114,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "05_Module_Report_Fees_and_Payments.docx",
+      "abstract_words": 150,
+      "dictionary_tables": 8,
+      "dictionary_columns": 97,
+      "objects": 12,
+      "figures": 7,
+      "render_pages": 92,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "06_Module_Report_Hostel_Management.docx",
+      "abstract_words": 149,
+      "dictionary_tables": 8,
+      "dictionary_columns": 74,
+      "objects": 12,
+      "figures": 7,
+      "render_pages": 85,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "07_Module_Report_Faculty_HR_and_Payroll.docx",
+      "abstract_words": 151,
+      "dictionary_tables": 6,
+      "dictionary_columns": 78,
+      "objects": 10,
+      "figures": 5,
+      "render_pages": 82,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    }
+  ],
+  "field_refresh": "All8 main reports: three document indexes refreshed with LibreOffice UNO before PDF layout review. Editable fields retained in DOCX and marked for refresh.",
+  "font": "Actual PDF text spans use Microsoft core Times New Roman; no fallback text font detected.",
+  "pdf_scope": "QA-only renders; editable DOCX files are deliverables. Page counts are renderer-specific, not final Word/print certification.",
+  "manual_review": "Representative cover, certificate, abstract, index, DFD/ER, dictionary, SQL and test pages inspected. Automated page scan found no empty pages or text beyond paper edges.",
+  "pending": "Final edited Microsoft Word typography, field updates and print review; genuine team identities/approval/signatures and all live business evidence."
+}

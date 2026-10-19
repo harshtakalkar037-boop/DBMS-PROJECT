@@ -1,0 +1,9 @@
+flowchart LR
+  designations["designations<br/>PK: designation_id"]
+  faculty["faculty<br/>PK: faculty_id"]
+  faculty -->|"FK121 user_id"| users
+  faculty -->|"FK122 designation_id"| designations
+  faculty -->|"FK123 department_id"| departments
+  faculty_leaves["faculty_leaves<br/>PK: leave_id"]
+  faculty_leaves -->|"FK124 faculty_id"| faculty
+  faculty_leaves -->|"FK125 approved_by"| users

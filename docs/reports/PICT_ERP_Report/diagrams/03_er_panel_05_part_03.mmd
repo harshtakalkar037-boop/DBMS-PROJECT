@@ -1,0 +1,10 @@
+flowchart LR
+  student_scholarships["student_scholarships<br/>PK: student_scholarship_id"]
+  student_scholarships -->|"FK086 student_id"| students
+  student_scholarships -->|"FK087 scholarship_id"| scholarships
+  student_scholarships -->|"FK088 academic_year_id"| academic_years
+  student_scholarships -->|"FK089 sanctioned_by"| users
+  fines["fines<br/>PK: fine_id"]
+  fines -->|"FK090 student_id"| students
+  fines -->|"FK091 student_fee_id"| student_fees
+  fines -->|"FK092 imposed_by"| users

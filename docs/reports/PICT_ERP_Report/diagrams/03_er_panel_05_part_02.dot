@@ -1,0 +1,8 @@
+digraph G { rankdir=LR; node [shape=box];
+"payments" [label="payments\nPK: payment_id"];
+"payments" -> "student_fees" [label="FK082 student_fee_id"];
+"payments" -> "students" [label="FK083 student_id"];
+"payments" -> "users" [label="FK084 received_by"];
+"scholarships" [label="scholarships\nPK: scholarship_id"];
+"scholarships" -> "academic_years" [label="FK085 academic_year_id"];
+}

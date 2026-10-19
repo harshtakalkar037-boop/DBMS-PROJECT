@@ -1,0 +1,6 @@
+flowchart LR
+  hostel_applications["hostel_applications<br/>PK: application_id"]
+  hostel_applications -->|"FK104 student_id"| students
+  hostel_applications -->|"FK105 hostel_id"| hostels
+  hostel_applications -->|"FK106 academic_year_id"| academic_years
+  hostel_applications -->|"FK107 reviewed_by"| users

@@ -1,0 +1,1482 @@
+{
+  "repository_commit": "b3b56e06cfa8df6ef3765380d0a14ba75b05dc22",
+  "audit_date": "2026-10-19",
+  "business_execution": "Live SQL / DB / API / E2E / deployment NOT verified",
+  "checks": [
+    {
+      "check": "Authoritative inventory counts",
+      "passed": true,
+      "detail": "{'tables': 61, 'columns': 677, 'foreign_keys': 138, 'objects': 78, 'routes': 231, 'tests': 64, 'queries': 45, 'findings': 33, 'tracked_files': 260, 'missing_items': 19}"
+    },
+    {
+      "check": "Object category counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Unique tables identifiers",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Unique objects identifiers",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "FK target and exact child/parent type reconciliation",
+      "passed": true,
+      "detail": "Counter({'MATCH (static DDL)': 138})"
+    },
+    {
+      "check": "ER table coverage once",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "ER FK coverage once",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Diagram / screenshot register",
+      "passed": true,
+      "detail": "Counter({'Diagram': 45, 'Screenshot to capture': 21, 'Existing repository illustrations': 1})"
+    },
+    {
+      "check": "All 260 tracked source file hashes unchanged",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "00 valid DOCX archive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 A4 portrait and requested margins",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 single column",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 five front/body sections and numbering resets",
+      "passed": true,
+      "detail": "[{'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'lowerRoman'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}]"
+    },
+    {
+      "check": "00 three editable TOC/list fields",
+      "passed": true,
+      "detail": " TOC \\z \\t \"Figure Caption,1\" \\h  TOC \\z \\t \"Table Caption,1\" \\h  TOC \\z \\o \"1-3\" \\u \\h"
+    },
+    {
+      "check": "00 abstract maximum200 words",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 headings retain keep-with-next",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 hierarchical heading numbers no gaps/duplicates",
+      "passed": true,
+      "detail": "{(1,): [1, 2, 3, 4, 5, 6], (1, 3): [1], (2,): [1, 2, 3, 4, 5, 6, 7, 8], (2, 1): [1, 2, 3, 4, 5, 6], (2, 1, 2): [1], (2, 1, 4): [1, 2, 3], (2, 2): [1, 2, 3, 4, 5, 6], (2, 2, 2): [1], (2, 2, 4): [1, 2, 3], (2, 3): [1, 2, 3, 4, 5, 6], (2, 3, 2): [1], (2, 3, 4): [1, 2, 3], (2, 4): [1, 2, 3, 4, 5, 6], (2, 4, 2): [1], (2, 4, 4): [1, 2, 3], (2, 5): [1, 2, 3, 4, 5, 6], (2, 5, 2): [1], (2, 5, 4): [1, 2, 3], (2, 6): [1, 2, 3, 4, 5, 6], (2, 6, 2): [1], (2, 6, 4): [1, 2, 3], (2, 7): [1, 2, 3, 4, 5, 6], (2, 7, 2): [1], (2, 7, 4): [1, 2, 3], (3,): [1, 2, 3, 4], (3, 2): [1, 2]}"
+    },
+    {
+      "check": "00 unsigned certificate and no false live claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 dictionary table identity coverage",
+      "passed": true,
+      "detail": "['academic_calendar', 'academic_years', 'addresses', 'admissions', 'ai_conversations', 'attendance', 'audit_logs', 'batches', 'beds', 'categories', 'class_sessions', 'course_offerings', 'departments', 'designations', 'enrollments', 'exam_registrations', 'exam_schedules', 'exams', 'faculty', 'faculty_leaves', 'faculty_subjects', 'fee_structures', 'fines', 'grades', 'guardians', 'hostel_applications', 'hostel_blocks', 'hostel_fees', 'hostels', 'leave_balances', 'marks', 'mcq_questions', 'mock_exam_answers', 'mock_exams', 'notifications', 'payments', 'payroll_components', 'payrolls', 'program_subjects', 'programs', 'refunds', 'results', 'roles', 'room_allocations', 'room_transfers', 'rooms', 'scholarships', 'sections', 'semesters', 'student_documents', 'student_fees', 'student_risk_scores', 'student_scholarships', 'student_status_history', 'students', 'study_plans', 'subjects', 'system_settings', 'timetable', 'transactions', 'users']"
+    },
+    {
+      "check": "00 full exact column names/types in dictionaries",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "00 exact SQL definitions retained as editable text",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "00 unique Figure caption numbers",
+      "passed": true,
+      "detail": "[('1.1', 1), ('1.2', 1)]"
+    },
+    {
+      "check": "00 Figure captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 figure count matches ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 unique Table caption numbers",
+      "passed": true,
+      "detail": "[('1.1', 1), ('1.2', 1)]"
+    },
+    {
+      "check": "00 Table captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 no empty rendered pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 cover/cert/ack unnumbered and abstract Roman i",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "00 Arabic body starts1",
+      "passed": true,
+      "detail": "[16]"
+    },
+    {
+      "check": "00 revised PDF actual fonts Times New Roman",
+      "passed": true,
+      "detail": "Counter({'TimesNewRomanPSMT': 18329, 'TimesNewRomanPS-BoldMT': 2505, 'TimesNewRomanPS-BoldItal': 99})"
+    },
+    {
+      "check": "00 no text beyond paper edges",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "01 valid DOCX archive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 A4 portrait and requested margins",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 single column",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 five front/body sections and numbering resets",
+      "passed": true,
+      "detail": "[{'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'lowerRoman'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}]"
+    },
+    {
+      "check": "01 three editable TOC/list fields",
+      "passed": true,
+      "detail": " TOC \\z \\t \"Figure Caption,1\" \\h  TOC \\z \\t \"Table Caption,1\" \\h  TOC \\z \\o \"1-3\" \\u \\h"
+    },
+    {
+      "check": "01 abstract maximum200 words",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 headings retain keep-with-next",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 hierarchical heading numbers no gaps/duplicates",
+      "passed": true,
+      "detail": "{(1,): [1, 2, 3, 4, 5], (2,): [1, 2, 3, 4, 5, 6, 7], (2, 2): [1], (2, 3): [1], (2, 4): [1, 2, 3], (3,): [1, 2, 3, 4], (3, 2): [1, 2]}"
+    },
+    {
+      "check": "01 unsigned certificate and no false live claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 dictionary table identity coverage",
+      "passed": true,
+      "detail": "['addresses', 'admissions', 'guardians', 'student_documents', 'student_status_history', 'students']"
+    },
+    {
+      "check": "01 full exact column names/types in dictionaries",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "01 exact SQL definitions retained as editable text",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "01 unique Figure caption numbers",
+      "passed": true,
+      "detail": "[('2.1', 1), ('2.2', 1)]"
+    },
+    {
+      "check": "01 Figure captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 figure count matches ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 unique Table caption numbers",
+      "passed": true,
+      "detail": "[('1.1', 1), ('2.1', 1)]"
+    },
+    {
+      "check": "01 Table captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 no empty rendered pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 cover/cert/ack unnumbered and abstract Roman i",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01 Arabic body starts1",
+      "passed": true,
+      "detail": "[9]"
+    },
+    {
+      "check": "01 revised PDF actual fonts Times New Roman",
+      "passed": true,
+      "detail": "Counter({'TimesNewRomanPSMT': 2624, 'TimesNewRomanPS-BoldMT': 357, 'TimesNewRomanPS-BoldItal': 8})"
+    },
+    {
+      "check": "01 no text beyond paper edges",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "02 valid DOCX archive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 A4 portrait and requested margins",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 single column",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 five front/body sections and numbering resets",
+      "passed": true,
+      "detail": "[{'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'lowerRoman'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}]"
+    },
+    {
+      "check": "02 three editable TOC/list fields",
+      "passed": true,
+      "detail": " TOC \\z \\t \"Figure Caption,1\" \\h  TOC \\z \\t \"Table Caption,1\" \\h  TOC \\z \\o \"1-3\" \\u \\h"
+    },
+    {
+      "check": "02 abstract maximum200 words",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 headings retain keep-with-next",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 hierarchical heading numbers no gaps/duplicates",
+      "passed": true,
+      "detail": "{(1,): [1, 2, 3, 4, 5], (2,): [1, 2, 3, 4, 5, 6, 7], (2, 2): [1], (2, 3): [1, 2], (2, 4): [1, 2, 3, 4], (3,): [1, 2, 3, 4], (3, 2): [1, 2]}"
+    },
+    {
+      "check": "02 unsigned certificate and no false live claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 dictionary table identity coverage",
+      "passed": true,
+      "detail": "['academic_calendar', 'academic_years', 'batches', 'class_sessions', 'course_offerings', 'departments', 'enrollments', 'faculty_subjects', 'program_subjects', 'programs', 'sections', 'semesters', 'subjects', 'timetable']"
+    },
+    {
+      "check": "02 full exact column names/types in dictionaries",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "02 exact SQL definitions retained as editable text",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "02 unique Figure caption numbers",
+      "passed": true,
+      "detail": "[('2.1', 1), ('2.2', 1)]"
+    },
+    {
+      "check": "02 Figure captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 figure count matches ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 unique Table caption numbers",
+      "passed": true,
+      "detail": "[('1.1', 1), ('2.1', 1)]"
+    },
+    {
+      "check": "02 Table captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 no empty rendered pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 cover/cert/ack unnumbered and abstract Roman i",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 Arabic body starts1",
+      "passed": true,
+      "detail": "[9]"
+    },
+    {
+      "check": "02 revised PDF actual fonts Times New Roman",
+      "passed": true,
+      "detail": "Counter({'TimesNewRomanPSMT': 3362, 'TimesNewRomanPS-BoldMT': 494, 'TimesNewRomanPS-BoldItal': 9})"
+    },
+    {
+      "check": "02 no text beyond paper edges",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "03 valid DOCX archive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 A4 portrait and requested margins",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 single column",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 five front/body sections and numbering resets",
+      "passed": true,
+      "detail": "[{'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'lowerRoman'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}]"
+    },
+    {
+      "check": "03 three editable TOC/list fields",
+      "passed": true,
+      "detail": " TOC \\z \\t \"Figure Caption,1\" \\h  TOC \\z \\t \"Table Caption,1\" \\h  TOC \\z \\o \"1-3\" \\u \\h"
+    },
+    {
+      "check": "03 abstract maximum200 words",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 headings retain keep-with-next",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 hierarchical heading numbers no gaps/duplicates",
+      "passed": true,
+      "detail": "{(1,): [1, 2, 3, 4, 5], (2,): [1, 2, 3, 4, 5, 6, 7], (2, 2): [1], (2, 3): [1, 2], (2, 4): [1, 2, 3], (3,): [1, 2, 3, 4], (3, 2): [1, 2]}"
+    },
+    {
+      "check": "03 unsigned certificate and no false live claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 dictionary table identity coverage",
+      "passed": true,
+      "detail": "['attendance', 'class_sessions']"
+    },
+    {
+      "check": "03 full exact column names/types in dictionaries",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "03 exact SQL definitions retained as editable text",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "03 unique Figure caption numbers",
+      "passed": true,
+      "detail": "[('2.1', 1), ('2.2', 1)]"
+    },
+    {
+      "check": "03 Figure captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 figure count matches ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 unique Table caption numbers",
+      "passed": true,
+      "detail": "[('1.1', 1), ('2.1', 1)]"
+    },
+    {
+      "check": "03 Table captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 no empty rendered pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 cover/cert/ack unnumbered and abstract Roman i",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03 Arabic body starts1",
+      "passed": true,
+      "detail": "[9]"
+    },
+    {
+      "check": "03 revised PDF actual fonts Times New Roman",
+      "passed": true,
+      "detail": "Counter({'TimesNewRomanPSMT': 1800, 'TimesNewRomanPS-BoldMT': 288, 'TimesNewRomanPS-BoldItal': 9})"
+    },
+    {
+      "check": "03 no text beyond paper edges",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "04 valid DOCX archive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 A4 portrait and requested margins",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 single column",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 five front/body sections and numbering resets",
+      "passed": true,
+      "detail": "[{'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'lowerRoman'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}]"
+    },
+    {
+      "check": "04 three editable TOC/list fields",
+      "passed": true,
+      "detail": " TOC \\z \\t \"Figure Caption,1\" \\h  TOC \\z \\t \"Table Caption,1\" \\h  TOC \\z \\o \"1-3\" \\u \\h"
+    },
+    {
+      "check": "04 abstract maximum200 words",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 headings retain keep-with-next",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 hierarchical heading numbers no gaps/duplicates",
+      "passed": true,
+      "detail": "{(1,): [1, 2, 3, 4, 5], (2,): [1, 2, 3, 4, 5, 6, 7], (2, 2): [1], (2, 3): [1, 2], (2, 4): [1, 2, 3, 4], (3,): [1, 2, 3, 4], (3, 2): [1, 2]}"
+    },
+    {
+      "check": "04 unsigned certificate and no false live claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 dictionary table identity coverage",
+      "passed": true,
+      "detail": "['exam_registrations', 'exam_schedules', 'exams', 'grades', 'marks', 'mcq_questions', 'mock_exam_answers', 'mock_exams', 'results']"
+    },
+    {
+      "check": "04 full exact column names/types in dictionaries",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "04 exact SQL definitions retained as editable text",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "04 unique Figure caption numbers",
+      "passed": true,
+      "detail": "[('2.1', 1), ('2.2', 1)]"
+    },
+    {
+      "check": "04 Figure captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 figure count matches ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 unique Table caption numbers",
+      "passed": true,
+      "detail": "[('1.1', 1), ('2.1', 1)]"
+    },
+    {
+      "check": "04 Table captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 no empty rendered pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 cover/cert/ack unnumbered and abstract Roman i",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04 Arabic body starts1",
+      "passed": true,
+      "detail": "[9]"
+    },
+    {
+      "check": "04 revised PDF actual fonts Times New Roman",
+      "passed": true,
+      "detail": "Counter({'TimesNewRomanPSMT': 3744, 'TimesNewRomanPS-BoldMT': 565, 'TimesNewRomanPS-BoldItal': 26})"
+    },
+    {
+      "check": "04 no text beyond paper edges",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "05 valid DOCX archive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 A4 portrait and requested margins",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 single column",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 five front/body sections and numbering resets",
+      "passed": true,
+      "detail": "[{'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'lowerRoman'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}]"
+    },
+    {
+      "check": "05 three editable TOC/list fields",
+      "passed": true,
+      "detail": " TOC \\z \\t \"Figure Caption,1\" \\h  TOC \\z \\t \"Table Caption,1\" \\h  TOC \\z \\o \"1-3\" \\u \\h"
+    },
+    {
+      "check": "05 abstract maximum200 words",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 headings retain keep-with-next",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 hierarchical heading numbers no gaps/duplicates",
+      "passed": true,
+      "detail": "{(1,): [1, 2, 3, 4, 5], (2,): [1, 2, 3, 4, 5, 6, 7], (2, 2): [1], (2, 3): [1], (2, 4): [1, 2, 3], (3,): [1, 2, 3, 4], (3, 2): [1, 2]}"
+    },
+    {
+      "check": "05 unsigned certificate and no false live claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 dictionary table identity coverage",
+      "passed": true,
+      "detail": "['fee_structures', 'fines', 'payments', 'refunds', 'scholarships', 'student_fees', 'student_scholarships', 'transactions']"
+    },
+    {
+      "check": "05 full exact column names/types in dictionaries",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "05 exact SQL definitions retained as editable text",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "05 unique Figure caption numbers",
+      "passed": true,
+      "detail": "[('2.1', 1), ('2.2', 1)]"
+    },
+    {
+      "check": "05 Figure captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 figure count matches ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 unique Table caption numbers",
+      "passed": true,
+      "detail": "[('1.1', 1), ('2.1', 1)]"
+    },
+    {
+      "check": "05 Table captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 no empty rendered pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 cover/cert/ack unnumbered and abstract Roman i",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05 Arabic body starts1",
+      "passed": true,
+      "detail": "[9]"
+    },
+    {
+      "check": "05 revised PDF actual fonts Times New Roman",
+      "passed": true,
+      "detail": "Counter({'TimesNewRomanPSMT': 3067, 'TimesNewRomanPS-BoldMT': 457, 'TimesNewRomanPS-BoldItal': 14})"
+    },
+    {
+      "check": "05 no text beyond paper edges",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "06 valid DOCX archive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 A4 portrait and requested margins",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 single column",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 five front/body sections and numbering resets",
+      "passed": true,
+      "detail": "[{'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'lowerRoman'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}]"
+    },
+    {
+      "check": "06 three editable TOC/list fields",
+      "passed": true,
+      "detail": " TOC \\z \\t \"Figure Caption,1\" \\h  TOC \\z \\t \"Table Caption,1\" \\h  TOC \\z \\o \"1-3\" \\u \\h"
+    },
+    {
+      "check": "06 abstract maximum200 words",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 headings retain keep-with-next",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 hierarchical heading numbers no gaps/duplicates",
+      "passed": true,
+      "detail": "{(1,): [1, 2, 3, 4, 5], (2,): [1, 2, 3, 4, 5, 6, 7], (2, 2): [1], (2, 3): [1], (2, 4): [1, 2, 3], (3,): [1, 2, 3, 4], (3, 2): [1, 2]}"
+    },
+    {
+      "check": "06 unsigned certificate and no false live claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 dictionary table identity coverage",
+      "passed": true,
+      "detail": "['beds', 'hostel_applications', 'hostel_blocks', 'hostel_fees', 'hostels', 'room_allocations', 'room_transfers', 'rooms']"
+    },
+    {
+      "check": "06 full exact column names/types in dictionaries",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "06 exact SQL definitions retained as editable text",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "06 unique Figure caption numbers",
+      "passed": true,
+      "detail": "[('2.1', 1), ('2.2', 1)]"
+    },
+    {
+      "check": "06 Figure captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 figure count matches ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 unique Table caption numbers",
+      "passed": true,
+      "detail": "[('1.1', 1), ('2.1', 1)]"
+    },
+    {
+      "check": "06 Table captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 no empty rendered pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 cover/cert/ack unnumbered and abstract Roman i",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06 Arabic body starts1",
+      "passed": true,
+      "detail": "[9]"
+    },
+    {
+      "check": "06 revised PDF actual fonts Times New Roman",
+      "passed": true,
+      "detail": "Counter({'TimesNewRomanPSMT': 2738, 'TimesNewRomanPS-BoldMT': 440, 'TimesNewRomanPS-BoldItal': 14})"
+    },
+    {
+      "check": "06 no text beyond paper edges",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "07 valid DOCX archive",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 A4 portrait and requested margins",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 single column",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 five front/body sections and numbering resets",
+      "passed": true,
+      "detail": "[{'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'lowerRoman'}, {'{http://schemas.openxmlformats.org/wordprocessingml/2006/main}start': '1', '{http://schemas.openxmlformats.org/wordprocessingml/2006/main}fmt': 'decimal'}]"
+    },
+    {
+      "check": "07 three editable TOC/list fields",
+      "passed": true,
+      "detail": " TOC \\z \\t \"Figure Caption,1\" \\h  TOC \\z \\t \"Table Caption,1\" \\h  TOC \\z \\o \"1-3\" \\u \\h"
+    },
+    {
+      "check": "07 abstract maximum200 words",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 headings retain keep-with-next",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 hierarchical heading numbers no gaps/duplicates",
+      "passed": true,
+      "detail": "{(1,): [1, 2, 3, 4, 5], (2,): [1, 2, 3, 4, 5, 6, 7], (2, 2): [1], (2, 3): [1], (2, 4): [1, 2, 3], (3,): [1, 2, 3, 4], (3, 2): [1, 2]}"
+    },
+    {
+      "check": "07 unsigned certificate and no false live claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 dictionary table identity coverage",
+      "passed": true,
+      "detail": "['designations', 'faculty', 'faculty_leaves', 'leave_balances', 'payroll_components', 'payrolls']"
+    },
+    {
+      "check": "07 full exact column names/types in dictionaries",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "07 exact SQL definitions retained as editable text",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "07 unique Figure caption numbers",
+      "passed": true,
+      "detail": "[('2.1', 1), ('2.2', 1)]"
+    },
+    {
+      "check": "07 Figure captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 figure count matches ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 unique Table caption numbers",
+      "passed": true,
+      "detail": "[('1.1', 1), ('2.1', 1)]"
+    },
+    {
+      "check": "07 Table captions10pt centered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 no empty rendered pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 cover/cert/ack unnumbered and abstract Roman i",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07 Arabic body starts1",
+      "passed": true,
+      "detail": "[9]"
+    },
+    {
+      "check": "07 revised PDF actual fonts Times New Roman",
+      "passed": true,
+      "detail": "Counter({'TimesNewRomanPSMT': 2620, 'TimesNewRomanPS-BoldMT': 383, 'TimesNewRomanPS-BoldItal': 12})"
+    },
+    {
+      "check": "07 no text beyond paper edges",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "01 exact mandated absence wording",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02 exact mandated absence wording",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "G2 view absence exact mandated wording",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Workbook24 sheets",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Workbook Tables row count",
+      "passed": true,
+      "detail": "61"
+    },
+    {
+      "check": "Workbook Columns row count",
+      "passed": true,
+      "detail": "677"
+    },
+    {
+      "check": "Workbook Foreign Keys row count",
+      "passed": true,
+      "detail": "138"
+    },
+    {
+      "check": "Workbook SQL Objects row count",
+      "passed": true,
+      "detail": "78"
+    },
+    {
+      "check": "Workbook Analytical Queries row count",
+      "passed": true,
+      "detail": "45"
+    },
+    {
+      "check": "Workbook Test Evidence row count",
+      "passed": true,
+      "detail": "64"
+    },
+    {
+      "check": "Workbook SQL Object Evidence row count",
+      "passed": true,
+      "detail": "78"
+    },
+    {
+      "check": "Workbook Missing Information row count",
+      "passed": true,
+      "detail": "19"
+    },
+    {
+      "check": "Workbook Diagrams Screenshots row count",
+      "passed": true,
+      "detail": "67"
+    },
+    {
+      "check": "Workbook Static Findings row count",
+      "passed": true,
+      "detail": "33"
+    },
+    {
+      "check": "Workbook Template Compliance row count",
+      "passed": true,
+      "detail": "37"
+    },
+    {
+      "check": "Workbook Tracked File Review row count",
+      "passed": true,
+      "detail": "260"
+    },
+    {
+      "check": "Workbook UNIQUE Constraints row count",
+      "passed": true,
+      "detail": "61"
+    },
+    {
+      "check": "Workbook CHECK Constraints row count",
+      "passed": true,
+      "detail": "57"
+    },
+    {
+      "check": "M1-01 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M1-02 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M1-03 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M1-04 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M1-05 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M1-06 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M1-07 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M2-01 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M2-02 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M2-03 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M2-04 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M2-05 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M2-06 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M2-07 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M3-01 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M3-02 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M3-03 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M3-04 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M3-05 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M3-06 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M3-07 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M4-01 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M4-02 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M4-03 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M4-04 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M4-05 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M4-06 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M4-07 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M5-01 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M5-02 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M5-03 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M5-04 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M5-05 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M5-06 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M5-07 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M6-01 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M6-02 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M6-03 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M6-04 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M6-05 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M6-06 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M6-07 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M7-01 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M7-02 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M7-03 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M7-04 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M7-05 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M7-06 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M7-07 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "INT-01 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "INT-02 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "INT-03 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "INT-04 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "INT-05 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "INT-06 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "INT-07 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "INT-08 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "INT-09 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "INT-10 unexecuted result/status exact marker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Static privacy signature scan",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "No credential/seed/source-record artifacts exported",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "reports": [
+    {
+      "file": "00_Master_ERP_Project_Report.docx",
+      "abstract_words": 152,
+      "dictionary_tables": 61,
+      "dictionary_columns": 677,
+      "objects": 78,
+      "figures": 45,
+      "render_pages": 516,
+      "chapter1_physical_page": 17,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "01_Module_Report_Student_and_Admission_Management.docx",
+      "abstract_words": 151,
+      "dictionary_tables": 6,
+      "dictionary_columns": 97,
+      "objects": 6,
+      "figures": 6,
+      "render_pages": 79,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "02_Module_Report_Academic_and_Course_Management.docx",
+      "abstract_words": 151,
+      "dictionary_tables": 14,
+      "dictionary_columns": 135,
+      "objects": 7,
+      "figures": 8,
+      "render_pages": 96,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "03_Module_Report_Attendance_Management.docx",
+      "abstract_words": 149,
+      "dictionary_tables": 2,
+      "dictionary_columns": 21,
+      "objects": 7,
+      "figures": 4,
+      "render_pages": 60,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "04_Module_Report_Examination_and_Results.docx",
+      "abstract_words": 150,
+      "dictionary_tables": 9,
+      "dictionary_columns": 112,
+      "objects": 24,
+      "figures": 7,
+      "render_pages": 114,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "05_Module_Report_Fees_and_Payments.docx",
+      "abstract_words": 150,
+      "dictionary_tables": 8,
+      "dictionary_columns": 97,
+      "objects": 12,
+      "figures": 7,
+      "render_pages": 92,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "06_Module_Report_Hostel_Management.docx",
+      "abstract_words": 149,
+      "dictionary_tables": 8,
+      "dictionary_columns": 74,
+      "objects": 12,
+      "figures": 7,
+      "render_pages": 85,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    },
+    {
+      "file": "07_Module_Report_Faculty_HR_and_Payroll.docx",
+      "abstract_words": 151,
+      "dictionary_tables": 6,
+      "dictionary_columns": 78,
+      "objects": 10,
+      "figures": 5,
+      "render_pages": 82,
+      "chapter1_physical_page": 10,
+      "render_fonts": [
+        "TimesNewRomanPS-BoldMT",
+        "TimesNewRomanPSMT",
+        "TimesNewRomanPS-BoldItal"
+      ]
+    }
+  ],
+  "limitations": [
+    "Static source and packaging checks are not DB correctness or security certification.",
+    "Identities, guide/HOD confirmation, approval date/signatures and live evidence remain team-owned inputs.",
+    "Final edited Microsoft Word field refresh and print review remain required."
+  ],
+  "counts": {
+    "tables": 61,
+    "columns": 677,
+    "foreign_keys": 138,
+    "objects": 78,
+    "routes": 231,
+    "tests": 64,
+    "queries": 45,
+    "findings": 33,
+    "tracked_files": 260,
+    "missing_items": 19
+  },
+  "privacy_scan": {
+    "text_units": 531,
+    "checks": [
+      "bcrypt value",
+      "private key",
+      "credential connection URI",
+      "known API key format",
+      "email address value",
+      "password literal assignment"
+    ],
+    "findings": [],
+    "boundary": "No signatures found does not prove absence of all sensitive information; generated structural data contain no seed/row exports."
+  },
+  "passed": true,
+  "check_count": 264,
+  "failed_count": 0
+}

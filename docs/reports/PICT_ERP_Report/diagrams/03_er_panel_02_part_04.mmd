@@ -1,0 +1,8 @@
+flowchart LR
+  timetable["timetable<br/>PK: timetable_id"]
+  timetable -->|"FK045 offering_id"| course_offerings
+  timetable -->|"FK046 section_id"| sections
+  timetable -->|"FK047 faculty_id"| faculty
+  academic_calendar["academic_calendar<br/>PK: event_id"]
+  academic_calendar -->|"FK048 academic_year_id"| academic_years
+  academic_calendar -->|"FK049 semester_id"| semesters

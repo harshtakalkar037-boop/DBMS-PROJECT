@@ -1,0 +1,10 @@
+digraph G { rankdir=LR; node [shape=box];
+"students" [label="students\nPK: student_id"];
+"students" -> "users" [label="FK010 user_id"];
+"students" -> "categories" [label="FK011 category_id"];
+"students" -> "departments" [label="FK012 department_id"];
+"students" -> "programs" [label="FK013 program_id"];
+"students" -> "batches" [label="FK014 batch_id"];
+"addresses" [label="addresses\nPK: address_id"];
+"addresses" -> "students" [label="FK015 student_id"];
+}

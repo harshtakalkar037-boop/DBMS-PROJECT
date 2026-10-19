@@ -1,0 +1,6 @@
+flowchart LR
+  exam_schedules["exam_schedules<br/>PK: schedule_id"]
+  exam_schedules -->|"FK060 exam_id"| exams
+  exam_schedules -->|"FK061 subject_id"| subjects
+  exam_schedules -->|"FK062 program_id"| programs
+  exam_schedules -->|"FK063 invigilator_id"| faculty

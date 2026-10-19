@@ -1,0 +1,26 @@
+flowchart TD
+  actor["M7 actors<br/>Authorized users / staff"]
+  p1["1.0 Maintain faculty /<br/>designation"]
+  d1["D1: faculty,<br/>designations"]
+  p2["2.0 Apply /<br/>approve leave"]
+  d2["D2: faculty_leaves,<br/>leave_balances"]
+  p3["3.0 Generate payroll /<br/>components"]
+  d3["D3: payrolls,<br/>payroll_components"]
+  p4["4.0 Read /<br/>pay payslip and workload"]
+  d4["D4: payrolls,<br/>course_offerings,<br/>timetable"]
+  actor -->|"request / decision"| p1
+  p1 -->|"response / report"| actor
+  p1 -->|"validated writes / query"| d1
+  d1 -->|"stored context / rows"| p1
+  actor -->|"request / decision"| p2
+  p2 -->|"response / report"| actor
+  p2 -->|"validated writes / query"| d2
+  d2 -->|"stored context / rows"| p2
+  actor -->|"request / decision"| p3
+  p3 -->|"response / report"| actor
+  p3 -->|"validated writes / query"| d3
+  d3 -->|"stored context / rows"| p3
+  actor -->|"request / decision"| p4
+  p4 -->|"response / report"| actor
+  p4 -->|"validated writes / query"| d4
+  d4 -->|"stored context / rows"| p4

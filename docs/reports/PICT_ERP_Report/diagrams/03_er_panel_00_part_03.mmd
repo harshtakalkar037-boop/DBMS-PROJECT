@@ -1,0 +1,6 @@
+flowchart LR
+  system_settings["system_settings<br/>PK: setting_key"]
+  notifications["notifications<br/>PK: notification_id"]
+  notifications -->|"FK008 user_id"| users
+  audit_logs["audit_logs<br/>PK: log_id"]
+  audit_logs -->|"FK009 user_id"| users

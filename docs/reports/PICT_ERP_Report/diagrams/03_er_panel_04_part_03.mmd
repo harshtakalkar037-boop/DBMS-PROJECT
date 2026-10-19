@@ -1,0 +1,10 @@
+flowchart LR
+  exam_registrations["exam_registrations<br/>PK: registration_id"]
+  exam_registrations -->|"FK064 exam_id"| exams
+  exam_registrations -->|"FK065 student_id"| students
+  exam_registrations -->|"FK066 offering_id"| course_offerings
+  exam_registrations -->|"FK067 schedule_id"| exam_schedules
+  exam_registrations -->|"FK068 registered_by"| users
+  marks["marks<br/>PK: mark_id"]
+  marks -->|"FK069 registration_id"| exam_registrations
+  marks -->|"FK070 entered_by"| users

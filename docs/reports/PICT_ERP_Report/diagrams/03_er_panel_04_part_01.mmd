@@ -1,0 +1,5 @@
+flowchart LR
+  grades["grades<br/>PK: grade_id"]
+  exams["exams<br/>PK: exam_id"]
+  exams -->|"FK058 academic_year_id"| academic_years
+  exams -->|"FK059 semester_id"| semesters

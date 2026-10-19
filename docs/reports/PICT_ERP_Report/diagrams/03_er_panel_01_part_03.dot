@@ -1,0 +1,8 @@
+digraph G { rankdir=LR; node [shape=box];
+"student_documents" [label="student_documents\nPK: document_id"];
+"student_documents" -> "students" [label="FK022 student_id"];
+"student_documents" -> "users" [label="FK023 verified_by"];
+"student_status_history" [label="student_status_history\nPK: history_id"];
+"student_status_history" -> "students" [label="FK024 student_id"];
+"student_status_history" -> "users" [label="FK025 changed_by"];
+}

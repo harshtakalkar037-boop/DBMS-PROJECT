@@ -1,0 +1,9 @@
+digraph G { rankdir=LR; node [shape=box];
+"course_offerings" [label="course_offerings\nPK: offering_id"];
+"course_offerings" -> "subjects" [label="FK032 subject_id"];
+"course_offerings" -> "semesters" [label="FK033 semester_id"];
+"course_offerings" -> "academic_years" [label="FK034 academic_year_id"];
+"course_offerings" -> "programs" [label="FK035 program_id"];
+"course_offerings" -> "sections" [label="FK036 section_id"];
+"course_offerings" -> "faculty" [label="FK037 faculty_id"];
+}

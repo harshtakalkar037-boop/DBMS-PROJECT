@@ -1,0 +1,9 @@
+flowchart LR
+  guardians["guardians<br/>PK: guardian_id"]
+  guardians -->|"FK016 student_id"| students
+  admissions["admissions<br/>PK: admission_id"]
+  admissions -->|"FK017 student_id"| students
+  admissions -->|"FK018 academic_year_id"| academic_years
+  admissions -->|"FK019 program_id"| programs
+  admissions -->|"FK020 category_id"| categories
+  admissions -->|"FK021 reviewed_by"| users

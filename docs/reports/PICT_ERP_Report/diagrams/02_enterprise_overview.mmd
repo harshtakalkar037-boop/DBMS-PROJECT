@@ -1,0 +1,23 @@
+flowchart TD
+  shared["Shared masters (12 tables)<br/>users / roles / academic context / audit"]
+  m1["1. Student and Admission<br/>Management"]
+  m2["2. Academic and Course<br/>Management"]
+  m3["3. Attendance<br/>Management"]
+  m4["4. Examination and Results"]
+  m5["5. Fees and Payments"]
+  m6["6. Hostel<br/>Management"]
+  m7["7. Faculty, HR and Payroll"]
+  x["Cross-cutting adjuncts (6 tables)<br/>mock exams / AI / risk / study plans"]
+  m1 -->|"shared keys / context"| shared
+  m2 -->|"shared keys / context"| shared
+  m3 -->|"shared keys / context"| shared
+  m4 -->|"shared keys / context"| shared
+  m5 -->|"shared keys / context"| shared
+  m6 -->|"shared keys / context"| shared
+  m7 -->|"shared keys / context"| shared
+  m2 -->|"offering / enrollment / session"| m3
+  m3 -->|"attendance eligibility"| m4
+  m1 -->|"student identity"| m5
+  m1 -->|"student identity"| m6
+  m7 -->|"faculty identity"| m2
+  x -->|"user / student / subject context"| shared

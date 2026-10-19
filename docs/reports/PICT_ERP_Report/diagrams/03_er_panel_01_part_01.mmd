@@ -1,0 +1,9 @@
+flowchart LR
+  students["students<br/>PK: student_id"]
+  students -->|"FK010 user_id"| users
+  students -->|"FK011 category_id"| categories
+  students -->|"FK012 department_id"| departments
+  students -->|"FK013 program_id"| programs
+  students -->|"FK014 batch_id"| batches
+  addresses["addresses<br/>PK: address_id"]
+  addresses -->|"FK015 student_id"| students

@@ -1,0 +1,32 @@
+flowchart TD
+  actor["M5 actors<br/>Authorized users / staff"]
+  p1["1.0 Define fee /<br/>scholarship policy"]
+  d1["D1: fee_structures,<br/>scholarships"]
+  p2["2.0 Generate /<br/>adjust student bills"]
+  d2["D2: student_fees,<br/>student_scholarships,<br/>fines"]
+  p3["3.0 Record payment /<br/>issue receipt"]
+  d3["D3: payments,<br/>student_fees,<br/>transactions"]
+  p4["4.0 Apply late fees /<br/>report dues"]
+  d4["D4: student_fees,<br/>transactions"]
+  p5["5.0 Request refund /<br/>reverse status"]
+  d5["D5: refunds,<br/>payments,<br/>transactions"]
+  actor -->|"request / decision"| p1
+  p1 -->|"response / report"| actor
+  p1 -->|"validated writes / query"| d1
+  d1 -->|"stored context / rows"| p1
+  actor -->|"request / decision"| p2
+  p2 -->|"response / report"| actor
+  p2 -->|"validated writes / query"| d2
+  d2 -->|"stored context / rows"| p2
+  actor -->|"request / decision"| p3
+  p3 -->|"response / report"| actor
+  p3 -->|"validated writes / query"| d3
+  d3 -->|"stored context / rows"| p3
+  actor -->|"request / decision"| p4
+  p4 -->|"response / report"| actor
+  p4 -->|"validated writes / query"| d4
+  d4 -->|"stored context / rows"| p4
+  actor -->|"request / decision"| p5
+  p5 -->|"response / report"| actor
+  p5 -->|"validated writes / query"| d5
+  d5 -->|"stored context / rows"| p5

@@ -1,0 +1,16 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad=0.15, nodesep=0.32, ranksep=0.65, fontname="Times New Roman", fontsize=13, label="Source-derived common architecture", labelloc=t];
+node [fontname="Times New Roman", fontsize=12, shape=box, style="rounded,filled", color="#263b53", fillcolor="#edf2f7", margin="0.13,0.09"];
+edge [fontname="Times New Roman", fontsize=9, color="#52657a", arrowsize=0.65];
+"client" [label="Browser: React 18 / TypeScript\nVite 5 SPA", shape=box, fillcolor="#edf2f7", style="rounded,filled"];
+"api" [label="Express 4 /api/v1\nAuthentication -> RBAC -> Zod / controller", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"service" [label="Services -> repositories\nmysql2 parameter binding / callProc", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"db" [label="InnoDB relational data\n61 tables; constraints; SQL programmability", shape=cylinder, fillcolor="#e9f2ed", style="rounded,filled"];
+"extra" [label="Optional: Mongo event mirror\nOpenAI / Gemini (local fallback)", shape=box, fillcolor="#f2f2f2", style="rounded,dashed,filled"];
+"client" -> "api" [label="HTTP JSON; relative API paths"];
+"api" -> "client" [label="responses / validation errors"];
+"api" -> "service" [label="validated application operations"];
+"service" -> "db" [label="SQL / CALL"];
+"db" -> "service" [label="rows / OUT / SQL errors"];
+"api" -> "extra" [label="optional, unverified integrations"];
+}

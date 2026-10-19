@@ -1,0 +1,8 @@
+flowchart LR
+  roles["roles<br/>PK: role_id"]
+  users["users<br/>PK: user_id"]
+  users -->|"FK001 role_id"| roles
+  departments["departments<br/>PK: department_id"]
+  departments -->|"FK002 hod_faculty_id"| faculty
+  categories["categories<br/>PK: category_id"]
+  academic_years["academic_years<br/>PK: academic_year_id"]

@@ -1,0 +1,10 @@
+flowchart LR
+  room_transfers["room_transfers<br/>PK: transfer_id"]
+  room_transfers -->|"FK114 student_id"| students
+  room_transfers -->|"FK115 from_bed_id"| beds
+  room_transfers -->|"FK116 to_bed_id"| beds
+  room_transfers -->|"FK117 approved_by"| users
+  hostel_fees["hostel_fees<br/>PK: hostel_fee_id"]
+  hostel_fees -->|"FK118 allocation_id"| room_allocations
+  hostel_fees -->|"FK119 student_id"| students
+  hostel_fees -->|"FK120 academic_year_id"| academic_years

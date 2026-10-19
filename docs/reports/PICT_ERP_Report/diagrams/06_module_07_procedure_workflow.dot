@@ -1,0 +1,18 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad=0.15, nodesep=0.32, ranksep=0.65, fontname="Times New Roman", fontsize=13, label="sp_generate_monthly_payroll — implementation-derived decomposition", labelloc=t];
+node [fontname="Times New Roman", fontsize=12, shape=box, style="rounded,filled", color="#263b53", fillcolor="#edf2f7", margin="0.13,0.09"];
+edge [fontname="Times New Roman", fontsize=9, color="#52657a", arrowsize=0.65];
+"s1" [label="1. Load project tax; begin transaction;\nselect ACTIVE or ON_LEAVE faculty", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"s2" [label="2. Calculate base, allowances, inline 12%\nPF and configured project tax", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"s3" [label="3. Calculate UNPAID days using start-month\nattribution", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"s4" [label="4. Insert or update payroll row and\nitemized components", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"s5" [label="5. Write payroll audit; return generated\ncount / total net; commit", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"s6" [label="6. Rollback / resignal on SQL exception;\ntest paid-row guard on rerun", shape=ellipse, fillcolor="#e8eef8", style="rounded,filled"];
+"err" [label="SQL exception\nROLLBACK / error outcome", shape=box, fillcolor="#f2f2f2", style="rounded,dashed,filled"];
+"s1" -> "s2" [label="control / data"];
+"s2" -> "s3" [label="control / data"];
+"s3" -> "s4" [label="control / data"];
+"s4" -> "s5" [label="control / data"];
+"s5" -> "s6" [label="control / data"];
+"s2" -> "err" [label="invalid context / SQL failure"];
+}

@@ -1,0 +1,7 @@
+flowchart LR
+  attendance["attendance<br/>PK: attendance_id"]
+  attendance -->|"FK053 session_id"| class_sessions
+  attendance -->|"FK054 student_id"| students
+  attendance -->|"FK055 offering_id"| course_offerings
+  attendance -->|"FK056 semester_id"| semesters
+  attendance -->|"FK057 marked_by"| users

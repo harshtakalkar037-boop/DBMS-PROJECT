@@ -1,0 +1,14 @@
+flowchart TD
+  s1["1. Load project tax; begin transaction;<br/>select ACTIVE or ON_LEAVE faculty"]
+  s2["2. Calculate base, allowances, inline 12%<br/>PF and configured project tax"]
+  s3["3. Calculate UNPAID days using start-month<br/>attribution"]
+  s4["4. Insert or update payroll row and<br/>itemized components"]
+  s5["5. Write payroll audit; return generated<br/>count / total net; commit"]
+  s6["6. Rollback / resignal on SQL exception;<br/>test paid-row guard on rerun"]
+  err["SQL exception<br/>ROLLBACK / error outcome"]
+  s1 -->|"control / data"| s2
+  s2 -->|"control / data"| s3
+  s3 -->|"control / data"| s4
+  s4 -->|"control / data"| s5
+  s5 -->|"control / data"| s6
+  s2 -->|"invalid context / SQL failure"| err

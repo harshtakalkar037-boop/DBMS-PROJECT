@@ -1,0 +1,9 @@
+digraph G { rankdir=LR; node [shape=box];
+"roles" [label="roles\nPK: role_id"];
+"users" [label="users\nPK: user_id"];
+"users" -> "roles" [label="FK001 role_id"];
+"departments" [label="departments\nPK: department_id"];
+"departments" -> "faculty" [label="FK002 hod_faculty_id"];
+"categories" [label="categories\nPK: category_id"];
+"academic_years" [label="academic_years\nPK: academic_year_id"];
+}

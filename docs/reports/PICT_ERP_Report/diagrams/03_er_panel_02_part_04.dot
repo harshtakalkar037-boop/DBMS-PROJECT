@@ -1,0 +1,9 @@
+digraph G { rankdir=LR; node [shape=box];
+"timetable" [label="timetable\nPK: timetable_id"];
+"timetable" -> "course_offerings" [label="FK045 offering_id"];
+"timetable" -> "sections" [label="FK046 section_id"];
+"timetable" -> "faculty" [label="FK047 faculty_id"];
+"academic_calendar" [label="academic_calendar\nPK: event_id"];
+"academic_calendar" -> "academic_years" [label="FK048 academic_year_id"];
+"academic_calendar" -> "semesters" [label="FK049 semester_id"];
+}
